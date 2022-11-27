@@ -1,7 +1,7 @@
 
 
 
-export default function Header () {
+export default function Header ({TABS}) {
 
 	return (
 		<header className="bg-green-200 px-4 py-4">
