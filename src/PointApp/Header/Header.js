@@ -1,8 +1,15 @@
 
 
 
-export default function Header ({TABS, currentTabIndex, setCurrentTabIndex}) {
+export default function Header ({
+	PRODUCTION, TABS,
+	currentTabIndex, setCurrentTabIndex
+}) {
 	const tabItems = TABS.map((t, k) => {
+			if (PRODUCTION && t.debug) {
+				return true;
+			}
+
 		   const current = k === currentTabIndex;
 		   let className = "pt-1";
 		   className += current ? " bg-white" : " hover:bg-green-300 cursor-pointer";
