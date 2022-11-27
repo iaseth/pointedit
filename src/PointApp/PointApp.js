@@ -3,9 +3,9 @@ import React from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
-import Home from './Content/Home';
-import Market from './Content/Market';
-import Settings from './Content/Settings';
+import Home from './Content/Home/Home';
+import Market from './Content/Market/Market';
+import Settings from './Content/Settings/Settings';
 
 const TABS = [
 	{title: "Home", char: "H", component: Home},
@@ -20,7 +20,7 @@ export default function PointApp () {
 	return (
 		<div className="bg-slate-100">
 
-			<main className="">
+			<main className="bg-white">
 				<Header {...{TABS, currentTabIndex, setCurrentTabIndex}} />
 				<CurrentComponent />
 				<Footer />
