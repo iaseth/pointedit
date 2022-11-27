@@ -1,13 +1,24 @@
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import LeftSidebar from './LeftSidebar/LeftSidebar';
+import RightSidebar from './RightSidebar/RightSidebar';
+import Content from './Content/Content';
 
 
 
 export default function PointApp () {
 
 	return (
-		<div className="App">
-			<header className="App-header bg-green-500 text-white flex min-h-screen">
-				<h2 className="m-auto text-4xl">PointApp</h2>
-			</header>
+		<div className="App flex bg-slate-100">
+			<LeftSidebar />
+
+			<main className="grow bg-white">
+				<Header />
+				<Content />
+				<Footer />
+			</main>
+
+			<RightSidebar />
 		</div>
 	);
 }
