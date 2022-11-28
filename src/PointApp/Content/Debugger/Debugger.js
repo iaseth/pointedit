@@ -29,9 +29,11 @@ export default function Debugger ({CATEGORIES, appdata}) {
 								<td>ID</td>
 								<td>Title</td>
 								<td>Times</td>
-								<td>Aspects</td>
+								<td>AC</td>
+								<td>PC</td>
 							</tr>
 						</thead>
+
 						<tbody>
 							{appdata.notes.map((n, k) => <tr key={n.id}>
 								<td>{k+1}</td>
@@ -41,7 +43,8 @@ export default function Debugger ({CATEGORIES, appdata}) {
 									<h5>{n.createdAt}</h5>
 									<h5>{n.modifiedAt}</h5>
 								</td>
-								<td>{n.aspectId}</td>
+								<td>{n.aspectsCount}</td>
+								<td>{n.pointsCount}</td>
 							</tr>)}
 						</tbody>
 					</table>

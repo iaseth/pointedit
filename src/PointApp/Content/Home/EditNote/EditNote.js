@@ -25,6 +25,8 @@ export default function EditNote ({
 	React.useEffect(() => {
 		const noteObject = {...note};
 		delete noteObject.aspects;
+		noteObject.aspectsCount = note.aspects.length;
+		noteObject.pointsCount = note.aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
 
 		let index = appdata.notes.findIndex(n => n.id === noteObject.id);
 		if (index === -1) {
@@ -37,7 +39,7 @@ export default function EditNote ({
 		updateAppdata(appdata);
 
 		console.log(note);
-	}, [note]);
+	}, [note, appdata, updateAppdata]);
 
 	const updateNote = (newNote) => {
 		newNote.modifiedAt = Date.now();
@@ -46,7 +48,7 @@ export default function EditNote ({
 
 	const updateNoteProp = (prop, value) => {
 		note[prop] = value;
-		updateNote(note);
+		updateNote({...note});
 	};
 
 	const addNewAspect = () => {
