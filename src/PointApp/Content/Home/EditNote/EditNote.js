@@ -30,6 +30,8 @@ function Aspect ({k, aspect, updateAspect}) {
 	const addNewPoint = (atIndex=false) => {
 		const point = {
 			id: aspect.pointId++,
+			createdAt: Date.now(),
+			modifiedAt: Date.now(),
 			text: "",
 			hidden: false
 		};
@@ -57,6 +59,7 @@ function Aspect ({k, aspect, updateAspect}) {
 	};
 
 	const updatePoint = (pid, point) => {
+		point.modifiedAt = Date.now();
 		aspect.points[pid] = point;
 		updateAspect(k, aspect);
 	};
@@ -96,17 +99,33 @@ function Aspect ({k, aspect, updateAspect}) {
 }
 
 export default function EditNote () {
-	const [content, setContent] = React.useState({aspects: []});
+	const [content, setContent] = React.useState({
+		createdAt: Date.now(),
+		modifiedAt: Date.now(),
+
+		aspects: [],
+		aspectId: 0
+	});
+
+	React.useEffect(() => {
+		console.log(content);
+	}, [content]);
 
 	const updateContent = (newContent) => {
+		newContent.modifiedAt = Date.now();
 		setContent(newContent);
 	};
 
 	const addNewAspect = () => {
 		const aspect = {
+			id: content.aspectId++,
+			createdAt: Date.now(),
+			modifiedAt: Date.now(),
+
 			title: "",
 			introduction: "",
 			conclusion: "",
+
 			points: [],
 			pointId: 0,
 			hidden: false
@@ -116,6 +135,7 @@ export default function EditNote () {
 	};
 
 	const updateAspect = (k, aspect) => {
+		aspect.modifiedAt = Date.now();
 		content.aspects[k] = aspect;
 		updateContent({...content});
 	};
@@ -127,7 +147,7 @@ export default function EditNote () {
 			</header>
 
 			<div className="">
-				{content.aspects.map((aspect, k) => <Aspect key={k} {...{k, aspect, updateAspect}} />)}
+				{content.aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
 			</div>
 
 			<footer className="py-3 px-3">
