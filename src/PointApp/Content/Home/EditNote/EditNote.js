@@ -109,7 +109,7 @@ export default function EditNote () {
 	};
 
 	return (
-		<div className="max-w-xl mx-auto">
+		<div className="max-w-xl mx-auto" id="EditNote">
 			<header className="py-2 px-3">
 				<h4>Edit Note</h4>
 			</header>
