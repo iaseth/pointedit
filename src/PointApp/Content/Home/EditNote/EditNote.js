@@ -12,11 +12,11 @@ function Point ({k, point, updatePoint}) {
 	};
 
 	return (
-		<li>
-			<h4>
-				<EditableText text={point.text} setText={setText} />
+		<div className="flex items-center">
+			<h4 className="grow">
+				<EditableText number={k+1} text={point.text} setText={setText} />
 			</h4>
-		</li>
+		</div>
 	);
 }
 
@@ -42,24 +42,24 @@ function Aspect ({k, aspect, updateAspect}) {
 
 	return (
 		<section className="py-2">
-			<article className="border-2 border-slate-300 ch:px-3 ch:py-3">
+			<article className="">
 				<header>
 					<h3>
 						<EditableText text={aspect.title} setText={updateTitle} />
 					</h3>
 				</header>
 
-				<main className="border-y-2 border-slate-300">
-					<ul className="list-disc px-8">
+				<main className="">
+					<div className="">
 						{aspect.points.map((point, k) => <Point key={k} {...{k, point, updatePoint}} />)}
-					</ul>
+					</div>
 
 					{aspect.points.length === 0 && <div className="">
-						<h4 className="text-slate-500 py-3">No points added.</h4>
+						<h4 className="text-slate-500 px-3 py-6">No points added.</h4>
 					</div>}
 				</main>
 
-				<footer>
+				<footer className="px-3 py-3">
 					<Button onClick={addNewPoint}>Add Point</Button>
 				</footer>
 			</article>
@@ -70,6 +70,10 @@ function Aspect ({k, aspect, updateAspect}) {
 export default function EditNote () {
 	const [content, setContent] = React.useState({aspects: []});
 
+	const updateContent = (newContent) => {
+		setContent(newContent);
+	};
+
 	const addNewAspect = () => {
 		const aspect = {
 			title: "",
@@ -77,12 +81,12 @@ export default function EditNote () {
 			hidden: false
 		};
 		content.aspects.push(aspect);
-		setContent({...content});
+		updateContent({...content});
 	};
 
 	const updateAspect = (k, aspect) => {
 		content.aspects[k] = aspect;
-		setContent({...content});
+		updateContent({...content});
 	};
 
 	return (
@@ -91,7 +95,7 @@ export default function EditNote () {
 				<h4>EditNote</h4>
 			</header>
 
-			<div>
+			<div className="max-w-xl mx-auto">
 				{content.aspects.map((aspect, k) => <Aspect key={k} {...{k, aspect, updateAspect}} />)}
 			</div>
 
