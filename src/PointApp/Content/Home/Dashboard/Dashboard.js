@@ -11,7 +11,7 @@ export default function Dashboard ({CATEGORIES, goToCategory}) {
 				<div className="shadow cursor-pointer" onClick={() => goToCategory(c.id)}>
 					<div className="py-12 bg-green-200"></div>
 					<div>
-						<h4 className="py-2 text-center">{c.title}</h4>
+						<h4 className="py-3 text-center">{c.title}</h4>
 					</div>
 				</div>
 			</div>
