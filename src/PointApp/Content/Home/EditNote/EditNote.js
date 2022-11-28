@@ -8,7 +8,7 @@ import {EditableText} from './Utils';
 function Point ({k, point, updatePoint, addNewPoint}) {
 	const setText = (text) => {
 		point.text = text;
-		updatePoint(k, point);
+		updatePoint(point);
 	};
 
 	const onEnter = () => {
@@ -35,33 +35,34 @@ function Aspect ({k, aspect, updateAspect}) {
 			text: "",
 			hidden: false
 		};
-		if (atIndex) {
-			// const ps = aspect.points;
-			// aspect.points = [...ps.slice(0, k), point, ...ps.slice(k)];
-			aspect.points.splice(atIndex, 0, point);
-		} else {
+
+		if (atIndex === false) {
 			aspect.points.push(point);
+		} else {
+			aspect.points.splice(atIndex, 0, point);
 		}
 
-		updateAspect(k, aspect);
+		updateAspect(aspect);
 	};
 
+	if (aspect.points.length === 0) {
+		addNewPoint();
+	}
+
 	React.useEffect(() => {
-		if (aspect.points.length === 0) {
-			addNewPoint();
-		}
 		aspectRef.current.getElementsByTagName('textarea')[0].focus();
 	}, []);
 
-	const updateProp = (prop, value) => {
+	const updateAspectProp = (prop, value) => {
 		aspect[prop] = value;
-		updateAspect(k, aspect);
+		updateAspect(aspect);
 	};
 
-	const updatePoint = (pid, point) => {
+	const updatePoint = (point) => {
+		const pointIndex = aspect.points.findIndex(p => p.id === point.id);
 		point.modifiedAt = Date.now();
-		aspect.points[pid] = point;
-		updateAspect(k, aspect);
+		aspect.points[pointIndex] = point;
+		updateAspect(aspect);
 	};
 
 	return (
@@ -70,11 +71,11 @@ function Aspect ({k, aspect, updateAspect}) {
 				<header>
 					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
 					<h3>
-						<EditableText text={aspect.title} setText={(v) => updateProp('title', v)} placeholder="Title" />
+						<EditableText text={aspect.title} setText={(v) => updateAspectProp('title', v)} placeholder="Title" />
 					</h3>
 
 					<h4>
-						<EditableText text={aspect.introduction} setText={(v) => updateProp('introduction', v)} placeholder="Introduction" />
+						<EditableText text={aspect.introduction} setText={(v) => updateAspectProp('introduction', v)} placeholder="Introduction" />
 					</h4>
 				</header>
 
@@ -90,7 +91,7 @@ function Aspect ({k, aspect, updateAspect}) {
 
 				<footer className="">
 					<h4>
-						<EditableText text={aspect.conclusion} setText={(v) => updateProp('conclusion', v)} placeholder="Conclusion" />
+						<EditableText text={aspect.conclusion} setText={(v) => updateAspectProp('conclusion', v)} placeholder="Conclusion" />
 					</h4>
 				</footer>
 			</article>
@@ -134,9 +135,10 @@ export default function EditNote () {
 		updateContent({...content});
 	};
 
-	const updateAspect = (k, aspect) => {
+	const updateAspect = (aspect) => {
+		const aspectIndex = content.aspects.findIndex(a => a.id === aspect.id);
 		aspect.modifiedAt = Date.now();
-		content.aspects[k] = aspect;
+		content.aspects[aspectIndex] = aspect;
 		updateContent({...content});
 	};
 
