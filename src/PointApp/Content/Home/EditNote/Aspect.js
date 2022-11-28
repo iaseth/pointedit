@@ -53,7 +53,7 @@ export default function Aspect ({k, aspect, updateAspect}) {
 				<header>
 					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
 					<h3>
-						<EditableText text={aspect.title} setText={(v) => updateAspectProp('title', v)} placeholder="Title" />
+						<EditableText text={aspect.title} setText={(v) => updateAspectProp('title', v)} placeholder="Title" autoFocus={true} />
 					</h3>
 
 					<h4>

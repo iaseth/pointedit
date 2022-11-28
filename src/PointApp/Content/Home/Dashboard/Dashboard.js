@@ -1,8 +1,8 @@
 
 
 
-function RecentItems () {}
-function PinnedItems () {}
+// function RecentItems () {}
+// function PinnedItems () {}
 
 export default function Dashboard ({CATEGORIES, goToCategory}) {
 	const catItems = CATEGORIES.map((c, k) => {

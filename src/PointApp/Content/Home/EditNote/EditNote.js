@@ -6,18 +6,24 @@ import Aspect from './Aspect';
 
 
 
-export default function EditNote ({CATEGORIES, appdata, updateAppdata}) {
-	const [content, setContent] = React.useState({
-		id: appdata.noteId++,
+export default function EditNote ({
+	CATEGORIES, appdata, updateAppdata,
+	noteId = null
+}) {
+	const [note, setNote] = React.useState(appdata.notes.find(n => n.id === noteId) || {
+		id: appdata.noteId,
 		createdAt: Date.now(),
 		modifiedAt: Date.now(),
+
+		title: "",
+		description: "",
 
 		aspects: [],
 		aspectId: 0
 	});
 
 	React.useEffect(() => {
-		const noteObject = {...content};
+		const noteObject = {...note};
 		delete noteObject.aspects;
 
 		let index = appdata.notes.findIndex(n => n.id === noteObject.id);
@@ -25,19 +31,27 @@ export default function EditNote ({CATEGORIES, appdata, updateAppdata}) {
 			index = appdata.notes.length;
 		}
 		appdata.notes[index] = noteObject;
+		if (appdata.noteId <= noteObject.id) {
+			appdata.noteId = noteObject.id + 1;
+		}
 		updateAppdata(appdata);
 
-		console.log(content);
-	}, [content]);
+		console.log(note);
+	}, [note]);
 
-	const updateContent = (newContent) => {
-		newContent.modifiedAt = Date.now();
-		setContent(newContent);
+	const updateNote = (newNote) => {
+		newNote.modifiedAt = Date.now();
+		setNote(newNote);
+	};
+
+	const updateNoteProp = (prop, value) => {
+		note[prop] = value;
+		updateNote(note);
 	};
 
 	const addNewAspect = () => {
 		const aspect = {
-			id: content.aspectId++,
+			id: note.aspectId++,
 			createdAt: Date.now(),
 			modifiedAt: Date.now(),
 
@@ -49,26 +63,33 @@ export default function EditNote ({CATEGORIES, appdata, updateAppdata}) {
 			pointId: 0,
 			hidden: false
 		};
-		content.aspects.push(aspect);
-		updateContent({...content});
+		note.aspects.push(aspect);
+		updateNote({...note});
 	};
 
 	const updateAspect = (aspect) => {
-		const aspectIndex = content.aspects.findIndex(a => a.id === aspect.id);
+		const aspectIndex = note.aspects.findIndex(a => a.id === aspect.id);
 		aspect.modifiedAt = Date.now();
-		content.aspects[aspectIndex] = aspect;
-		updateContent({...content});
+		note.aspects[aspectIndex] = aspect;
+		updateNote({...note});
 	};
 
 	return (
 		<div className="max-w-xl mx-auto" id="EditNote">
-			<header className="py-2 px-3">
-				<h4>Edit Note</h4>
+			<header className="py-2">
+				<h5 className="px-2 py-1 text-green-500">Note</h5>
+				<h3>
+					<EditableText text={note.title} setText={v => updateNoteProp('title', v)} placeholder="Title" autoFocus={true} />
+				</h3>
+
+				<h4>
+					<EditableText text={note.description} setText={v => updateNoteProp('description', v)} placeholder="Description" />
+				</h4>
 			</header>
 
-			<div className="">
-				{content.aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
-			</div>
+			<main className="">
+				{note.aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
+			</main>
 
 			<footer className="py-3 px-3">
 				<Button onClick={addNewAspect}>Add Aspect</Button>
