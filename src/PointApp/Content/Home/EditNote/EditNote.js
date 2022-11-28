@@ -1,13 +1,21 @@
 import React from 'react';
 
 import {Button} from '../../../Utils';
+import {EditableText} from './Utils';
 
 
 
-function Point ({point}) {
+function Point ({k, point, updatePoint}) {
+	const setText = (text) => {
+		point.text = text;
+		updatePoint(k, point);
+	};
+
 	return (
 		<li>
-			<p>{point.text || "(empty)"}</p>
+			<h4>
+				<EditableText text={point.text} setText={setText} />
+			</h4>
 		</li>
 	);
 }
@@ -15,10 +23,20 @@ function Point ({point}) {
 function Aspect ({k, aspect, updateAspect}) {
 	const addNewPoint = () => {
 		const point = {
-			text: false,
+			text: "",
 			hidden: false
 		};
 		aspect.points.push(point);
+		updateAspect(k, aspect);
+	};
+
+	const updateTitle = (title) => {
+		aspect.title = title;
+		updateAspect(k, aspect);
+	};
+
+	const updatePoint = (pid, point) => {
+		aspect.points[pid] = point;
 		updateAspect(k, aspect);
 	};
 
@@ -26,12 +44,14 @@ function Aspect ({k, aspect, updateAspect}) {
 		<section className="py-2">
 			<article className="border-2 border-slate-300 ch:px-3 ch:py-3">
 				<header>
-					<h3>{aspect.title || "(empty)"}</h3>
+					<h3>
+						<EditableText text={aspect.title} setText={updateTitle} />
+					</h3>
 				</header>
 
 				<main className="border-y-2 border-slate-300">
-					<ul>
-						{aspect.points.map((point, k) => <Point key={k} {...{point}} />)}
+					<ul className="list-disc px-8">
+						{aspect.points.map((point, k) => <Point key={k} {...{k, point, updatePoint}} />)}
 					</ul>
 
 					{aspect.points.length === 0 && <div className="">
@@ -52,7 +72,7 @@ export default function EditNote () {
 
 	const addNewAspect = () => {
 		const aspect = {
-			title: false,
+			title: "",
 			points: [],
 			hidden: false
 		};
