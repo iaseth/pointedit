@@ -15,7 +15,7 @@ export function EditableText ({
 
 	let paddingLeft = (level+1) * 16;
 	if (number) {
-		paddingLeft += 32;
+		paddingLeft += 40;
 	}
 	const paddingLeftPx = paddingLeft + "px";
 
@@ -29,10 +29,10 @@ export function EditableText ({
 
 	return (
 		<div className="relative">
-			{number && <div className="absolute px-3 py-3 text-right flex" style={divStyle}>
+			{number && <div className="absolute px-3 py-4 text-right" style={divStyle}>
 				<span className="px-2 py-1 bg-green-500 text-sm text-white font-bold rounded">{number}</span>
 			</div>}
-			<textarea rows="1" defaultValue={text} onChange={handleChange} className="block w-full px-3 py-4 resize-none overflow-hidden outline-0 focus:bg-slate-200" placeholder={placeholder} style={inputStyle}></textarea>
+			<textarea rows="1" defaultValue={text} onChange={handleChange} className="block w-full px-3 py-4 resize-none overflow-hidden outline-0 hover:bg-slate-100 focus:bg-slate-200" placeholder={placeholder} style={inputStyle}></textarea>
 		</div>
 	);
 }

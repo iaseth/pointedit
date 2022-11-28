@@ -30,8 +30,8 @@ function Aspect ({k, aspect, updateAspect}) {
 		updateAspect(k, aspect);
 	};
 
-	const updateTitle = (title) => {
-		aspect.title = title;
+	const updateProp = (prop, value) => {
+		aspect[prop] = value;
 		updateAspect(k, aspect);
 	};
 
@@ -41,12 +41,16 @@ function Aspect ({k, aspect, updateAspect}) {
 	};
 
 	return (
-		<section className="py-2">
-			<article className="">
+		<section className="py-4">
+			<article className="border-l-4 border-green-500">
 				<header>
 					<h3>
-						<EditableText text={aspect.title} setText={updateTitle} />
+						<EditableText text={aspect.title} setText={(v) => updateProp('title', v)} placeholder="Title" />
 					</h3>
+
+					<h4>
+						<EditableText text={aspect.introduction} setText={(v) => updateProp('introduction', v)} placeholder="Introduction" />
+					</h4>
 				</header>
 
 				<main className="">
@@ -57,6 +61,10 @@ function Aspect ({k, aspect, updateAspect}) {
 					{aspect.points.length === 0 && <div className="">
 						<h4 className="text-slate-500 px-3 py-6">No points added.</h4>
 					</div>}
+
+					<h4>
+						<EditableText text={aspect.introduction} setText={(v) => updateProp('conclusion', v)} placeholder="Conclusion" />
+					</h4>
 				</main>
 
 				<footer className="px-3 py-3">
@@ -77,6 +85,8 @@ export default function EditNote () {
 	const addNewAspect = () => {
 		const aspect = {
 			title: "",
+			introduction: "",
+			conclusion: "",
 			points: [],
 			hidden: false
 		};
@@ -90,16 +100,16 @@ export default function EditNote () {
 	};
 
 	return (
-		<div className="max-w-3xl mx-auto">
-			<header>
-				<h4>EditNote</h4>
+		<div className="max-w-xl mx-auto">
+			<header className="py-2 px-3">
+				<h4>Edit Note</h4>
 			</header>
 
-			<div className="max-w-xl mx-auto">
+			<div className="">
 				{content.aspects.map((aspect, k) => <Aspect key={k} {...{k, aspect, updateAspect}} />)}
 			</div>
 
-			<footer className="py-4">
+			<footer className="py-3 px-3">
 				<Button onClick={addNewAspect}>Add Aspect</Button>
 			</footer>
 		</div>
