@@ -13,7 +13,7 @@ const HOME_TABS = [
 	{component: ViewNote},
 ];
 
-export default function Home ({CATEGORIES}) {
+export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 	const [homeTabIndex, setHomeTabIndex] = React.useState(0);
 	const CurrentComponent = HOME_TABS[homeTabIndex].component;
 
@@ -34,7 +34,8 @@ export default function Home ({CATEGORIES}) {
 	};
 
 	const props = {
-		CATEGORIES, category, setCategoryId,
+		CATEGORIES, appdata, updateAppdata,
+		category, setCategoryId,
 		noteId, setNodeId,
 		goToDashboard, goToCategory, goToEditor, goToViewer,
 	};

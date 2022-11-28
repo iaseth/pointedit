@@ -99,8 +99,9 @@ function Aspect ({k, aspect, updateAspect}) {
 	);
 }
 
-export default function EditNote () {
+export default function EditNote ({CATEGORIES, appdata, updateAppdata}) {
 	const [content, setContent] = React.useState({
+		id: appdata.noteId++,
 		createdAt: Date.now(),
 		modifiedAt: Date.now(),
 
@@ -109,6 +110,16 @@ export default function EditNote () {
 	});
 
 	React.useEffect(() => {
+		const noteObject = {...content};
+		delete noteObject.aspects;
+
+		let index = appdata.notes.findIndex(n => n.id === noteObject.id);
+		if (index === -1) {
+			index = appdata.notes.length;
+		}
+		appdata.notes[index] = noteObject;
+		updateAppdata(appdata);
+
 		console.log(content);
 	}, [content]);
 

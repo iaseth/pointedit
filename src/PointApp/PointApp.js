@@ -32,7 +32,21 @@ const CATEGORIES = [
 	{title: "SciTech", id: "scitech"},
 ];
 
+const LS = localStorage;
+const APPDATA = {
+	categories: CATEGORIES,
+	notes: [],
+	noteId: 0
+};
+
 export default function PointApp () {
+	const [appdata, setAppdata] = React.useState(LS.getItem('appdata') === null ? APPDATA : JSON.parse(LS.getItem('appdata')));
+	const updateAppdata = (newAppdata) => {
+		setAppdata(newAppdata);
+		LS.setItem('appdata', JSON.stringify(newAppdata));
+		console.log(`Saved appdata: ${newAppdata}`);
+	};
+
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 	const CurrentComponent = TABS[currentTabIndex].component;
 
@@ -41,7 +55,7 @@ export default function PointApp () {
 
 			<main className="bg-white">
 				<Header {...{PRODUCTION, TABS, currentTabIndex, setCurrentTabIndex}} />
-				<CurrentComponent {...{CATEGORIES}} />
+				<CurrentComponent {...{CATEGORIES, appdata, updateAppdata}} />
 				<Footer />
 			</main>
 

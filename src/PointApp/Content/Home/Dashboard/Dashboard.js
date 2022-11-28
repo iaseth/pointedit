@@ -20,7 +20,6 @@ export default function Dashboard ({CATEGORIES, goToCategory}) {
 
 	return (
 		<div className="max-w-3xl mx-auto">
-			<h2 className="text-center py-4">Dashboard</h2>
 			<div className="grid grid-cols-3">
 				{catItems}
 			</div>
