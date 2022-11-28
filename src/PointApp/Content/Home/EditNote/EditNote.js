@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 import {Button} from '../../../Utils';
 import {EditableText, ItemsSelector} from './Utils';
@@ -6,7 +7,14 @@ import Aspect from './Aspect';
 
 
 
+const getNoteMeta = (note) => {
+	const nuNoteObject = {...note};
+	delete nuNoteObject.aspects;
+	nuNoteObject.aspectsCount = note.aspects.length;
+	nuNoteObject.pointsCount = note.aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
 
+	return nuNoteObject;
+};
 
 export default function EditNote ({
 	CATEGORIES, appdata, updateAppdata,
@@ -29,33 +37,40 @@ export default function EditNote ({
 	const aspects = note.aspects;
 
 	const saveNote = () => {
-		const noteObject = {...note};
-		delete noteObject.aspects;
-		noteObject.aspectsCount = note.aspects.length;
-		noteObject.pointsCount = note.aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
+		const nuNoteObject = getNoteMeta(note);
 
-		let index = appdata.notes.findIndex(n => n.id === noteObject.id);
+		let index = appdata.notes.findIndex(n => n.id === nuNoteObject.id);
 		if (index === -1) {
+			// saving for the first time
 			index = appdata.notes.length;
-		}
-		appdata.notes[index] = noteObject;
-		if (appdata.noteId <= noteObject.id) {
-			appdata.noteId = noteObject.id + 1;
-		}
-		updateAppdata(appdata);
+			if (appdata.noteId <= nuNoteObject.id) {
+				appdata.noteId = nuNoteObject.id + 1;
+			}
+			appdata.notes[index] = nuNoteObject;
+			updateAppdata(appdata);
+		} else {
+			// note was saved before
+			const oldNoteObject = appdata.notes[index];
+			if (!_.isEqual(nuNoteObject, oldNoteObject)) {
+				appdata.notes[index] = nuNoteObject;
+				updateAppdata(appdata);
+			}
+		}		
 
-		// console.log(note);
+		console.log(nuNoteObject);
 	};
 
-	const updateNote = (newNote) => {
-		newNote.modifiedAt = Date.now();
+	const updateNote = (newNote, modified=false) => {
+		if (modified) {
+			newNote.modifiedAt = Date.now();
+		}
 		setNote(newNote);
 		saveNote();
 	};
 
 	const updateNoteProp = (prop, value) => {
 		note[prop] = value;
-		updateNote({...note});
+		updateNote({...note}, true);
 	};
 
 	const addNewAspect = () => {
