@@ -16,7 +16,7 @@ export default function Header ({
 
 		   return (
 				   <div key={k} className={className} onClick={() => current ? null : setCurrentTabIndex(k)}>
-						   <h4 className="px-4 py-4">{t.title}</h4>
+						   <h4 className="px-2 py-4">{t.title}</h4>
 				   </div>
 		   );
 	});

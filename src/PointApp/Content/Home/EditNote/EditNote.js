@@ -5,16 +5,20 @@ import {EditableText} from './Utils';
 
 
 
-function Point ({k, point, updatePoint}) {
+function Point ({k, point, updatePoint, addNewPoint}) {
 	const setText = (text) => {
 		point.text = text;
 		updatePoint(k, point);
 	};
 
+	const onEnter = () => {
+		addNewPoint();
+	};
+
 	return (
 		<div className="flex items-center">
 			<h4 className="grow">
-				<EditableText number={k+1} text={point.text} setText={setText} />
+				<EditableText number={k+1} text={point.text} {...{setText, onEnter}} />
 			</h4>
 		</div>
 	);
@@ -30,6 +34,12 @@ function Aspect ({k, aspect, updateAspect}) {
 		updateAspect(k, aspect);
 	};
 
+	React.useEffect(() => {
+		if (aspect.points.length === 0) {
+			addNewPoint();
+		}
+	}, []);
+
 	const updateProp = (prop, value) => {
 		aspect[prop] = value;
 		updateAspect(k, aspect);
@@ -44,6 +54,7 @@ function Aspect ({k, aspect, updateAspect}) {
 		<section className="py-4">
 			<article className="border-l-4 border-green-500">
 				<header>
+					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
 					<h3>
 						<EditableText text={aspect.title} setText={(v) => updateProp('title', v)} placeholder="Title" />
 					</h3>
@@ -55,20 +66,18 @@ function Aspect ({k, aspect, updateAspect}) {
 
 				<main className="">
 					<div className="">
-						{aspect.points.map((point, k) => <Point key={k} {...{k, point, updatePoint}} />)}
+						{aspect.points.map((point, k) => <Point key={k} {...{k, point, updatePoint, addNewPoint}} />)}
 					</div>
 
 					{aspect.points.length === 0 && <div className="">
 						<h4 className="text-slate-500 px-3 py-6">No points added.</h4>
 					</div>}
-
-					<h4>
-						<EditableText text={aspect.introduction} setText={(v) => updateProp('conclusion', v)} placeholder="Conclusion" />
-					</h4>
 				</main>
 
-				<footer className="px-3 py-3">
-					<Button onClick={addNewPoint}>Add Point</Button>
+				<footer className="">
+					<h4>
+						<EditableText text={aspect.conclusion} setText={(v) => updateProp('conclusion', v)} placeholder="Conclusion" />
+					</h4>
 				</footer>
 			</article>
 		</section>
