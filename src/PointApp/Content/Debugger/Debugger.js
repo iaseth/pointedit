@@ -38,7 +38,10 @@ export default function Debugger ({CATEGORIES, appdata}) {
 							{appdata.notes.map((n, k) => <tr key={n.id}>
 								<td>{k+1}</td>
 								<td>{n.id}</td>
-								<td>{n.title}</td>
+								<td>
+									<h5>{n.title}</h5>
+									<h5>{n.categoryId}</h5>
+								</td>
 								<td>
 									<h5>{n.createdAt}</h5>
 									<h5>{n.modifiedAt}</h5>

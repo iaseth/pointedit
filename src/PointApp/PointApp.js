@@ -30,11 +30,14 @@ const CATEGORIES = [
 
 	{title: "Economy", id: "economy"},
 	{title: "SciTech", id: "scitech"},
+
+	{title: "Uncategorized", id: "uncategorized"},
 ];
 
 const LS = localStorage;
 const APPDATA = {
 	categories: CATEGORIES,
+	defaultCategory: CATEGORIES.at(-1).id,
 	notes: [],
 	noteId: 0
 };

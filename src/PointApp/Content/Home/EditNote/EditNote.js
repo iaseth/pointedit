@@ -6,6 +6,28 @@ import Aspect from './Aspect';
 
 
 
+function CategorySelector ({CATEGORIES, categoryId, setCategoryId}) {
+	const [expanded, setExpanded] = React.useState(false);
+	const category = CATEGORIES.find(c => c.id === categoryId);
+	const selectCategory = id => {
+		setCategoryId(id);
+		setExpanded(false);
+	};
+
+	return (
+		<div className="cursor-pointer select-none">
+			<h4 onClick={() => setExpanded(!expanded)} className="px-4 py-4 border-2 border-green-500">{category.title}</h4>
+			<div className="relative">
+				{expanded && <ul className="absolute w-full bg-green-200 border-2 border-t-0 border-green-500">
+					{CATEGORIES.map((c, k) => <li key={k} onClick={() => selectCategory(c.id)} className="px-4 py-3 hover:bg-green-500 hover:text-white">
+						<h5>{c.title}</h5>
+					</li>)}
+				</ul>}
+			</div>
+		</div>
+	);
+}
+
 export default function EditNote ({
 	CATEGORIES, appdata, updateAppdata,
 	noteId = null
@@ -17,6 +39,7 @@ export default function EditNote ({
 
 		title: "",
 		description: "",
+		categoryId: appdata.defaultCategory,
 
 		aspects: [],
 		aspectId: 0
@@ -87,6 +110,8 @@ export default function EditNote ({
 				<h4>
 					<EditableText text={note.description} setText={v => updateNoteProp('description', v)} placeholder="Description" />
 				</h4>
+
+				<CategorySelector {...{CATEGORIES}} categoryId={note.categoryId} setCategoryId={v => updateNoteProp('categoryId', v)} />
 			</header>
 
 			<main className="">
