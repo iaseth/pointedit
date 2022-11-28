@@ -18,18 +18,18 @@ const TABS = [
 const PRODUCTION = (process.env.NODE_ENV === 'development') ? false : true;
 
 const CATEGORIES = [
-	{title: "Ancient History", name: "ancient-history"},
-	{title: "Medieval History", name: "medieval-history"},
-	{title: "Modern History", name: "modern-history"},
-	{title: "World History", name: "world-history"},
+	{title: "Ancient History", id: "ancient-history"},
+	{title: "Medieval History", id: "medieval-history"},
+	{title: "Modern History", id: "modern-history"},
+	{title: "World History", id: "world-history"},
 
-	{title: "Geography", name: "geography"},
+	{title: "Geography", id: "geography"},
 
-	{title: "Polity", name: "polity"},
-	{title: "Governance", name: "governance"},
+	{title: "Polity", id: "polity"},
+	{title: "Governance", id: "governance"},
 
-	{title: "Economy", name: "economy"},
-	{title: "SciTech", name: "scitech"},
+	{title: "Economy", id: "economy"},
+	{title: "SciTech", id: "scitech"},
 ];
 
 export default function PointApp () {
