@@ -26,7 +26,8 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 		setCategoryId(id);
 		setHomeTabIndex(1);
 	};
-	const goToEditor = () => {
+	const goToEditor = (id) => {
+		setNodeId(id);
 		setHomeTabIndex(2);
 	};
 	const goToViewer = () => {

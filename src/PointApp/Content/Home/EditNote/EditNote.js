@@ -25,7 +25,10 @@ export default function EditNote ({
 		aspectId: 0
 	});
 
-	React.useEffect(() => {
+	if (!note.aspects) note.aspects = [];
+	const aspects = note.aspects;
+
+	const saveNote = () => {
 		const noteObject = {...note};
 		delete noteObject.aspects;
 		noteObject.aspectsCount = note.aspects.length;
@@ -41,12 +44,13 @@ export default function EditNote ({
 		}
 		updateAppdata(appdata);
 
-		console.log(note);
-	}, [note, appdata, updateAppdata]);
+		// console.log(note);
+	};
 
 	const updateNote = (newNote) => {
 		newNote.modifiedAt = Date.now();
 		setNote(newNote);
+		saveNote();
 	};
 
 	const updateNoteProp = (prop, value) => {
@@ -95,7 +99,7 @@ export default function EditNote ({
 			</header>
 
 			<main className="">
-				{note.aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
+				{aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
 			</main>
 
 			<footer className="py-3 px-3">

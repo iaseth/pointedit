@@ -47,7 +47,7 @@ export default function PointApp () {
 	const updateAppdata = (newAppdata) => {
 		setAppdata(newAppdata);
 		LS.setItem('appdata', JSON.stringify(newAppdata));
-		console.log(`Saved appdata: ${newAppdata}`);
+		console.log(`Saved appdata at ${new Date().toLocaleTimeString()}`);
 	};
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
