@@ -12,7 +12,7 @@ function Point ({k, point, updatePoint, addNewPoint}) {
 	};
 
 	const onEnter = () => {
-		addNewPoint();
+		addNewPoint(k+1);
 	};
 
 	return (
@@ -25,12 +25,22 @@ function Point ({k, point, updatePoint, addNewPoint}) {
 }
 
 function Aspect ({k, aspect, updateAspect}) {
-	const addNewPoint = () => {
+	const aspectRef = React.useRef(null);
+
+	const addNewPoint = (atIndex=false) => {
 		const point = {
+			id: aspect.pointId++,
 			text: "",
 			hidden: false
 		};
-		aspect.points.push(point);
+		if (atIndex) {
+			// const ps = aspect.points;
+			// aspect.points = [...ps.slice(0, k), point, ...ps.slice(k)];
+			aspect.points.splice(atIndex, 0, point);
+		} else {
+			aspect.points.push(point);
+		}
+
 		updateAspect(k, aspect);
 	};
 
@@ -38,6 +48,7 @@ function Aspect ({k, aspect, updateAspect}) {
 		if (aspect.points.length === 0) {
 			addNewPoint();
 		}
+		aspectRef.current.getElementsByTagName('textarea')[0].focus();
 	}, []);
 
 	const updateProp = (prop, value) => {
@@ -51,7 +62,7 @@ function Aspect ({k, aspect, updateAspect}) {
 	};
 
 	return (
-		<section className="py-4">
+		<section className="py-4" ref={aspectRef}>
 			<article className="border-l-4 border-green-500">
 				<header>
 					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
@@ -66,7 +77,7 @@ function Aspect ({k, aspect, updateAspect}) {
 
 				<main className="">
 					<div className="">
-						{aspect.points.map((point, k) => <Point key={k} {...{k, point, updatePoint, addNewPoint}} />)}
+						{aspect.points.map((point, k) => <Point key={point.id} {...{k, point, updatePoint, addNewPoint}} />)}
 					</div>
 
 					{aspect.points.length === 0 && <div className="">
@@ -97,6 +108,7 @@ export default function EditNote () {
 			introduction: "",
 			conclusion: "",
 			points: [],
+			pointId: 0,
 			hidden: false
 		};
 		content.aspects.push(aspect);
