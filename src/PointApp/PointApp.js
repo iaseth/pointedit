@@ -60,8 +60,15 @@ const DATABASE_TABLES = [
 	], keyPath: 'id'}
 ];
 
+function getAppdata () {
+	if (LS.getItem('appdata') === null) {
+		LS.setItem('appdata', JSON.stringify(APPDATA));
+	}
+	return JSON.parse(LS.getItem('appdata'));
+}
+
 export default function PointApp () {
-	const [appdata, setAppdata] = React.useState(LS.getItem('appdata') === null ? APPDATA : JSON.parse(LS.getItem('appdata')));
+	const [appdata, setAppdata] = React.useState(getAppdata());
 	const updateAppdata = (newAppdata) => {
 		setAppdata(newAppdata);
 		LS.setItem('appdata', JSON.stringify(newAppdata));
@@ -73,9 +80,11 @@ export default function PointApp () {
 
 	const [appDB, setAppDB] = React.useState(null);
 	const [stores, setStores] = React.useState(null);
+	const {aspectsStore=null, pointsStore=null} = stores;
+
 	React.useEffect(() => {
-		// console.log(`Creating database: '${APPNAME}'`);
-		const request = IDB.open(APPNAME, 1);
+		// console.log(`Creating database: '${DATABASE_NAME}'`);
+		const request = IDB.open(DATABASE_NAME, 1);
 		request.onsuccess = (event) => {
 			const db = event.target.result;
 			setAppDB(db);
