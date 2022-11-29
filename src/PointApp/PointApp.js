@@ -53,12 +53,16 @@ export default function PointApp () {
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 	const CurrentComponent = TABS[currentTabIndex].component;
 
+	const props = {
+		CATEGORIES, appdata, updateAppdata
+	};
+
 	return (
 		<div className="bg-slate-100">
 
 			<main className="bg-slate-50">
 				<Header {...{PRODUCTION, TABS, currentTabIndex, setCurrentTabIndex}} />
-				<CurrentComponent {...{CATEGORIES, appdata, updateAppdata}} />
+				<CurrentComponent {...props} />
 				<Footer />
 			</main>
 

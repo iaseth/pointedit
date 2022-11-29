@@ -24,6 +24,7 @@ export default function EditNote ({
 		id: appdata.noteId,
 		createdAt: Date.now(),
 		modifiedAt: Date.now(),
+		openedAt: Date.now(),
 
 		title: "",
 		description: "",
