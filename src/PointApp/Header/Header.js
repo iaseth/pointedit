@@ -12,7 +12,7 @@ export default function Header ({
 
 		   const current = k === currentTabIndex;
 		   let className = "pt-1";
-		   className += current ? " bg-white" : " hover:bg-green-300 cursor-pointer";
+		   className += current ? " bg-slate-50" : " hover:bg-slate-300 cursor-pointer";
 
 		   return (
 				   <div key={k} className={className} onClick={() => current ? null : setCurrentTabIndex(k)}>
@@ -22,7 +22,7 @@ export default function Header ({
 	});
 
 	return (
-		<header className="bg-green-200 select-none">
+		<header className="bg-slate-200 select-none">
 			<div className="flex ch:grow ch:basis-0 text-center max-w-3xl mx-auto">
 				{tabItems}
 			</div>

@@ -56,7 +56,7 @@ export default function PointApp () {
 	return (
 		<div className="bg-slate-100">
 
-			<main className="bg-white">
+			<main className="bg-slate-50">
 				<Header {...{PRODUCTION, TABS, currentTabIndex, setCurrentTabIndex}} />
 				<CurrentComponent {...{CATEGORIES, appdata, updateAppdata}} />
 				<Footer />
