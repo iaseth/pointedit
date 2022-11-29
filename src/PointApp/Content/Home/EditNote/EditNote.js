@@ -16,23 +16,30 @@ const getNoteMeta = (note) => {
 	return nuNoteObject;
 };
 
-export default function EditNote ({
-	CATEGORIES, appdata, updateAppdata, goToCategory,
-	noteId = null
-}) {
-	const [note, setNote] = React.useState(appdata.notes.find(n => n.id === noteId) || {
-		id: appdata.noteId,
+const getDefaultNoteObject = (noteId, categoryId) => {
+	const note = {
+		id: noteId,
 		createdAt: Date.now(),
 		modifiedAt: Date.now(),
 		openedAt: Date.now(),
 
 		title: "",
 		description: "",
-		categoryId: appdata.defaultCategory,
+		categoryId: categoryId,
 
 		aspects: [],
 		aspectId: 0
-	});
+	};
+	console.log(`Returning: ${note}`);
+	return {...note};
+}
+
+export default function EditNote ({
+	CATEGORIES, categoryId,
+	noteId, setNodeId, noteObject,
+	appdata, updateAppdata, goToCategory,
+}) {
+	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
 
 	if (!note.aspects) note.aspects = [];
 	const aspects = note.aspects;
@@ -49,6 +56,7 @@ export default function EditNote ({
 			}
 			appdata.notes[index] = nuNoteObject;
 			updateAppdata(appdata);
+			setNodeId(nuNoteObject.id);
 		} else {
 			// note was saved before
 			const oldNoteObject = appdata.notes[index];

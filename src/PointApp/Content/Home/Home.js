@@ -18,6 +18,8 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 	const CurrentComponent = HOME_TABS[homeTabIndex].component;
 
 	const [noteId, setNodeId] = React.useState(-1);
+	const noteObject = appdata.notes.find(n => n.id === noteId) || null;
+
 	const [categoryId, setCategoryId] = React.useState(null);
 	const category = CATEGORIES.find(c => c.id === categoryId) || null;
 
@@ -26,7 +28,7 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 		setCategoryId(id);
 		setHomeTabIndex(1);
 	};
-	const goToEditor = (id) => {
+	const goToEditor = (id = -1) => {
 		setNodeId(id);
 		setHomeTabIndex(2);
 	};
@@ -36,8 +38,8 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 
 	const props = {
 		CATEGORIES, appdata, updateAppdata,
-		category, setCategoryId,
-		noteId, setNodeId,
+		category, categoryId, setCategoryId,
+		noteId, setNodeId, noteObject,
 		goToDashboard, goToCategory, goToEditor, goToViewer,
 	};
 
