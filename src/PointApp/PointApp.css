@@ -13,14 +13,14 @@ h6 { @apply text-xs; }
 p { @apply leading-7; }
 
 table {
-	@apply font-bold text-sm border-2 border-green-500;
+	@apply font-bold text-sm text-slate-800 border-2 border-green-500;
 }
 table thead tr {
 	@apply bg-green-500 text-white;
 }
 table tbody tr {
-	@apply bg-white odd:bg-slate-200;
+	@apply bg-white
 }
 table tr > td {
-	@apply px-3 py-3 first:text-right;
+	@apply px-3 py-2 border-y-2 border-slate-200 first:text-right;
 }

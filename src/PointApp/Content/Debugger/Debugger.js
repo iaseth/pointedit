@@ -1,3 +1,4 @@
+import NotesList from './NotesList';
 
 
 
@@ -23,36 +24,7 @@ export default function Debugger ({CATEGORIES, appdata}) {
 
 					<div className="h-12"></div>
 
-					<h4 className="text-center py-3">List of notes</h4>
-					<table className="w-full">
-						<thead>
-							<tr>
-								<td>#</td>
-								<td>ID</td>
-								<td>Title</td>
-								<td>Times</td>
-								<td>AC</td>
-								<td>PC</td>
-							</tr>
-						</thead>
-
-						<tbody>
-							{appdata.notes.map((n, k) => <tr key={n.id}>
-								<td>{k+1}</td>
-								<td>{n.id}</td>
-								<td>
-									<h5>{n.title}</h5>
-									<h5>{n.categoryId}</h5>
-								</td>
-								<td>
-									<h5>{n.createdAt}</h5>
-									<h5>{n.modifiedAt}</h5>
-								</td>
-								<td>{n.aspectsCount}</td>
-								<td>{n.pointsCount}</td>
-							</tr>)}
-						</tbody>
-					</table>
+					<NotesList notes={appdata.notes} />
 				</div>
 			</main>
 
