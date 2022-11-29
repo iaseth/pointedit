@@ -4,6 +4,17 @@ import {ShowMoreButton} from '../../Utils';
 
 
 
+function Count ({
+	count, singular,
+	plural=null, zero="No"
+}) {
+	plural = plural || singular + "s";
+
+	return (
+		<h5>{count || zero} {count === 1 ? singular : plural}</h5>
+	);
+}
+
 export default function NotesList ({notes}) {
 	const [n, setN] = React.useState(5);
 	const showMore = () => {
@@ -24,10 +35,7 @@ export default function NotesList ({notes}) {
 						<td>ID</td>
 						<td>Title</td>
 						<td>Times</td>
-						<td>
-							<h6>AC</h6>
-							<h6>PC</h6>
-						</td>
+						<td>Content</td>
 					</tr>
 				</thead>
 
@@ -44,8 +52,8 @@ export default function NotesList ({notes}) {
 							<h5>{n.modifiedAt}</h5>
 						</td>
 						<td>
-							<h5>{n.aspectsCount} aspects</h5>
-							<h5>{n.pointsCount} points</h5>
+							<Count count={n.aspectsCount} singular="aspect" />
+							<Count count={n.pointsCount} singular="point" />
 						</td>
 					</tr>)}
 				</tbody>

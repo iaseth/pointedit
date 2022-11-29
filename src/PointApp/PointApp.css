@@ -22,5 +22,8 @@ table tbody tr {
 	@apply bg-white
 }
 table tr > td {
-	@apply px-3 py-2 border-y-2 border-slate-200 first:text-right;
+	@apply px-3 py-2 first:text-right;
+}
+table tbody tr > td {
+	@apply border-b-2 border-slate-200;
 }
