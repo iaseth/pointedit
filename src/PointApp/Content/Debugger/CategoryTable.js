@@ -5,10 +5,10 @@ function CategoryRow ({category, appdata, k}) {
 	const notesCount = appdata.notes.filter(n => n.categoryId === category.id).length;
 
 	return (
-		<tr>
+		<tr className="ch:py-3">
 			<td>{k+1}</td>
+			<td className="text-green-800">{category.title}</td>
 			<td>{category.id}</td>
-			<td>{category.title}</td>
 			<td>{notesCount ? `${notesCount} notes` : ""}</td>
 		</tr>
 	);
