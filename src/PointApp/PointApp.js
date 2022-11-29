@@ -9,6 +9,8 @@ import Home from './Content/Home/Home';
 import Market from './Content/Market/Market';
 import Settings from './Content/Settings/Settings';
 
+const APPNAME = 'pointedit';
+
 const TABS = [
 	{title: "Home", char: "H", component: Home},
 	{title: "Market", char: "M", component: Market},
@@ -35,13 +37,28 @@ const CATEGORIES = [
 	{title: "Uncategorized", id: "uncategorized"},
 ];
 
-const LS = localStorage;
 const APPDATA = {
 	categories: CATEGORIES,
 	defaultCategory: CATEGORIES.at(-1).id,
 	notes: [],
 	noteId: 0
 };
+
+const LS = window.localStorage;
+const IDB = window.indexedDB;
+
+const DATABASE_NAME = APPNAME;
+const DATABASE_TABLES = [
+	// {name: "notes", "fields": ['title', 'description'], keyPath: 'id'},
+	{name: "aspects", "fields": [
+		'title', 'introduction', 'conclusion',
+		'createdAt', 'modifiedAt',
+		'points', 'pointId'
+	], keyPath: 'id'},
+	{name: "points", "fields": [
+		'text', 'createdAt', 'modifiedAt', 'hidden'
+	], keyPath: 'id'}
+];
 
 export default function PointApp () {
 	const [appdata, setAppdata] = React.useState(LS.getItem('appdata') === null ? APPDATA : JSON.parse(LS.getItem('appdata')));
@@ -53,6 +70,39 @@ export default function PointApp () {
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 	const currentTabTitle = TABS[currentTabIndex].title;
+
+	const [appDB, setAppDB] = React.useState(null);
+	const [stores, setStores] = React.useState(null);
+	React.useEffect(() => {
+		// console.log(`Creating database: '${APPNAME}'`);
+		const request = IDB.open(APPNAME, 1);
+		request.onsuccess = (event) => {
+			const db = event.target.result;
+			setAppDB(db);
+			console.log(`Set 'appDB'`);
+
+			const stores = {};
+			DATABASE_TABLES.forEach(table => {
+				const trans = db.transaction([table.name], 'readwrite');
+				const store = trans.objectStore(table.name);
+				stores[table.name] = store;
+			});
+			setStores(stores);
+			console.log(`Set 'stores'`);
+		};
+
+		request.onupgradeneeded = (event) => {
+			const db = event.target.result;
+			DATABASE_TABLES.forEach(table => {
+				const store = db.createObjectStore(table.name, {keyPath: table.keyPath});
+				console.log(`\tcreated objectStore: '${table.name}'`);
+				table.fields.forEach(field => {
+					store.createIndex(field, field, {unique: false});
+					console.log(`\t\tcreated index: '${table.name}.${field}'`);
+				});
+			});
+		};
+	}, []);
 
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
