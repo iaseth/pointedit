@@ -14,13 +14,13 @@ function CategoryRow ({category, appdata, k}) {
 	);
 }
 
-export default function CategoryTable ({CATEGORIES, appdata}) {
+export default function CategoryTable ({appdata}) {
 	return (
 		<div>
 			<h4 className="text-center py-3">List of categories</h4>
 			<table className="w-full">
 				<tbody>
-					{CATEGORIES.map((category, k) => <CategoryRow key={k} {...{category, appdata, k}} />)}
+					{appdata.categories.map((category, k) => <CategoryRow key={k} {...{category, appdata, k}} />)}
 				</tbody>
 			</table>
 		</div>

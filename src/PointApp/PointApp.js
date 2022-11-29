@@ -52,10 +52,21 @@ export default function PointApp () {
 	};
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
-	const CurrentComponent = TABS[currentTabIndex].component;
+	const currentTabTitle = TABS[currentTabIndex].title;
 
-	const props = {
-		CATEGORIES, appdata, updateAppdata
+	const getCurrentAppTab = () => {
+		switch (currentTabTitle) {
+			case "Home":
+				return <Home {...{appdata, updateAppdata}} />;
+			case "Market":
+				return <Market />;
+			case "Settings":
+				return <Settings />;
+			case "Debug":
+				return <Debugger {...{appdata}} />;
+			default:
+				return null;
+		}
 	};
 
 	return (
@@ -63,7 +74,9 @@ export default function PointApp () {
 
 			<main className="bg-slate-50">
 				<Header {...{PRODUCTION, TABS, currentTabIndex, setCurrentTabIndex}} />
-				<CurrentComponent {...props} />
+
+				{getCurrentAppTab()}
+
 				<Footer />
 			</main>
 

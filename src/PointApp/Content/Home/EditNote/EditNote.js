@@ -49,9 +49,8 @@ const getDefaultNoteObject = (noteId, categoryId) => {
 }
 
 export default function EditNote ({
-	CATEGORIES, categoryId,
+	appdata, updateAppdata, categoryId, goToCategory,
 	noteId, setNoteId, noteObject,
-	appdata, updateAppdata, goToCategory,
 }) {
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
 
@@ -133,7 +132,7 @@ export default function EditNote ({
 					<EditableText text={note.description} setText={v => updateNoteProp('description', v)} placeholder="Description" />
 				</h4>
 
-				<ItemsSelector ITEMS={CATEGORIES} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
+				<ItemsSelector ITEMS={appdata.categories} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
 			</header>
 
 			<main className="">

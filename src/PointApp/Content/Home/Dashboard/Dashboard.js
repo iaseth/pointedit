@@ -4,8 +4,8 @@
 // function RecentItems () {}
 // function PinnedItems () {}
 
-export default function Dashboard ({appdata, CATEGORIES, goToCategory}) {
-	const catItems = CATEGORIES.map((c, k) => {
+export default function Dashboard ({appdata, goToCategory}) {
+	const catItems = appdata.categories.map((c, k) => {
 		return (
 			<div key={k} className="px-2 py-4">
 				<div className="bg-white text-green-800 rounded shadow cursor-pointer hover:ring hover:ring-green-500" onClick={() => goToCategory(c.id)}>

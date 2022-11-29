@@ -13,15 +13,17 @@ const HOME_TAB_NAMES = [
 	"ViewNote",
 ];
 
-export default function Home ({CATEGORIES, appdata, updateAppdata}) {
+export default function Home ({appdata, updateAppdata}) {
 	const [homeTabIndex, setHomeTabIndex] = React.useState(0);
 	const homeTabName = HOME_TAB_NAMES[homeTabIndex];
 
+	const {categories, notes} = appdata;
+
 	const [noteId, setNoteId] = React.useState(-1);
-	const noteObject = appdata.notes.find(n => n.id === noteId) || null;
+	const noteObject = notes.find(n => n.id === noteId) || null;
 
 	const [categoryId, setCategoryId] = React.useState(null);
-	const category = CATEGORIES.find(c => c.id === categoryId) || null;
+	const category = categories.find(c => c.id === categoryId) || null;
 
 	const goToDashboard = () => setHomeTabIndex(0);
 	const goToCategory = (id) => {
@@ -38,7 +40,7 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 	};
 
 	const props = {
-		CATEGORIES, appdata, updateAppdata,
+		appdata, updateAppdata,
 		category, categoryId, setCategoryId,
 		noteId, setNoteId, noteObject,
 		goToDashboard, goToCategory, goToEditor, goToViewer,
