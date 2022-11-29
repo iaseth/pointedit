@@ -9,7 +9,7 @@ export default function Debugger ({CATEGORIES, appdata}) {
 			</header>
 
 			<main>
-				<div className="mx-auto max-w-xl">
+				<div className="mx-auto">
 					<h4 className="text-center py-3">List of categories</h4>
 					<table className="w-full">
 						<tbody>
@@ -20,6 +20,8 @@ export default function Debugger ({CATEGORIES, appdata}) {
 							</tr>)}
 						</tbody>
 					</table>
+
+					<div className="h-12"></div>
 
 					<h4 className="text-center py-3">List of notes</h4>
 					<table className="w-full">

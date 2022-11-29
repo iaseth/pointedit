@@ -6,7 +6,7 @@ export function ItemsSelector ({ITEMS, itemId, setItemId}) {
 	const [expanded, setExpanded] = React.useState(false);
 	const toggleExpanded = () => setExpanded(!expanded);
 
-	const itemIndex = ITEMS.findIndex(x => x.id == itemId);
+	const itemIndex = ITEMS.findIndex(x => x.id === itemId);
 	const category = ITEMS.find(item => item.id === itemId);
 	const selectItem = id => {
 		setItemId(id);
