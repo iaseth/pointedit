@@ -14,7 +14,7 @@ function NDots ({n, className=""}) {
 
 function Note ({note, onClick}) {
 	return (
-		<article className="bg-white flex flex-col rounded shadow overflow-hidden cursor-pointer border-2 border-green-500 hover:border-blue-500" onClick={onClick}>
+		<article className="bg-white flex flex-col rounded shadow overflow-hidden cursor-pointer hover:ring hover:ring-green-500" onClick={onClick}>
 
 			<header className="grow flex ch:basis-0 ch:grow ch:px-2 ch:pt-8 ch:pb-2 text-center">
 
@@ -34,7 +34,7 @@ function Note ({note, onClick}) {
 
 			</header>
 
-			<main className="px-3 py-3 border-t-2 border-inherit">
+			<main className="px-3 py-3 border-t-2 border-green-500">
 				<h4 className="text-green-800">{note.title || "No title"}</h4>
 				<h5>{note.description || "No description"}</h5>
 			</main>

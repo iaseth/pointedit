@@ -8,7 +8,7 @@ export default function Dashboard ({appdata, CATEGORIES, goToCategory}) {
 	const catItems = CATEGORIES.map((c, k) => {
 		return (
 			<div key={k} className="px-2 py-4">
-				<div className="bg-white text-green-800 rounded shadow cursor-pointer" onClick={() => goToCategory(c.id)}>
+				<div className="bg-white text-green-800 rounded shadow cursor-pointer hover:ring hover:ring-green-500" onClick={() => goToCategory(c.id)}>
 					<div className="py-6 bg-green-200 flex">
 						<h1 className="bg-white px-6 py-2 m-auto rounded">{appdata.notes.filter(n => n.categoryId === c.id).length}</h1>
 					</div>
