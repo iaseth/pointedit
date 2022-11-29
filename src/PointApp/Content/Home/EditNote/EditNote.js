@@ -23,6 +23,15 @@ const getDefaultNoteObject = (noteId, categoryId) => {
 		modifiedAt: Date.now(),
 		openedAt: Date.now(),
 
+		// deleted notes show up in Trash
+		deleted: false,
+		// hidden notes can be shown with a toggle
+		hidden: false,
+		// pinned notes are pinned at the top
+		pinned: false,
+		// completed notes cannot have empty fields
+		completed: false,
+
 		title: "",
 		description: "",
 		categoryId: categoryId,
