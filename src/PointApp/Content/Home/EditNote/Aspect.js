@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 
 // import {Button} from '../../../Utils';
 import {EditableText} from './Utils';
@@ -8,6 +9,7 @@ import Point from './Point';
 
 export default function Aspect ({k, aspect, updateAspect}) {
 	const aspectRef = React.useRef(null);
+	const [points, setPoints] = React.useState([]);
 
 	const addNewPoint = (atIndex=false) => {
 		const point = {
@@ -19,15 +21,15 @@ export default function Aspect ({k, aspect, updateAspect}) {
 		};
 
 		if (atIndex === false) {
-			aspect.points.push(point);
+			points.push(point);
 		} else {
-			aspect.points.splice(atIndex, 0, point);
+			points.splice(atIndex, 0, point);
 		}
 
-		updateAspect(aspect);
+		setPoints([...points]);
 	};
 
-	if (aspect.points.length === 0) {
+	if (points.length === 0) {
 		addNewPoint();
 	}
 
@@ -40,11 +42,14 @@ export default function Aspect ({k, aspect, updateAspect}) {
 		updateAspect(aspect);
 	};
 
-	const updatePoint = (point) => {
-		const pointIndex = aspect.points.findIndex(p => p.id === point.id);
-		point.modifiedAt = Date.now();
-		aspect.points[pointIndex] = point;
-		updateAspect(aspect);
+	const updatePoint = (nuPoint) => {
+		const pointIndex = points.findIndex(p => p.id === nuPoint.id);
+		const point = points[pointIndex];
+		if (!_.isEqual(nuPoint, point)) {
+			nuPoint.modifiedAt = Date.now();
+			points[pointIndex] = nuPoint;
+			setPoints([...points]);
+		}
 	};
 
 	return (
@@ -63,10 +68,10 @@ export default function Aspect ({k, aspect, updateAspect}) {
 
 				<main className="">
 					<div className="">
-						{aspect.points.map((point, k) => <Point key={point.id} {...{k, point, updatePoint, addNewPoint}} />)}
+						{points.map((point, k) => <Point key={point.id} {...{k, point, updatePoint, addNewPoint}} />)}
 					</div>
 
-					{aspect.points.length === 0 && <div className="">
+					{points.length === 0 && <div className="">
 						<h4 className="text-slate-500 px-3 py-6">No points added.</h4>
 					</div>}
 				</main>

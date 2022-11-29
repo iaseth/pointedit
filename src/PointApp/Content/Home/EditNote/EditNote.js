@@ -5,13 +5,14 @@ import {Button} from '../../../Utils';
 import {EditableText, ItemsSelector} from './Utils';
 import Aspect from './Aspect';
 
+const MAX_ASPECTS = 100;
+const MAX_POINTS = 100;
 
-
-const getNoteMeta = (note) => {
+const getNoteMeta = (note, aspects) => {
 	const nuNoteObject = {...note};
-	delete nuNoteObject.aspects;
-	nuNoteObject.aspectsCount = note.aspects.length;
-	nuNoteObject.pointsCount = note.aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
+	nuNoteObject.aspectIds = aspects.map(a => a.id);
+	nuNoteObject.aspectsCount = aspects.length;
+	// nuNoteObject.pointsCount = aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
 
 	return nuNoteObject;
 };
@@ -42,8 +43,8 @@ const getDefaultNoteObject = (noteId, categoryId) => {
 		description: "",
 		categoryId: categoryId,
 
-		aspects: [],
-		aspectId: 0
+		aspectIds: [],
+		aspectId: MAX_ASPECTS * noteId
 	};
 	return {...note};
 }
@@ -53,12 +54,10 @@ export default function EditNote ({
 	noteId, setNoteId, noteObject,
 }) {
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
-
-	if (!note.aspects) note.aspects = [];
-	const aspects = note.aspects;
+	const [aspects, setAspects] = React.useState([]);
 
 	const saveNote = () => {
-		const nuNoteObject = getNoteMeta(note);
+		const nuNoteObject = getNoteMeta(note, aspects);
 
 		let index = appdata.notes.findIndex(n => n.id === nuNoteObject.id);
 		if (index === -1) {
@@ -96,8 +95,9 @@ export default function EditNote ({
 	};
 
 	const addNewAspect = () => {
+		const aspectId = note.aspectId++;
 		const aspect = {
-			id: note.aspectId++,
+			id: aspectId,
 			createdAt: Date.now(),
 			modifiedAt: Date.now(),
 
@@ -105,19 +105,22 @@ export default function EditNote ({
 			introduction: "",
 			conclusion: "",
 
-			points: [],
-			pointId: 0,
+			pointIds: [],
+			pointId: aspectId * MAX_POINTS,
 			hidden: false
 		};
-		note.aspects.push(aspect);
-		updateNote({...note});
+		aspects.push(aspect);
+		setAspects([...aspects]);
 	};
 
-	const updateAspect = (aspect) => {
-		const aspectIndex = note.aspects.findIndex(a => a.id === aspect.id);
-		aspect.modifiedAt = Date.now();
-		note.aspects[aspectIndex] = aspect;
-		updateNote({...note});
+	const updateAspect = (nuAspect) => {
+		const aspectIndex = aspects.findIndex(a => a.id === nuAspect.id);
+		const aspect = aspects[aspectIndex];
+		if (!_.isEqual(nuAspect, aspect)) {
+			nuAspect.modifiedAt = Date.now();
+			aspects[aspectIndex] = nuAspect;
+			setAspects({...aspects});
+		}
 	};
 
 	return (

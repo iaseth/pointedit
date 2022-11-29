@@ -80,7 +80,8 @@ export default function PointApp () {
 
 	const [appDB, setAppDB] = React.useState(null);
 	const [stores, setStores] = React.useState(null);
-	const {aspectsStore=null, pointsStore=null} = stores;
+	const aspectsStore = stores?.aspects || null;
+	const pointsStore = stores?.points || null;
 
 	React.useEffect(() => {
 		// console.log(`Creating database: '${DATABASE_NAME}'`);
