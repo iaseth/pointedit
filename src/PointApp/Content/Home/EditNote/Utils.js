@@ -12,7 +12,7 @@ export function ItemsSelector ({ITEMS, itemId, setItemId}) {
 
 	return (
 		<div className="cursor-pointer select-none">
-			<h4 onClick={() => setExpanded(!expanded)} className="px-4 py-4 border-2 border-green-500">{category.title}</h4>
+			<h4 onClick={() => setExpanded(!expanded)} className="px-4 py-4 border-y-2 border-green-500">{category.title}</h4>
 			<div className="relative">
 				{expanded && <ul className="absolute z-50 w-full bg-green-200 border-2 border-t-0 border-green-500">
 					{ITEMS.map((item, k) => <li key={k} onClick={() => selectItem(item.id)} className="px-4 py-3 hover:bg-green-500 hover:text-white">

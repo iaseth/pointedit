@@ -4,7 +4,7 @@ import {Button} from '../../../Utils';
 
 function NDots ({n, className=""}) {
 	return (
-		<div className="py-3 flex justify-center">
+		<div className="py-3 flex flex-wrap justify-center">
 			{[...Array(n)].map((x, k) => <div key={k} className="p-1">
 				<div className={"w-4 h-4 bg-white rounded " + className}></div>
 			</div>)}
@@ -14,9 +14,9 @@ function NDots ({n, className=""}) {
 
 function Note ({note, onClick}) {
 	return (
-		<article className="bg-white rounded shadow overflow-hidden cursor-pointer" onClick={onClick}>
+		<article className="bg-white flex flex-col rounded shadow overflow-hidden cursor-pointer border-4 border-green-500" onClick={onClick}>
 
-			<header className="flex ch:grow ch:px-2 ch:pt-8 ch:pb-2 text-center border-4 border-green-500">
+			<header className="grow flex ch:basis-0 ch:grow ch:px-2 ch:pt-8 ch:pb-2 text-center">
 
 				<section className="bg-green-100">
 					<h5>
@@ -34,7 +34,7 @@ function Note ({note, onClick}) {
 
 			</header>
 
-			<main className="px-3 py-3 border-4 border-t-0 border-green-500">
+			<main className="px-3 py-3 border-t-4 border-green-500">
 				<h4 className="text-green-800">{note.title || "No title"}</h4>
 				<h5>{note.description || "No description"}</h5>
 			</main>
@@ -51,19 +51,19 @@ export default function Category ({
 	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
 	return (
-		<div className="max-w-3xl mx-auto">
-			<header className="px-4">
-				<h2 className="py-5">{category.title}</h2>
+		<div className="">
+			<header className="max-w-3xl mx-auto px-4">
+				<h2 className="py-4">{category.title}</h2>
 				<p></p>
 			</header>
 
-			<main className="px-4 py-4">
-				{notes.length === 0 ? <h4>No notes to show.</h4> : <div className="md:grid grid-cols-2">
+			<main className="max-w-5xl mx-auto px-4 py-4">
+				{notes.length === 0 ? <h4>No notes to show.</h4> : <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
 					{notes.map(note => <Note key={note.id} {...{note}} onClick={() => goToEditor(note.id)} />)}
 				</div>}
 			</main>
 
-			<footer className="px-4 py-4 space-x-4">
+			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
 				<div>
 					<Button onClick={goToDashboard}>Back</Button>
 					<Button onClick={() => goToEditor()}>Add note</Button>

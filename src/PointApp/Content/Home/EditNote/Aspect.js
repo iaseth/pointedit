@@ -49,7 +49,7 @@ export default function Aspect ({k, aspect, updateAspect}) {
 
 	return (
 		<section className="py-4" ref={aspectRef}>
-			<article className="border-l-4 border-green-500">
+			<article className="border-l-4 border-green-500 shadow">
 				<header>
 					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
 					<h3>

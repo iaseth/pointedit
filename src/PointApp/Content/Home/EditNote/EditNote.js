@@ -17,7 +17,7 @@ const getNoteMeta = (note) => {
 };
 
 export default function EditNote ({
-	CATEGORIES, appdata, updateAppdata,
+	CATEGORIES, appdata, updateAppdata, goToCategory,
 	noteId = null
 }) {
 	const [note, setNote] = React.useState(appdata.notes.find(n => n.id === noteId) || {
@@ -100,7 +100,7 @@ export default function EditNote ({
 
 	return (
 		<div className="max-w-xl mx-auto" id="EditNote">
-			<header className="py-2">
+			<header className="border-x-4 border-green-500 shadow">
 				<h5 className="px-2 py-1 text-green-500">Note</h5>
 				<h3>
 					<EditableText text={note.title} setText={v => updateNoteProp('title', v)} placeholder="Title" autoFocus={true} />
@@ -117,7 +117,8 @@ export default function EditNote ({
 				{aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
 			</main>
 
-			<footer className="py-3 px-3">
+			<footer className="py-6">
+				<Button onClick={() => goToCategory(note.categoryId)}>Go back</Button>
 				<Button onClick={addNewAspect}>Add Aspect</Button>
 			</footer>
 		</div>
