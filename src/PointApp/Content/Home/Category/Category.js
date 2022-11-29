@@ -59,14 +59,14 @@ export default function Category ({
 
 			<main className="max-w-5xl mx-auto px-4 py-4">
 				{notes.length === 0 ? <h4>No notes to show.</h4> : <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-					{notes.map(note => <Note key={note.id} {...{note}} onClick={() => goToEditor(note.id)} />)}
+					{notes.map(note => <Note key={note.id} {...{note}} onClick={() => goToViewer(note.id)} />)}
 				</div>}
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
 				<div>
 					<Button onClick={goToDashboard}>Back</Button>
-					<Button onClick={() => goToEditor()}>Add note</Button>
+					<Button onClick={() => goToEditor(-1)}>Add note</Button>
 				</div>
 			</footer>
 		</div>

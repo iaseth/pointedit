@@ -30,13 +30,12 @@ const getDefaultNoteObject = (noteId, categoryId) => {
 		aspects: [],
 		aspectId: 0
 	};
-	console.log(`Returning: ${note}`);
 	return {...note};
 }
 
 export default function EditNote ({
 	CATEGORIES, categoryId,
-	noteId, setNodeId, noteObject,
+	noteId, setNoteId, noteObject,
 	appdata, updateAppdata, goToCategory,
 }) {
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
@@ -56,7 +55,7 @@ export default function EditNote ({
 			}
 			appdata.notes[index] = nuNoteObject;
 			updateAppdata(appdata);
-			setNodeId(nuNoteObject.id);
+			setNoteId(nuNoteObject.id);
 		} else {
 			// note was saved before
 			const oldNoteObject = appdata.notes[index];
