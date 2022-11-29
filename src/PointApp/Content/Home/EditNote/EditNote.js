@@ -8,15 +8,6 @@ import Aspect from './Aspect';
 const MAX_ASPECTS = 100;
 const MAX_POINTS = 100;
 
-const getNoteMeta = (note, aspects) => {
-	const nuNoteObject = {...note};
-	nuNoteObject.aspectIds = aspects.map(a => a.id);
-	nuNoteObject.aspectsCount = aspects.length;
-	// nuNoteObject.pointsCount = aspects.map(a => a.points.length).reduce((t, x) => t+x, 0);
-
-	return nuNoteObject;
-};
-
 const getDefaultNoteObject = (noteId, categoryId) => {
 	const note = {
 		id: noteId,
@@ -56,8 +47,21 @@ export default function EditNote ({
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
 	const [aspects, setAspects] = React.useState([]);
 
+	React.useEffect(() => {
+		const aspectIds = aspects.map(a => a.id);
+		const pointsCount = aspects.map(a => a.pointsCount).reduce((t, x) => t+x, 0);
+		if (!_.isEqual(aspectIds, note.aspectIds) || pointsCount !== note.pointsCount) {
+			note.aspectIds = aspectIds;
+			note.aspectsCount = aspectIds.length;
+			updateNote({...note});
+		}
+	}, [aspects]);
+
 	const saveNote = () => {
-		const nuNoteObject = getNoteMeta(note, aspects);
+		const nuNoteObject = {...note};
+		nuNoteObject.aspectIds = aspects.map(a => a.id);
+		nuNoteObject.aspectsCount = aspects.length;
+		nuNoteObject.pointsCount = aspects.map(a => a.pointsCount).reduce((t, x) => t+x, 0);
 
 		let index = appdata.notes.findIndex(n => n.id === nuNoteObject.id);
 		if (index === -1) {
@@ -81,12 +85,13 @@ export default function EditNote ({
 		console.log(nuNoteObject);
 	};
 
-	const updateNote = (newNote, modified=false) => {
+	const updateNote = (nuNote, modified=false) => {
 		if (modified) {
-			newNote.modifiedAt = Date.now();
+			nuNote.modifiedAt = Date.now();
 		}
-		setNote(newNote);
+		setNote(nuNote);
 		saveNote();
+		// console.log(`Updated note: '${nuNote.id}'`);
 	};
 
 	const updateNoteProp = (prop, value) => {
@@ -106,6 +111,7 @@ export default function EditNote ({
 			conclusion: "",
 
 			pointIds: [],
+			pointsCount: [],
 			pointId: aspectId * MAX_POINTS,
 			hidden: false
 		};
@@ -119,7 +125,8 @@ export default function EditNote ({
 		if (!_.isEqual(nuAspect, aspect)) {
 			nuAspect.modifiedAt = Date.now();
 			aspects[aspectIndex] = nuAspect;
-			setAspects({...aspects});
+			setAspects([...aspects]);
+			// console.log(`Updated aspect: '${nuAspect.id}'`);
 		}
 	};
 

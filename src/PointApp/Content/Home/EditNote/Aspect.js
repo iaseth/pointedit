@@ -11,6 +11,16 @@ export default function Aspect ({k, aspect, updateAspect}) {
 	const aspectRef = React.useRef(null);
 	const [points, setPoints] = React.useState([]);
 
+	React.useEffect(() => {
+		const pointIds = points.map(a => a.id);
+		if (!_.isEqual(pointIds, aspect.pointIds)) {
+			const nuAspect = {...aspect};
+			nuAspect.pointIds = pointIds;
+			nuAspect.pointsCount = pointIds.length;
+			updateAspect({...nuAspect});
+		}
+	}, [points]);
+
 	const addNewPoint = (atIndex=false) => {
 		const point = {
 			id: aspect.pointId++,
