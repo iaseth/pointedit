@@ -6,16 +6,16 @@ import EditNote from './EditNote/EditNote';
 import ViewNote from './ViewNote/ViewNote';
 
 
-const HOME_TABS = [
-	{component: Dashboard},
-	{component: Category},
-	{component: EditNote},
-	{component: ViewNote},
+const HOME_TAB_NAMES = [
+	"Dashboard",
+	"Category",
+	"EditNote",
+	"ViewNote",
 ];
 
 export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 	const [homeTabIndex, setHomeTabIndex] = React.useState(0);
-	const CurrentComponent = HOME_TABS[homeTabIndex].component;
+	const homeTabName = HOME_TAB_NAMES[homeTabIndex];
 
 	const [noteId, setNoteId] = React.useState(-1);
 	const noteObject = appdata.notes.find(n => n.id === noteId) || null;
@@ -44,9 +44,24 @@ export default function Home ({CATEGORIES, appdata, updateAppdata}) {
 		goToDashboard, goToCategory, goToEditor, goToViewer,
 	};
 
+	const getCurrentHomeTab = () => {
+		switch (homeTabName) {
+			case "Dashboard":
+				return <Dashboard {...props} />;
+			case "Category":
+				return <Category {...props} />;
+			case "EditNote":
+				return <EditNote {...props} />;
+			case "ViewNote":
+				return <ViewNote {...props} />;
+			default:
+				return null;
+		}
+	};
+
 	return (
-		<article className="min-h-screen px-4 py-4">
-			<CurrentComponent {...props} />
-		</article>
+		<section className="min-h-screen px-4 py-4">
+			{getCurrentHomeTab()}
+		</section>
 	);
 }
