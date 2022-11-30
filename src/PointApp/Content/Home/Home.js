@@ -20,7 +20,7 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 	const {categories, notes} = appdata;
 
 	const [noteId, setNoteId] = React.useState(-1);
-	const noteObject = notes.find(n => n.id === noteId) || null;
+	const note = notes.find(n => n.id === noteId) || null;
 
 	const [categoryId, setCategoryId] = React.useState(null);
 	const category = categories.find(c => c.id === categoryId) || null;
@@ -39,23 +39,16 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 		setHomeTabIndex(3)
 	};
 
-	const props = {
-		appdata, updateAppdata,
-		category, categoryId, setCategoryId,
-		noteId, setNoteId, noteObject,
-		goToDashboard, goToCategory, goToEditor, goToViewer,
-	};
-
 	const getCurrentHomeTab = () => {
 		switch (homeTabName) {
 			case "Dashboard":
-				return <Dashboard {...props} />;
+				return <Dashboard {...{appdata, goToCategory, goToViewer}} />;
 			case "Category":
-				return <Category {...props} />;
+				return <Category {...{appdata, category, goToDashboard, goToCategory, goToEditor, goToViewer}} />;
 			case "EditNote":
-				return <EditNote {...props} LOGX={LOGX.getChild('EditNote')} />;
+				return <EditNote {...{appdata, updateAppdata, categoryId, goToCategory, noteId, setNoteId, LOGX}} noteObject={note} LOGX={LOGX.getChild('EditNote')} />;
 			case "ViewNote":
-				return <ViewNote {...props} />;
+				return <ViewNote {...{note, category, goToDashboard, goToCategory, goToEditor}} />;
 			default:
 				return null;
 		}

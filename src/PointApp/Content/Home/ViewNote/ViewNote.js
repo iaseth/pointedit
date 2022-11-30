@@ -3,7 +3,7 @@ import {Button} from '../../../Utils';
 
 
 export default function ViewNote ({
-	noteObject, category,
+	note, category,
 	goToDashboard, goToCategory, goToEditor
 }) {
 
@@ -16,8 +16,8 @@ export default function ViewNote ({
 			<main className="max-w-3xl mx-auto">
 				<article>
 					<section>
-						<h3>{noteObject.title}</h3>
-						<p>{noteObject.description}</p>
+						<h3>{note.title}</h3>
+						<p>{note.description}</p>
 					</section>
 				</article>
 			</main>
@@ -26,7 +26,7 @@ export default function ViewNote ({
 				<div>
 					<Button onClick={goToDashboard}>Home</Button>
 					<Button onClick={() => goToCategory(category.id)}>{category.title}</Button>
-					<Button onClick={() => goToEditor(noteObject.id)}>Edit</Button>
+					<Button onClick={() => goToEditor(note.id)}>Edit</Button>
 				</div>
 			</footer>
 		</div>
