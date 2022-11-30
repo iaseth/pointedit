@@ -19,6 +19,7 @@ const TABS = [
 	{title: "Settings", char: "S", component: Settings},
 	{title: "Debug", char: "D", component: Debugger, debug: true},
 ];
+const DEBUG_TAB_INDEX = 3;
 
 const PRODUCTION = (process.env.NODE_ENV === 'development') ? false : true;
 
@@ -137,6 +138,17 @@ export default function PointApp () {
 			});
 		};
 	}, []);
+
+	const handleKeyDown = (e) => {
+		if (e.ctrlKey && e.shiftKey && e.altKey && e.key === 'D' && currentTabIndex !== DEBUG_TAB_INDEX) {
+			LOGX.put('Opened debugger');
+			setCurrentTabIndex(3);
+		}
+	};
+	React.useEffect(() => {
+		window.addEventListener('keydown', handleKeyDown, false);
+		return () => window.removeEventListener('keydown', handleKeyDown, false);
+	});
 
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
