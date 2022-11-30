@@ -45,7 +45,9 @@ export default function LocalStorage () {
 		<div>
 			<DebugHeader text="LocalStorage" />
 
-			<DebugTable headings={["", "Key", "Length", "Actions"]} rows={rows} Row={LocalStorageRow} />
+			<main>
+				<DebugTable headings={["", "Key", "Length", "Actions"]} rows={rows} RowComponent={LocalStorageRow} />
+			</main>
 
 			<DebugFooter count={rows.length} what="items" />
 		</div>

@@ -9,7 +9,7 @@ export function DebugHeader ({text}) {
 	);
 }
 
-function DefaultRow ({k, row}) {
+function DefaultRowComponent ({k, row}) {
 	return (
 		<tr>
 			<td>{k+1}</td>
@@ -19,7 +19,7 @@ function DefaultRow ({k, row}) {
 }
 
 export function DebugTable ({
-	headings=null, rows=[], Row=DefaultRow
+	headings=null, rows=[], RowComponent=DefaultRowComponent
 }) {
 	return (
 		<table className="w-full">
@@ -30,7 +30,7 @@ export function DebugTable ({
 			</thead>}
 
 			<tbody>
-				{rows.map((row, k) => <Row key={k} {...{k, row}} />)}
+				{rows.map((row, k) => <RowComponent key={k} {...{k, row}} />)}
 			</tbody>
 		</table>
 	);
