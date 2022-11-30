@@ -42,7 +42,7 @@ const getDefaultNoteObject = (noteId, categoryId) => {
 
 export default function EditNote ({
 	appdata, updateAppdata, categoryId, goToCategory,
-	noteId, setNoteId, noteObject,
+	noteId, setNoteId, noteObject, LOGX
 }) {
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
 	const [aspects, setAspects] = React.useState([]);
@@ -82,7 +82,7 @@ export default function EditNote ({
 			}
 		}		
 
-		console.log(nuNoteObject);
+		LOGX.plain(nuNoteObject);
 	};
 
 	const updateNote = (nuNote, modified=false) => {
@@ -91,7 +91,7 @@ export default function EditNote ({
 		}
 		setNote(nuNote);
 		saveNote();
-		// console.log(`Updated note: '${nuNote.id}'`);
+		LOGX.put(`Updated note: '${nuNote.id}'`);
 	};
 
 	const updateNoteProp = (prop, value) => {
@@ -126,7 +126,7 @@ export default function EditNote ({
 			nuAspect.modifiedAt = Date.now();
 			aspects[aspectIndex] = nuAspect;
 			setAspects([...aspects]);
-			// console.log(`Updated aspect: '${nuAspect.id}'`);
+			LOGX.updated('aspect', nuAspect.id);
 		}
 	};
 

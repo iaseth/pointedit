@@ -108,7 +108,7 @@ export default function PointApp () {
 	const pointsStore = stores?.points || null;
 
 	React.useEffect(() => {
-		// console.log(`Creating database: '${DATABASE_NAME}'`);
+		LOGX.created('database', DATABASE_NAME);
 		const request = IDB.open(DATABASE_NAME, 1);
 		request.onsuccess = (event) => {
 			const db = event.target.result;
@@ -129,10 +129,10 @@ export default function PointApp () {
 			const db = event.target.result;
 			DATABASE_TABLES.forEach(table => {
 				const store = db.createObjectStore(table.name, {keyPath: table.keyPath});
-				console.log(`\tcreated objectStore: '${table.name}'`);
+				LOGX.created('objectStore', table.name);
 				table.fields.forEach(field => {
 					store.createIndex(field, field, {unique: false});
-					console.log(`\t\tcreated index: '${table.name}.${field}'`);
+					LOGX.created('index', `${table.name}.${field}`);
 				});
 			});
 		};
@@ -141,13 +141,13 @@ export default function PointApp () {
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
 			case "Home":
-				return <Home {...{appdata, updateAppdata}} />;
+				return <Home {...{appdata, updateAppdata}} LOGX={LOGX.getChild('Home')} />;
 			case "Market":
 				return <Market />;
 			case "Settings":
 				return <Settings />;
 			case "Debug":
-				return <Debugger {...{appdata}} />;
+				return <Debugger {...{appdata}} LOGX={LOGX.getChild('Debugger')} />;
 			default:
 				return null;
 		}

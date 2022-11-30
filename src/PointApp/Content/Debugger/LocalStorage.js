@@ -10,22 +10,22 @@ import {
 
 const LS = window.localStorage;
 
-const getRowsFromLS = () => {
+const getRowsFromLS = (LOGX) => {
 	const rows = [...Object.keys(LS)].map(key => ({
 		key: key,
 		length: LS.getItem(key).length
 	}));
-	console.log(`Returned rows: '${rows.length} rows'`);
+	LOGX.returnedN('getRowsFromLS', rows.length, 'rows');
 	return rows;
 };
 
-export default function LocalStorage () {
-	const [rows, setRows] = React.useState(getRowsFromLS());
+export default function LocalStorage ({LOGX}) {
+	const [rows, setRows] = React.useState(getRowsFromLS(LOGX));
 
 	const deleteItem = (key) => {
 		LS.removeItem(key);
-		console.log(`Deleted from LocalStorage: '${key}'`);
-		setRows(getRowsFromLS());
+		LOGX.deletedFrom('LocalStorage', key);
+		setRows(getRowsFromLS(LOGX));
 	};
 
 	const LocalStorageRow = ({k, row}) => {

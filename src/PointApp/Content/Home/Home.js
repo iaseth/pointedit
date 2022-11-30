@@ -13,7 +13,7 @@ const HOME_TAB_NAMES = [
 	"ViewNote",
 ];
 
-export default function Home ({appdata, updateAppdata}) {
+export default function Home ({appdata, updateAppdata, LOGX}) {
 	const [homeTabIndex, setHomeTabIndex] = React.useState(0);
 	const homeTabName = HOME_TAB_NAMES[homeTabIndex];
 
@@ -53,7 +53,7 @@ export default function Home ({appdata, updateAppdata}) {
 			case "Category":
 				return <Category {...props} />;
 			case "EditNote":
-				return <EditNote {...props} />;
+				return <EditNote {...props} LOGX={LOGX.getChild('EditNote')} />;
 			case "ViewNote":
 				return <ViewNote {...props} />;
 			default:
