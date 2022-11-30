@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {DebugHeader, DebugFooter} from './DebugUtils';
 import {Button} from '../../Utils';
 
 
@@ -25,9 +26,7 @@ export default function LocalStorage () {
 
 	return (
 		<div>
-			<header className="text-center py-3">
-				<h4>LocalStorage</h4>
-			</header>
+			<DebugHeader text="LocalStorage" />
 
 			<table className="w-full">
 				<tbody>
@@ -42,9 +41,7 @@ export default function LocalStorage () {
 				</tbody>
 			</table>
 
-			<footer className="text-center py-4">
-				<h5 className="text-slate-500">LocalStorage has <span className="bg-green-500 text-white px-2 py-1 rounded">{rows.length}</span> items</h5>
-			</footer>
+			<DebugFooter count={rows.length} what="items" />
 		</div>
 	);
 }

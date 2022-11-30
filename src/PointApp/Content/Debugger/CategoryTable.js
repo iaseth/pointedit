@@ -1,3 +1,4 @@
+import {DebugHeader, DebugFooter} from './DebugUtils';
 
 
 
@@ -17,12 +18,17 @@ function CategoryRow ({category, appdata, k}) {
 export default function CategoryTable ({appdata}) {
 	return (
 		<div>
-			<h4 className="text-center py-3">List of categories</h4>
-			<table className="w-full">
-				<tbody>
-					{appdata.categories.map((category, k) => <CategoryRow key={k} {...{category, appdata, k}} />)}
-				</tbody>
-			</table>
+			<DebugHeader text="List of categories" />
+
+			<main>
+				<table className="w-full">
+					<tbody>
+						{appdata.categories.map((category, k) => <CategoryRow key={k} {...{category, appdata, k}} />)}
+					</tbody>
+				</table>
+			</main>
+
+			<DebugFooter count={appdata.categories.length} what="categories" />
 		</div>
 	);
 }

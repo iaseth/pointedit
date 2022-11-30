@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {DebugHeader, DebugFooter} from './DebugUtils';
 import {ShowMoreButton} from '../../Utils';
 
 
@@ -27,41 +28,46 @@ export default function NotesList ({notes}) {
 
 	return (
 		<div>
-			<h4 className="text-center py-3">List of notes</h4>
-			<table className="w-full">
-				<thead>
-					<tr className="cursor-pointer" onClick={() => setN(5)}>
-						<td>#</td>
-						<td>ID</td>
-						<td>Title</td>
-						<td>Times</td>
-						<td>Content</td>
-					</tr>
-				</thead>
+			<DebugHeader text="List of notes" />
 
-				<tbody>
-					{notes.slice(0, n).map((n, k) => <tr key={n.id}>
-						<td>{k+1}</td>
-						<td>{n.id}</td>
-						<td>
-							<h4 className="text-green-600">{n.title}</h4>
-							<h5>{n.categoryId}</h5>
-						</td>
-						<td>
-							<h5>{n.createdAt}</h5>
-							<h5>{n.modifiedAt}</h5>
-						</td>
-						<td>
-							<Count count={n.aspectsCount} singular="aspect" />
-							<Count count={n.pointsCount} singular="point" />
-						</td>
-					</tr>)}
-				</tbody>
-			</table>
+			<main>
+				<table className="w-full">
+					<thead>
+						<tr className="cursor-pointer" onClick={() => setN(5)}>
+							<td>#</td>
+							<td>ID</td>
+							<td>Title</td>
+							<td>Times</td>
+							<td>Content</td>
+						</tr>
+					</thead>
+
+					<tbody>
+						{notes.slice(0, n).map((n, k) => <tr key={n.id}>
+							<td>{k+1}</td>
+							<td>{n.id}</td>
+							<td>
+								<h4 className="text-green-600">{n.title}</h4>
+								<h5>{n.categoryId}</h5>
+							</td>
+							<td>
+								<h5>{n.createdAt}</h5>
+								<h5>{n.modifiedAt}</h5>
+							</td>
+							<td>
+								<Count count={n.aspectsCount} singular="aspect" />
+								<Count count={n.pointsCount} singular="point" />
+							</td>
+						</tr>)}
+					</tbody>
+				</table>
+			</main>
 
 			<div className="py-12">
 				{(n < notes.length) && <ShowMoreButton onClick={showMore} />}
 			</div>
+
+			<DebugFooter count={notes.length} what="notes" />
 		</div>
 	);
 }
