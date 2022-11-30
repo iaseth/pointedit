@@ -30,12 +30,19 @@ const CATEGORIES = [
 	{title: "Geography", id: "geography"},
 	{title: "Indian Geography", id: "indian-geography", parent: "geography"},
 	{title: "World Geography", id: "world-geography", parent: "geography"},
+	{title: "Disaster Management", id: "disaster-management", parent: "geography"},
 
-	{title: "Polity", id: "polity"},
-	{title: "Governance", id: "governance"},
+	{title: "Political Science", id: "ps"},
+	{title: "Polity", id: "polity", parent: "ps"},
+	{title: "Governance", id: "governance", parent: "ps"},
+	{title: "Constitution", id: "constitution", parent: "ps"},
+	{title: "IR", id: "ir", parent: "ps"},
 
-	{title: "Economy", id: "economy"},
-	{title: "Agriculture", id: "agriculture", parent: "economy"},
+	{title: "Economy", id: "econ"},
+	{title: "Indian Economy", id: "indian-economy", parent: "econ"},
+	{title: "World Economy", id: "world-economy", parent: "econ"},
+	{title: "Agriculture", id: "agriculture", parent: "econ"},
+	{title: "Schemes", id: "schemes", parent: "econ"},
 
 	{title: "SciTech", id: "scitech"},
 	{title: "Biology", id: "Biology", parent: "scitech"},
