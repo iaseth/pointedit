@@ -16,27 +16,29 @@ export default function Category ({
 
 	return (
 		<div className="">
-			<header className="max-w-3xl mx-auto px-4">
-				<h2 className="py-2">{category.title}</h2>
-				<p></p>
+			<header className="px-4 py-4">
+				<section className="max-w-5xl mx-auto">
+					<h2 className="py-2">{category.title}</h2>
+					<p></p>
+				</section>
 			</header>
 
-			<main className="ch:px-4 ch:py-8 ch2:max-w-5xl ch2:mx-auto">
-				<div>
+			<main className="ch2:max-w-5xl ch2:mx-auto ch:px-4 ch:py-8">
+				{pinnedNotes.length !== 0 && <div>
 					<NoteGrid {...{goToViewer}} notes={pinnedNotes} title="Pinned" />
-				</div>
+				</div>}
 
-				<div className="bg-slate-100">
+				{recentNotes.length !== 0 && <div className="bg-slate-100">
 					<NoteGrid {...{goToViewer}} notes={recentNotes} title="Recent" />
-				</div>
+				</div>}
 
 				<div>
 					<NoteGrid {...{notes, goToViewer}} title="All" />
 				</div>
 
-				<div className="bg-slate-200">
+				{nestedCats.length !== 0 && <div className="bg-slate-100">
 					<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
-				</div>
+				</div>}
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">

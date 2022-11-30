@@ -62,7 +62,7 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 	};
 
 	return (
-		<section className="min-h-screen py-4">
+		<section className="min-h-screen pb-12">
 			{getCurrentHomeTab()}
 		</section>
 	);

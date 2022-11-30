@@ -17,13 +17,13 @@ export default function Dashboard ({appdata, goToCategory, goToViewer}) {
 		<div className="">
 
 			<main className="ch:px-4 ch:py-8 ch2:max-w-5xl ch2:mx-auto">
-				<div>
+				{pinnedNotes.length !== 0 && <div>
 					<NoteGrid {...{goToViewer}} notes={pinnedNotes} title="Pinned" />
-				</div>
+				</div>}
 
-				<div className="bg-slate-100">
+				{recentNotes.length !== 0 && <div className="bg-slate-100">
 					<NoteGrid {...{goToViewer}} notes={recentNotes} title="Recent" />
-				</div>
+				</div>}
 
 				<div>
 					<CategoryGrid {...{appdata, goToCategory}} categories={topLevelCats} />
