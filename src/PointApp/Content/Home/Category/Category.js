@@ -1,4 +1,4 @@
-import {NoteGrid} from '../HomeUtils';
+import {CategoryGrid, NoteGrid} from '../HomeUtils';
 import {Button} from '../../../Utils';
 
 
@@ -7,7 +7,8 @@ export default function Category ({
 	appdata, category,
 	goToDashboard, goToCategory, goToEditor, goToViewer
 }) {
-
+	const nestedCats = appdata.categories.filter(cat => cat.parent === category.id);
+	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
 	return (
 		<div className="">
@@ -17,7 +18,8 @@ export default function Category ({
 			</header>
 
 			<main className="max-w-5xl mx-auto px-4 py-4">
-				<NoteGrid {...{appdata, category, goToViewer}} />
+				<NoteGrid {...{appdata, notes, goToViewer}} />
+				<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
