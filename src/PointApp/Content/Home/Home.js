@@ -85,7 +85,7 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 				return <Category {...{appdata, category, goTo}} />;
 			case "EditNote": {
 				const noteObject = note || getDefaultNoteObject(appdata.noteId, categoryId);
-				return <EditNote {...{appdata, updateAppdata, goTo, saveNote, noteObject, LOGX}} LOGX={LOGX.getChild('EditNote')} />;
+				return <EditNote {...{appdata, updateAppdata, goTo, saveNote}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
 			}
 			case "ViewNote": {
 				const category = categories.find(cat => cat.id === note.categoryId);

@@ -15,7 +15,6 @@ const getRowsFromLS = (LOGX) => {
 		key: key,
 		length: LS.getItem(key).length
 	}));
-	LOGX.returnedN('getRowsFromLS', rows.length, 'rows');
 	return rows;
 };
 

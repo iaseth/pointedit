@@ -10,29 +10,17 @@ import Aspect from './Aspect';
 const MAX_POINTS = 100;
 
 export default function EditNote ({
-	appdata, updateAppdata, goTo, saveNote,
-	noteObject, LOGX
+	appdata, updateAppdata, goTo,
+	note, saveNote, LOGX
 }) {
-	const [note, setNote] = React.useState({...noteObject});
 	const [aspects, setAspects] = React.useState([]);
-
-	React.useEffect(() => {
-		const aspectIds = aspects.map(a => a.id);
-		const pointsCount = aspects.map(a => a.pointsCount).reduce((t, x) => t+x, 0);
-		if (!_.isEqual(aspectIds, note.aspectIds) || pointsCount !== note.pointsCount) {
-			note.aspectIds = aspectIds;
-			note.aspectsCount = aspectIds.length;
-			updateNote({...note});
-		}
-	}, [aspects]);
 
 	const updateNote = (nuNote, modified=false) => {
 		if (modified) {
 			nuNote.modifiedAt = Date.now();
 		}
-		setNote(nuNote);
 		saveNote({...note}, aspects);
-		LOGX.put(`Updated note: '${nuNote.id}'`);
+		LOGX.updated('note', nuNote.id);
 	};
 
 	const updateNoteProp = (prop, value) => {
@@ -58,6 +46,7 @@ export default function EditNote ({
 		};
 		aspects.push(aspect);
 		setAspects([...aspects]);
+		saveNote({...note}, aspects);
 	};
 
 	const updateAspect = (nuAspect) => {
