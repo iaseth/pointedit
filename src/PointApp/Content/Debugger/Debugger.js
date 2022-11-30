@@ -1,4 +1,5 @@
 import LocalStorage from './LocalStorage';
+import IndexedDB from './IndexedDB';
 import CategoryTable from './CategoryTable';
 import NotesList from './NotesList';
 
@@ -10,12 +11,10 @@ export default function Debugger ({appdata}) {
 			<header className="py-2"></header>
 
 			<main>
-				<div className="mx-auto">
+				<div className="space-y-10">
 					<LocalStorage />
+					<IndexedDB />
 					<CategoryTable {...{appdata}} />
-
-					<div className="h-12"></div>
-
 					<NotesList notes={appdata.notes} />
 				</div>
 			</main>
