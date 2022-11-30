@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {DebugHeader, DebugFooter} from './DebugUtils';
-import {Button} from '../../Utils';
 
 
 const IDB = window.indexedDB;

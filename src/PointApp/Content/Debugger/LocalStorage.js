@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {
+	DebugButton,
 	DebugFooter,
 	DebugHeader,
 	DebugTable,
 } from './DebugUtils';
-import {Button} from '../../Utils';
 
 
 const LS = window.localStorage;
@@ -35,7 +35,7 @@ export default function LocalStorage () {
 				<td className="text-green-600">{row.key}</td>
 				<td>{row.length}</td>
 				<td>
-					<Button onClick={() => deleteItem(row.key)}>Delete</Button>
+					<DebugButton onClick={() => deleteItem(row.key)}>Delete</DebugButton>
 				</td>
 			</tr>
 		);

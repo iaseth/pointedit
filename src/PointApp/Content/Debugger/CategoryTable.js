@@ -12,7 +12,7 @@ export default function CategoryTable ({appdata}) {
 		const notesCount = appdata.notes.filter(n => n.categoryId === category.id).length;
 
 		return (
-			<tr className="ch:py-3">
+			<tr>
 				<td>{k+1}</td>
 				<td className="text-green-800">{category.title}</td>
 				<td>{category.id}</td>
