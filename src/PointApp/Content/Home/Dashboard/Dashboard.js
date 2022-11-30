@@ -5,7 +5,9 @@ import {NoteGrid} from '../HomeUtils';
 // function RecentItems () {}
 // function PinnedItems () {}
 
-export default function Dashboard ({appdata, goToCategory, goToViewer}) {
+export default function Dashboard ({appdata, goTo}) {
+	const goToViewer = goTo.Viewer;
+
 	const topLevelCats = appdata.categories.filter(cat => !cat.parent);
 	const notes = appdata.notes;
 
@@ -26,7 +28,7 @@ export default function Dashboard ({appdata, goToCategory, goToViewer}) {
 				</div>}
 
 				<div>
-					<CategoryGrid {...{appdata, goToCategory}} categories={topLevelCats} />
+					<CategoryGrid {...{appdata}} categories={topLevelCats} goToCategory={goTo.Category} />
 				</div>
 			</main>
 

@@ -3,8 +3,7 @@ import {Button} from '../../../Utils';
 
 
 export default function ViewNote ({
-	note, category,
-	goToDashboard, goToCategory, goToEditor
+	note, category, goTo
 }) {
 
 	return (
@@ -24,9 +23,9 @@ export default function ViewNote ({
 
 			<footer className="max-w-3xl mx-auto py-4 space-x-4">
 				<div>
-					<Button onClick={goToDashboard}>Home</Button>
-					<Button onClick={() => goToCategory(category.id)}>{category.title}</Button>
-					<Button onClick={() => goToEditor(note.id)}>Edit</Button>
+					<Button onClick={goTo.Dashboard}>Home</Button>
+					<Button onClick={() => goTo.Category(category.id)}>{category.title}</Button>
+					<Button onClick={() => goTo.Editor(note.id)}>Edit</Button>
 				</div>
 			</footer>
 		</div>

@@ -3,10 +3,9 @@ import {Button} from '../../../Utils';
 
 
 
-export default function Category ({
-	appdata, category,
-	goToDashboard, goToCategory, goToEditor, goToViewer
-}) {
+export default function Category ({appdata, category, goTo}) {
+	const goToViewer = goTo.Viewer;
+
 	const nestedCats = appdata.categories.filter(cat => cat.parent === category.id);
 	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
@@ -37,14 +36,14 @@ export default function Category ({
 				</div>
 
 				{nestedCats.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
+					<CategoryGrid {...{appdata}} categories={nestedCats} goToCategory={goTo.Category} />
 				</div>}
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
 				<div>
-					<Button onClick={goToDashboard}>Back</Button>
-					<Button onClick={() => goToEditor(-1)}>Add note</Button>
+					<Button onClick={goTo.Dashboard}>Back</Button>
+					<Button onClick={() => goTo.Editor(-1)}>Add note</Button>
 				</div>
 			</footer>
 		</div>

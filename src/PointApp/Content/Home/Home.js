@@ -39,16 +39,23 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 		setHomeTabIndex(3)
 	};
 
+	const goTo = {
+		Dashboard: goToDashboard,
+		Category: goToCategory,
+		Editor: goToEditor,
+		Viewer: goToViewer,
+	};
+
 	const getCurrentHomeTab = () => {
 		switch (homeTabName) {
 			case "Dashboard":
-				return <Dashboard {...{appdata, goToCategory, goToViewer}} />;
+				return <Dashboard {...{appdata, goTo}} />;
 			case "Category":
-				return <Category {...{appdata, category, goToDashboard, goToCategory, goToEditor, goToViewer}} />;
+				return <Category {...{appdata, category, goTo}} />;
 			case "EditNote":
 				return <EditNote {...{appdata, updateAppdata, categoryId, goToCategory, noteId, setNoteId, LOGX}} noteObject={note} LOGX={LOGX.getChild('EditNote')} />;
 			case "ViewNote":
-				return <ViewNote {...{note, category, goToDashboard, goToCategory, goToEditor}} />;
+				return <ViewNote {...{note, category, goTo}} />;
 			default:
 				return null;
 		}
