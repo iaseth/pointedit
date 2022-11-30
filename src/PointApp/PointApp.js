@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LOGX from './LOGX';
+
 import './PointApp.scss';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
@@ -94,7 +96,7 @@ export default function PointApp () {
 	const updateAppdata = (newAppdata) => {
 		setAppdata(newAppdata);
 		LS.setItem('appdata', JSON.stringify(newAppdata));
-		console.log(`Saved appdata at ${new Date().toLocaleTimeString()}`);
+		LOGX.savedAt('appdata');
 	};
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
@@ -111,7 +113,7 @@ export default function PointApp () {
 		request.onsuccess = (event) => {
 			const db = event.target.result;
 			setAppDB(db);
-			console.log(`Set 'appDB'`);
+			LOGX.setState('appDB');
 
 			const stores = {};
 			DATABASE_TABLES.forEach(table => {
@@ -120,7 +122,7 @@ export default function PointApp () {
 				stores[table.name] = store;
 			});
 			setStores(stores);
-			console.log(`Set 'stores'`);
+			LOGX.setState('stores');
 		};
 
 		request.onupgradeneeded = (event) => {
