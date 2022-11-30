@@ -21,12 +21,22 @@ export default function Category ({
 				<p></p>
 			</header>
 
-			<main className="max-w-5xl mx-auto px-4 py-4">
-				<NoteGrid {...{goToViewer}} notes={pinnedNotes} title="Pinned" />
-				<NoteGrid {...{goToViewer}} notes={recentNotes} title="Recent" />
-				<NoteGrid {...{notes, goToViewer}} title="All" />
+			<main className="ch:px-4 ch:py-8 ch2:max-w-5xl ch2:mx-auto">
+				<div>
+					<NoteGrid {...{goToViewer}} notes={pinnedNotes} title="Pinned" />
+				</div>
 
-				<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
+				<div className="bg-slate-100">
+					<NoteGrid {...{goToViewer}} notes={recentNotes} title="Recent" />
+				</div>
+
+				<div>
+					<NoteGrid {...{notes, goToViewer}} title="All" />
+				</div>
+
+				<div className="bg-slate-200">
+					<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
+				</div>
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
