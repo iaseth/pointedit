@@ -2,10 +2,7 @@ import {Button} from '../../../Utils';
 
 
 
-export default function ViewNote ({
-	note, category, goTo
-}) {
-
+export default function ViewNote ({note, category, goTo}) {
 	return (
 		<div>
 			<header className="py-4 max-w-3xl mx-auto">
