@@ -21,18 +21,33 @@ const TABS = [
 const PRODUCTION = (process.env.NODE_ENV === 'development') ? false : true;
 
 const CATEGORIES = [
-	{title: "Ancient History", id: "ancient-history"},
-	{title: "Medieval History", id: "medieval-history"},
-	{title: "Modern History", id: "modern-history"},
-	{title: "World History", id: "world-history"},
+	{title: "History", id: "history"},
+	{title: "Ancient History", id: "ancient-history", parent: "history"},
+	{title: "Medieval History", id: "medieval-history", parent: "history"},
+	{title: "Modern History", id: "modern-history", parent: "history"},
+	{title: "World History", id: "world-history", parent: "history"},
 
 	{title: "Geography", id: "geography"},
+	{title: "Indian Geography", id: "indian-geography", parent: "geography"},
+	{title: "World Geography", id: "world-geography", parent: "geography"},
 
 	{title: "Polity", id: "polity"},
 	{title: "Governance", id: "governance"},
 
 	{title: "Economy", id: "economy"},
+	{title: "Agriculture", id: "agriculture", parent: "economy"},
+
 	{title: "SciTech", id: "scitech"},
+	{title: "Biology", id: "Biology", parent: "scitech"},
+	{title: "Digital", id: "digital", parent: "scitech"},
+	{title: "Science", id: "science", parent: "scitech"},
+	{title: "Space", id: "space", parent: "scitech"},
+	{title: "Technology", id: "technology", parent: "scitech"},
+
+	{title: "Miscellaneous", id: "misc"},
+	{title: "Security", id: "security", parent: "misc"},
+
+	{title: "Ethics", id: "ethics"},
 
 	{title: "Uncategorized", id: "uncategorized"},
 ];
