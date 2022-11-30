@@ -1,4 +1,4 @@
-import {NoteBox} from '../HomeUtils';
+import {NoteGrid} from '../HomeUtils';
 import {Button} from '../../../Utils';
 
 
@@ -8,7 +8,6 @@ export default function Category ({
 	goToDashboard, goToCategory, goToEditor, goToViewer
 }) {
 
-	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
 	return (
 		<div className="">
@@ -18,9 +17,7 @@ export default function Category ({
 			</header>
 
 			<main className="max-w-5xl mx-auto px-4 py-4">
-				{notes.length === 0 ? <h4>No notes to show.</h4> : <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-					{notes.map(note => <NoteBox key={note.id} {...{note}} onClick={() => goToViewer(note.id)} />)}
-				</div>}
+				<NoteGrid {...{appdata, category, goToViewer}} />
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
