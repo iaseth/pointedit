@@ -19,7 +19,8 @@ const TABS = [
 	{title: "Settings", char: "S", component: Settings},
 	{title: "Debug", char: "D", component: Debugger, debug: true},
 ];
-const DEBUG_TAB_INDEX = 3;
+
+const TAB_CHARS = TABS.map(t => t.char);
 
 const PRODUCTION = (process.env.NODE_ENV === 'development') ? false : true;
 
@@ -102,6 +103,7 @@ export default function PointApp () {
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 	const currentTabTitle = TABS[currentTabIndex].title;
+	const currentTabChar = TABS[currentTabIndex].char;
 
 	const [appDB, setAppDB] = React.useState(null);
 	const [stores, setStores] = React.useState(null);
@@ -139,10 +141,18 @@ export default function PointApp () {
 		};
 	}, []);
 
+	const goToTab = (char) => {
+		if (currentTabChar !== char) {
+			const tabIndex = TABS.findIndex(t => t.char === char);
+			setCurrentTabIndex(tabIndex);
+		}
+	};
+
 	const handleKeyDown = (e) => {
-		if (e.ctrlKey && e.shiftKey && e.altKey && e.key === 'D' && currentTabIndex !== DEBUG_TAB_INDEX) {
-			LOGX.put('Opened debugger');
-			setCurrentTabIndex(3);
+		if (e.ctrlKey && e.shiftKey && e.altKey) {
+			if (TAB_CHARS.includes(e.key)) {
+				goToTab(e.key);
+			}
 		}
 	};
 	React.useEffect(() => {
