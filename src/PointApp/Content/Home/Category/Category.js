@@ -10,6 +10,10 @@ export default function Category ({
 	const nestedCats = appdata.categories.filter(cat => cat.parent === category.id);
 	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
+	const pinnedNotes = notes.filter(n => n.pinned);
+	const sortedNotes = [...notes].sort((a, b) => (a.modifiedAt - b.modifiedAt));
+	const recentNotes = sortedNotes.slice(0, 3);
+
 	return (
 		<div className="">
 			<header className="max-w-3xl mx-auto px-4">
@@ -18,7 +22,10 @@ export default function Category ({
 			</header>
 
 			<main className="max-w-5xl mx-auto px-4 py-4">
-				<NoteGrid {...{appdata, notes, goToViewer}} />
+				<NoteGrid {...{goToViewer}} notes={pinnedNotes} title="Pinned" />
+				<NoteGrid {...{goToViewer}} notes={recentNotes} title="Recent" />
+				<NoteGrid {...{notes, goToViewer}} title="All" />
+
 				<CategoryGrid {...{appdata, goToCategory}} categories={nestedCats} />
 			</main>
 
