@@ -3,45 +3,15 @@ import _ from 'lodash';
 
 import {Button} from '../../../Utils';
 import {EditableText, ItemsSelector} from './Utils';
+import {getDefaultNoteObject} from '../HomeUtils';
 import Aspect from './Aspect';
 
-const MAX_ASPECTS = 100;
+
+
 const MAX_POINTS = 100;
 
-const getDefaultNoteObject = (noteId, categoryId) => {
-	const note = {
-		id: noteId,
-		createdAt: Date.now(),
-		modifiedAt: Date.now(),
-		modifiedCount: 0,
-		openedAt: Date.now(),
-		openedCount: 0,
-
-		// deleted notes show up in Trash
-		deleted: false,
-		deletedAt: 0,
-		// hidden notes can be shown with a toggle
-		hidden: false,
-		hiddenAt: 0,
-		// pinned notes are pinned at the top
-		pinned: false,
-		pinnedAt: 0,
-		// completed notes cannot have empty fields
-		completed: false,
-		completedAt: 0,
-
-		title: "",
-		description: "",
-		categoryId: categoryId,
-
-		aspectIds: [],
-		aspectId: MAX_ASPECTS * noteId
-	};
-	return {...note};
-}
-
 export default function EditNote ({
-	appdata, updateAppdata, categoryId, goToCategory,
+	appdata, updateAppdata, categoryId, goTo,
 	noteId, setNoteId, noteObject, LOGX
 }) {
 	const [note, setNote] = React.useState(noteObject || getDefaultNoteObject(appdata.noteId, categoryId));
@@ -150,7 +120,7 @@ export default function EditNote ({
 			</main>
 
 			<footer className="py-6">
-				<Button onClick={() => goToCategory(note.categoryId)}>Go back</Button>
+				<Button onClick={() => goTo.Category(note.categoryId)}>Go back</Button>
 				<Button onClick={addNewAspect}>Add Aspect</Button>
 			</footer>
 		</div>

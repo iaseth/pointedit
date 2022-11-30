@@ -53,7 +53,7 @@ export default function Home ({appdata, updateAppdata, LOGX}) {
 			case "Category":
 				return <Category {...{appdata, category, goTo}} />;
 			case "EditNote":
-				return <EditNote {...{appdata, updateAppdata, categoryId, goToCategory, noteId, setNoteId, LOGX}} noteObject={note} LOGX={LOGX.getChild('EditNote')} />;
+				return <EditNote {...{appdata, updateAppdata, categoryId, goTo, noteId, setNoteId, LOGX}} noteObject={note} LOGX={LOGX.getChild('EditNote')} />;
 			case "ViewNote":
 				return <ViewNote {...{note, category, goTo}} />;
 			default:
