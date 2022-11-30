@@ -1,6 +1,10 @@
 import React from 'react';
 
-import {DebugHeader, DebugFooter} from './DebugUtils';
+import {
+	DebugFooter,
+	DebugHeader,
+	DebugTable,
+} from './DebugUtils';
 import {Button} from '../../Utils';
 
 
@@ -24,22 +28,24 @@ export default function LocalStorage () {
 		setRows(getRowsFromLS());
 	};
 
+	const LocalStorageRow = ({k, row}) => {
+		return (
+			<tr>
+				<td>{k+1}</td>
+				<td className="text-green-600">{row.key}</td>
+				<td>{row.length}</td>
+				<td>
+					<Button onClick={() => deleteItem(row.key)}>Delete</Button>
+				</td>
+			</tr>
+		);
+	};
+
 	return (
 		<div>
 			<DebugHeader text="LocalStorage" />
 
-			<table className="w-full">
-				<tbody>
-					{rows.map((row, k) => <tr key={k}>
-						<td>{k+1}</td>
-						<td className="text-green-600">{row.key}</td>
-						<td>{row.length}</td>
-						<td>
-							<Button onClick={() => deleteItem(row.key)}>Delete</Button>
-						</td>
-					</tr>)}
-				</tbody>
-			</table>
+			<DebugTable headings={["", "Key", "Length", "Actions"]} rows={rows} Row={LocalStorageRow} />
 
 			<DebugFooter count={rows.length} what="items" />
 		</div>

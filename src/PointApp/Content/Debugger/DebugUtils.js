@@ -9,6 +9,33 @@ export function DebugHeader ({text}) {
 	);
 }
 
+function DefaultRow ({k, row}) {
+	return (
+		<tr>
+			<td>{k+1}</td>
+			{row.map((td, k) => <td key={k}>{td}</td>)}
+		</tr>
+	);
+}
+
+export function DebugTable ({
+	headings=null, rows=[], Row=DefaultRow
+}) {
+	return (
+		<table className="w-full">
+			{headings && <thead>
+				<tr>
+					{headings.map((h, k) => <td key={k}>{h}</td>)}
+				</tr>
+			</thead>}
+
+			<tbody>
+				{rows.map((row, k) => <Row key={k} {...{k, row}} />)}
+			</tbody>
+		</table>
+	);
+}
+
 export function DebugFooter ({count, what}) {
 	return (
 		<footer className="text-center py-6">
