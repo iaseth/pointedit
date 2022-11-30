@@ -1,6 +1,11 @@
 import React from 'react';
 
-import {DebugHeader, DebugFooter} from './DebugUtils';
+import {
+	// DebugButton,
+	DebugFooter,
+	DebugHeader,
+	DebugTable,
+} from './DebugUtils';
 
 
 const IDB = window.indexedDB;
@@ -14,6 +19,20 @@ const getDatabasesAndObjectStores = () => {
 		}
 	}));
 };
+
+function IndexedDBRowComponent ({k, row}) {
+	const database = row;
+	return (
+		<tr>
+			<td>{k+1}</td>
+			<td>{database.name}</td>
+			<td>{database.version}</td>
+			<td>
+				{database.objectStores.map((objectStore, k) => <h5>{objectStore.name}</h5>)}
+			</td>
+		</tr>
+	);
+}
 
 export default function IndexedDB () {
 	const [databases, setDatabases] = React.useState([]);
@@ -35,26 +54,7 @@ export default function IndexedDB () {
 			<DebugHeader text="IndexedDB" />
 
 			<main>
-				<table className="w-full">
-					<thead>
-						<tr>
-							<td>#</td>
-							<td>Databse</td>
-							<td>Vesrion</td>
-							<td>Stores</td>
-						</tr>
-					</thead>
-					<tbody>
-						{databases.map((database, k) => <tr key={k}>
-							<td>{k+1}</td>
-							<td>{database.name}</td>
-							<td>{database.version}</td>
-							<td>
-								{database.objectStores.map((objectStore, k) => <h5>{objectStore.name}</h5>)}
-							</td>
-						</tr>)}
-					</tbody>
-				</table>
+				<DebugTable headings={["#", "Databse", "Vesrion", "Stores"]} rows={databases} RowComponent={IndexedDBRowComponent} />
 			</main>
 
 			<DebugFooter count={databases.length} what="databases" />
