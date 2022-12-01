@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 import {Button} from '../../../Utils';
 import {EditableText, ItemsSelector} from './Utils';
@@ -13,13 +13,13 @@ export default function EditNote ({
 	appdata, updateAppdata, goTo,
 	note, saveNote, dbFuncs, LOGX
 }) {
-	const [aspects, setAspects] = React.useState([]);
+	const [aspectIds, setAspectIds] = React.useState([...note.aspectIds]);
 
 	const updateNote = (nuNote, modified=false) => {
 		if (modified) {
 			nuNote.modifiedAt = Date.now();
 		}
-		saveNote({...nuNote}, aspects);
+		saveNote({...nuNote}, aspectIds);
 		LOGX.updated('note', nuNote.id);
 	};
 
@@ -48,24 +48,10 @@ export default function EditNote ({
 		};
 		dbFuncs.saveAspectToDB(nuAspect);
 
-		const nuAspects = [...aspects];
-		nuAspects.push(nuAspect);
-		setAspects(nuAspects);
-		saveNote({...note}, nuAspects);
-	};
-
-	const updateAspect = (nuAspect) => {
-		const aspectIndex = aspects.findIndex(a => a.id === nuAspect.id);
-		const currentAspect = aspects[aspectIndex];
-		if (!_.isEqual(nuAspect, currentAspect)) {
-			nuAspect.modifiedAt = Date.now();
-			dbFuncs.saveAspectToDB(nuAspect);
-
-			const nuAspects = [...aspects];
-			nuAspects[aspectIndex] = nuAspect;
-			setAspects(nuAspects);
-			LOGX.updatedAt('aspect', nuAspect.id);
-		}
+		const nuAspectIds = [...aspectIds];
+		nuAspectIds.push(nuAspect.id);
+		setAspectIds(nuAspectIds);
+		saveNote({...note}, nuAspectIds);
 	};
 
 	return (
@@ -86,7 +72,7 @@ export default function EditNote ({
 			</header>
 
 			<main className="max-w-3xl mx-auto px-4">
-				{aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect, dbFuncs}} />)}
+				{aspectIds.map((aspectId, k) => <Aspect key={aspectId} {...{k, aspectId, dbFuncs, LOGX}} />)}
 			</main>
 
 			<footer className="max-w-3xl mx-auto px-4 py-6">

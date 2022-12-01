@@ -7,19 +7,39 @@ import Point from './Point';
 
 
 
-export default function Aspect ({k, aspect, updateAspect, dbFuncs}) {
+export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 	const aspectRef = React.useRef(null);
+	const [init, setInit] = React.useState(false);
+	const [aspect, setAspect] = React.useState(null);
 	const [points, setPoints] = React.useState([]);
 
 	React.useEffect(() => {
+		if (!init) {
+			const request = dbFuncs.getAspectFromDB(aspectId);
+			request.onsuccess = () => {
+				setAspect(request.result);
+				setInit(true);
+			};
+		}
+	}, [aspectId, dbFuncs, init, setInit, setAspect]);
+
+	const updateAspect = (nuAspect) => {
+		if (!_.isEqual(nuAspect, aspect)) {
+			nuAspect.modifiedAt = Date.now();
+			dbFuncs.saveAspectToDB(nuAspect);
+			LOGX.updatedAt('aspect', nuAspect.id);
+		}
+	};
+
+	React.useEffect(() => {
 		const pointIds = points.map(a => a.id);
-		if (!_.isEqual(pointIds, aspect.pointIds)) {
+		if (init && !_.isEqual(pointIds, aspect.pointIds)) {
 			const nuAspect = {...aspect};
 			nuAspect.pointIds = pointIds;
 			nuAspect.pointsCount = pointIds.length;
 			updateAspect(nuAspect);
 		}
-	}, [points, aspect, updateAspect]);
+	}, [points, init, aspect, updateAspect]);
 
 	const addNewPoint = (atIndex=false) => {
 		const point = {
@@ -41,13 +61,15 @@ export default function Aspect ({k, aspect, updateAspect, dbFuncs}) {
 		setPoints([...points]);
 	};
 
-	if (points.length === 0) {
+	if (init && points.length === 0) {
 		addNewPoint();
 	}
 
 	React.useEffect(() => {
-		aspectRef.current.getElementsByTagName('textarea')[0].focus();
-	}, []);
+		if (init) {
+			aspectRef.current.getElementsByTagName('textarea')[0].focus();
+		}
+	}, [init]);
 
 	const updateAspectProp = (prop, value) => {
 		const nuAspect = {...aspect};
@@ -67,6 +89,14 @@ export default function Aspect ({k, aspect, updateAspect, dbFuncs}) {
 			setPoints(nuPoints);
 		}
 	};
+
+	if (!init) {
+		return (
+			<section>
+				<h4>Loading aspect ...</h4>
+			</section>
+		);
+	}
 
 	return (
 		<section className="py-4" ref={aspectRef}>
