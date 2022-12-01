@@ -53,6 +53,7 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 			nuAspect.pointIds.splice(atIndex, 0, nuPoint.id);
 		}
 
+		dbFuncs.saveAspectToDB(nuAspect);
 		setAspect(nuAspect);
 	};
 
