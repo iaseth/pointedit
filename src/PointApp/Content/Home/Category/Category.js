@@ -42,16 +42,16 @@ export default function Category ({appdata, category, goTo}) {
 				</div>
 
 				{children.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid {...{appdata}} categories={children} goToCategory={goTo.Category} title="Sub Topics" />
+					<CategoryGrid notes={appdata.notes} categories={children} goToCategory={goTo.Category} title="Sub Topics" />
 				</div>}
 
 				{siblings.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid {...{appdata}} categories={siblings} goToCategory={goTo.Category} title="Similar Topics" />
+					<CategoryGrid notes={appdata.notes} categories={siblings} goToCategory={goTo.Category} title="Similar Topics" />
 				</div>}
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
-				<div>
+				<div className={category.id}>
 					<Button onClick={goTo.Dashboard}>Home</Button>
 					<Button onClick={() => goTo.Editor(-1)}>Add note</Button>
 				</div>

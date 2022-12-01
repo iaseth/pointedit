@@ -3,8 +3,8 @@ import {CategoryBox} from './CategoryBox';
 
 
 
-export function CategoryGrid ({appdata, categories, goToCategory, title}) {
-	const catItems = categories.map((category, k) => <CategoryBox key={k} {...{appdata, category, goToCategory}} />);
+export function CategoryGrid ({notes, categories, goToCategory, title}) {
+	const catItems = categories.map((category, k) => <CategoryBox key={k} {...{notes, category, goToCategory}} />);
 
 	return (
 		<div>

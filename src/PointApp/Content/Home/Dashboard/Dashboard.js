@@ -28,7 +28,7 @@ export default function Dashboard ({appdata, goTo}) {
 				</div>}
 
 				<div>
-					<CategoryGrid {...{appdata}} categories={topLevelCats} goToCategory={goTo.Category} title="Topics" />
+					<CategoryGrid {...{notes}} categories={topLevelCats} goToCategory={goTo.Category} title="Topics" />
 				</div>
 			</main>
 
