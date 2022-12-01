@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LOGX from './LOGX';
+import {getStore, getStoreW} from './dbutils';
 
 import './PointApp.scss';
 import Header from './Header/Header';
@@ -77,12 +78,11 @@ const DATABASE_NAME = APPNAME;
 const DATABASE_TABLES = [
 	// {name: "notes", "fields": ['title', 'description'], keyPath: 'id'},
 	{name: "aspects", "fields": [
-		'title', 'introduction', 'conclusion',
 		'createdAt', 'modifiedAt',
 		'points', 'pointId'
 	], keyPath: 'id'},
 	{name: "points", "fields": [
-		'text', 'createdAt', 'modifiedAt', 'hidden'
+		'createdAt', 'modifiedAt', 'hidden'
 	], keyPath: 'id'}
 ];
 
@@ -106,9 +106,6 @@ export default function PointApp () {
 	const currentTabChar = TABS[currentTabIndex].char;
 
 	const [appDB, setAppDB] = React.useState(null);
-	const [stores, setStores] = React.useState(null);
-	const aspectsStore = stores?.aspects || null;
-	const pointsStore = stores?.points || null;
 
 	React.useEffect(() => {
 		LOGX.created('database', DATABASE_NAME);
@@ -117,15 +114,6 @@ export default function PointApp () {
 			const db = event.target.result;
 			setAppDB(db);
 			LOGX.setState('appDB');
-
-			const stores = {};
-			DATABASE_TABLES.forEach(table => {
-				const trans = db.transaction([table.name], 'readwrite');
-				const store = trans.objectStore(table.name);
-				stores[table.name] = store;
-			});
-			setStores(stores);
-			LOGX.setState('stores');
 		};
 
 		request.onupgradeneeded = (event) => {
@@ -140,6 +128,35 @@ export default function PointApp () {
 			});
 		};
 	}, []);
+
+
+	const getAspectFromDB = (aspectId) => {
+		const aspectsStore = getStore(appDB, 'aspects');
+		return aspectsStore ? aspectsStore.get(aspectId) : null;
+	};
+	const saveAspectToDB = (aspectObject) => {
+		const aspectsStore = getStoreW(appDB, 'aspects');
+		if (aspectsStore) {
+			aspectsStore.put(aspectObject);
+		}
+	};
+
+	const getPointFromDB = (pointId) => {
+		const pointsStore = getStore(appDB, 'points');
+		return pointsStore ? pointsStore.get(pointId) : null;
+	};
+	const savePointToDB = (pointObject) => {
+		const pointsStore = getStoreW(appDB, 'points');
+		if (pointsStore) {
+			pointsStore.put(pointObject);
+		}
+	};
+
+	const dbFuncs = {
+		getAspectFromDB, saveAspectToDB,
+		getPointFromDB, savePointToDB,
+	};
+
 
 	const goToTab = (char) => {
 		if (currentTabChar !== char) {
@@ -163,7 +180,7 @@ export default function PointApp () {
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
 			case "Home":
-				return <Home {...{appdata, updateAppdata}} LOGX={LOGX.getChild('Home')} />;
+				return <Home {...{appdata, updateAppdata, dbFuncs}} LOGX={LOGX.getChild('Home')} />;
 			case "Market":
 				return <Market />;
 			case "Settings":
