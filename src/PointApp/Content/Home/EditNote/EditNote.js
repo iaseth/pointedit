@@ -13,13 +13,13 @@ export default function EditNote ({
 	appdata, updateAppdata, goTo,
 	note, saveNote, dbFuncs, LOGX
 }) {
-	const [aspectIds, setAspectIds] = React.useState([...note.aspectIds]);
+	const aspectIds = note.aspectIds;
 
 	const updateNote = (nuNote, modified=false) => {
 		if (modified) {
 			nuNote.modifiedAt = Date.now();
 		}
-		saveNote({...nuNote}, aspectIds);
+		saveNote(nuNote);
 		LOGX.updated('note', nuNote.id);
 	};
 
@@ -48,10 +48,9 @@ export default function EditNote ({
 		};
 		dbFuncs.saveAspectToDB(nuAspect);
 
-		const nuAspectIds = [...aspectIds];
-		nuAspectIds.push(nuAspect.id);
-		setAspectIds(nuAspectIds);
-		saveNote({...note}, nuAspectIds);
+		const nuNote = {...note};
+		nuNote.aspectIds.push(nuAspect.id);
+		saveNote(nuNote);
 	};
 
 	return (

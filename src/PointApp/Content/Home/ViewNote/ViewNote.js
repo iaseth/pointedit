@@ -7,23 +7,18 @@ import {Button} from '../../../Utils';
 export default function ViewNote ({note, category, goTo, dbFuncs}) {
 	return (
 		<div>
-			<header className="max-w-3xl mx-auto px-4 py-4">
-				<h4 className="text-green-800 cursor-pointer" onClick={() => goTo.Category(category.id)}>{category.title}</h4>
+			<header className="max-w-3xl mx-auto px-4 py-5">
+				<section className="max-w-xl">
+					<h4 className="text-green-800 cursor-pointer" onClick={() => goTo.Category(category.id)}>{category.title}</h4>
+					<h1 className="py-3">{note.title}</h1>
+					<p>{note.description}</p>
+				</section>
 			</header>
 
-			<main className="max-w-2xl mx-auto px-4 py-4">
-				<article>
-					<header>
-						<h1>{note.title}</h1>
-						<p>{note.description}</p>
-					</header>
-
-					<main className="py-6">
-						<section>
-							{note.aspectIds.map(aspectId => <AspectView key={aspectId} {...{aspectId, dbFuncs}} />)}
-						</section>
-					</main>
-				</article>
+			<main className="max-w-3xl mx-auto px-4 py-4">
+				<section className="max-w-xl py-4 space-y-8">
+					{note.aspectIds.map(aspectId => <AspectView key={aspectId} {...{aspectId, dbFuncs}} />)}
+				</section>
 			</main>
 
 			<footer className="max-w-3xl mx-auto px-4 py-4 space-x-4">

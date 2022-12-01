@@ -50,9 +50,8 @@ export default function Home ({appdata, updateAppdata, dbFuncs, LOGX}) {
 		Viewer: goToViewer,
 	};
 
-	const saveNote = (nuNoteObject, aspectIds) => {
-		nuNoteObject.aspectIds = [...aspectIds];
-		nuNoteObject.aspectsCount = aspectIds.length;
+	const saveNote = (nuNoteObject) => {
+		nuNoteObject.aspectsCount = nuNoteObject.aspectIds.length;
 
 		let index = appdata.notes.findIndex(n => n.id === nuNoteObject.id);
 		if (index === -1) {
