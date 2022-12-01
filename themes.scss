@@ -1,19 +1,19 @@
 
-$bgShades: [100, 500, 700, 900];
+$bgShades: [100, 200, 500, 700, 900];
 $txShades: [500, 800];
 $bdShades: [500, 800];
 
 $themes: (
-	'history': 'red',
-	'ancient-history': 'red',
-	'medieval-history': 'red',
-	'modern-history': 'red',
-	'world-history': 'red',
+	'history': 'blue',
+	'ancient-history': 'blue',
+	'medieval-history': 'blue',
+	'modern-history': 'blue',
+	'world-history': 'blue',
 
-	'geography': 'red',
-	'indian-geography': 'red',
-	'world-geography': 'red',
-	'disaster-management': 'red',
+	'geography': 'orange',
+	'indian-geography': 'orange',
+	'world-geography': 'orange',
+	'disaster-management': 'orange',
 
 	'ps': 'red',
 	'polity': 'red',
@@ -21,23 +21,23 @@ $themes: (
 	'constitution': 'red',
 	'ir': 'red',
 
-	'econ': 'red',
-	'indian-economy': 'red',
-	'world-economy': 'red',
-	'agriculture': 'red',
-	'schemes': 'red',
+	'econ': 'green',
+	'indian-economy': 'green',
+	'world-economy': 'green',
+	'agriculture': 'green',
+	'schemes': 'green',
 
-	'scitech': 'red',
-	'Biology': 'red',
-	'digital': 'red',
-	'science': 'red',
-	'space': 'red',
-	'technology': 'red',
+	'scitech': 'purple',
+	'Biology': 'purple',
+	'digital': 'purple',
+	'science': 'purple',
+	'space': 'purple',
+	'technology': 'purple',
 
-	'misc': 'red',
-	'security': 'red',
-	'ethics': 'red',
-	'uncategorized': 'red'
+	'misc': 'fuchsia',
+	'security': 'fuchsia',
+	'ethics': 'fuchsia',
+	'uncategorized': 'zinc'
 );
 
 @each $theme, $color in $themes {

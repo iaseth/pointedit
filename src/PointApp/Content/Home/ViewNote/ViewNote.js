@@ -6,7 +6,7 @@ import {Button} from '../../../Utils';
 
 export default function ViewNote ({note, category, goTo, dbFuncs}) {
 	return (
-		<div>
+		<div className={category.id}>
 			<header className="max-w-3xl mx-auto px-4 py-5">
 				<section className="max-w-xl">
 					<h4 className="text-800 cursor-pointer" onClick={() => goTo.Category(category.id)}>{category.title}</h4>

@@ -54,7 +54,7 @@ export default function EditNote ({
 	};
 
 	return (
-		<div className="" id="EditNote">
+		<div className={note.categoryId} id="EditNote">
 			<header className="max-w-xl mx-auto px-4 py-8">
 				<section className="border-x-2 border-500 shadow">
 					<h5 className="px-2 py-1 bg-500 text-white">Note</h5>
