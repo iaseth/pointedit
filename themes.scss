@@ -1,0 +1,63 @@
+
+$bgShades: [100, 500, 900];
+$txShades: [100, 500, 900];
+$bdShades: [100, 500, 900];
+
+$themes: (
+	'history': 'red',
+	'ancient-history': 'red',
+	'medieval-history': 'red',
+	'modern-history': 'red',
+	'world-history': 'red',
+
+	'geography': 'red',
+	'indian-geography': 'red',
+	'world-geography': 'red',
+	'disaster-management': 'red',
+
+	'ps': 'red',
+	'polity': 'red',
+	'governance': 'red',
+	'constitution': 'red',
+	'ir': 'red',
+
+	'econ': 'red',
+	'indian-economy': 'red',
+	'world-economy': 'red',
+	'agriculture': 'red',
+	'schemes': 'red',
+
+	'scitech': 'red',
+	'Biology': 'red',
+	'digital': 'red',
+	'science': 'red',
+	'space': 'red',
+	'technology': 'red',
+
+	'misc': 'red',
+	'security': 'red',
+	'ethics': 'red',
+	'uncategorized': 'red'
+);
+
+@each $theme, $color in $themes {
+	.#{$theme} {
+		@each $bgShade in $bgShades {
+			.bg-#{$bgShade} {
+				@apply bg-#{$color}-#{$bgShade};
+			}
+		}
+
+		@each $txShade in $txShades {
+			.text-#{$txShade} {
+				@apply text-#{$color}-#{$txShade};
+			}
+		}
+
+		@each $bdShade in $bdShades {
+			.border-#{$bdShade} {
+				@apply border-#{$color}-#{$bdShade};
+			}
+		}
+	}
+}

@@ -1,0 +1,813 @@
+.history .bg-100 {
+  @apply bg-red-100;
+}
+.history .bg-500 {
+  @apply bg-red-500;
+}
+.history .bg-900 {
+  @apply bg-red-900;
+}
+.history .text-100 {
+  @apply text-red-100;
+}
+.history .text-500 {
+  @apply text-red-500;
+}
+.history .text-900 {
+  @apply text-red-900;
+}
+.history .border-100 {
+  @apply border-red-100;
+}
+.history .border-500 {
+  @apply border-red-500;
+}
+.history .border-900 {
+  @apply border-red-900;
+}
+
+.ancient-history .bg-100 {
+  @apply bg-red-100;
+}
+.ancient-history .bg-500 {
+  @apply bg-red-500;
+}
+.ancient-history .bg-900 {
+  @apply bg-red-900;
+}
+.ancient-history .text-100 {
+  @apply text-red-100;
+}
+.ancient-history .text-500 {
+  @apply text-red-500;
+}
+.ancient-history .text-900 {
+  @apply text-red-900;
+}
+.ancient-history .border-100 {
+  @apply border-red-100;
+}
+.ancient-history .border-500 {
+  @apply border-red-500;
+}
+.ancient-history .border-900 {
+  @apply border-red-900;
+}
+
+.medieval-history .bg-100 {
+  @apply bg-red-100;
+}
+.medieval-history .bg-500 {
+  @apply bg-red-500;
+}
+.medieval-history .bg-900 {
+  @apply bg-red-900;
+}
+.medieval-history .text-100 {
+  @apply text-red-100;
+}
+.medieval-history .text-500 {
+  @apply text-red-500;
+}
+.medieval-history .text-900 {
+  @apply text-red-900;
+}
+.medieval-history .border-100 {
+  @apply border-red-100;
+}
+.medieval-history .border-500 {
+  @apply border-red-500;
+}
+.medieval-history .border-900 {
+  @apply border-red-900;
+}
+
+.modern-history .bg-100 {
+  @apply bg-red-100;
+}
+.modern-history .bg-500 {
+  @apply bg-red-500;
+}
+.modern-history .bg-900 {
+  @apply bg-red-900;
+}
+.modern-history .text-100 {
+  @apply text-red-100;
+}
+.modern-history .text-500 {
+  @apply text-red-500;
+}
+.modern-history .text-900 {
+  @apply text-red-900;
+}
+.modern-history .border-100 {
+  @apply border-red-100;
+}
+.modern-history .border-500 {
+  @apply border-red-500;
+}
+.modern-history .border-900 {
+  @apply border-red-900;
+}
+
+.world-history .bg-100 {
+  @apply bg-red-100;
+}
+.world-history .bg-500 {
+  @apply bg-red-500;
+}
+.world-history .bg-900 {
+  @apply bg-red-900;
+}
+.world-history .text-100 {
+  @apply text-red-100;
+}
+.world-history .text-500 {
+  @apply text-red-500;
+}
+.world-history .text-900 {
+  @apply text-red-900;
+}
+.world-history .border-100 {
+  @apply border-red-100;
+}
+.world-history .border-500 {
+  @apply border-red-500;
+}
+.world-history .border-900 {
+  @apply border-red-900;
+}
+
+.geography .bg-100 {
+  @apply bg-red-100;
+}
+.geography .bg-500 {
+  @apply bg-red-500;
+}
+.geography .bg-900 {
+  @apply bg-red-900;
+}
+.geography .text-100 {
+  @apply text-red-100;
+}
+.geography .text-500 {
+  @apply text-red-500;
+}
+.geography .text-900 {
+  @apply text-red-900;
+}
+.geography .border-100 {
+  @apply border-red-100;
+}
+.geography .border-500 {
+  @apply border-red-500;
+}
+.geography .border-900 {
+  @apply border-red-900;
+}
+
+.indian-geography .bg-100 {
+  @apply bg-red-100;
+}
+.indian-geography .bg-500 {
+  @apply bg-red-500;
+}
+.indian-geography .bg-900 {
+  @apply bg-red-900;
+}
+.indian-geography .text-100 {
+  @apply text-red-100;
+}
+.indian-geography .text-500 {
+  @apply text-red-500;
+}
+.indian-geography .text-900 {
+  @apply text-red-900;
+}
+.indian-geography .border-100 {
+  @apply border-red-100;
+}
+.indian-geography .border-500 {
+  @apply border-red-500;
+}
+.indian-geography .border-900 {
+  @apply border-red-900;
+}
+
+.world-geography .bg-100 {
+  @apply bg-red-100;
+}
+.world-geography .bg-500 {
+  @apply bg-red-500;
+}
+.world-geography .bg-900 {
+  @apply bg-red-900;
+}
+.world-geography .text-100 {
+  @apply text-red-100;
+}
+.world-geography .text-500 {
+  @apply text-red-500;
+}
+.world-geography .text-900 {
+  @apply text-red-900;
+}
+.world-geography .border-100 {
+  @apply border-red-100;
+}
+.world-geography .border-500 {
+  @apply border-red-500;
+}
+.world-geography .border-900 {
+  @apply border-red-900;
+}
+
+.disaster-management .bg-100 {
+  @apply bg-red-100;
+}
+.disaster-management .bg-500 {
+  @apply bg-red-500;
+}
+.disaster-management .bg-900 {
+  @apply bg-red-900;
+}
+.disaster-management .text-100 {
+  @apply text-red-100;
+}
+.disaster-management .text-500 {
+  @apply text-red-500;
+}
+.disaster-management .text-900 {
+  @apply text-red-900;
+}
+.disaster-management .border-100 {
+  @apply border-red-100;
+}
+.disaster-management .border-500 {
+  @apply border-red-500;
+}
+.disaster-management .border-900 {
+  @apply border-red-900;
+}
+
+.ps .bg-100 {
+  @apply bg-red-100;
+}
+.ps .bg-500 {
+  @apply bg-red-500;
+}
+.ps .bg-900 {
+  @apply bg-red-900;
+}
+.ps .text-100 {
+  @apply text-red-100;
+}
+.ps .text-500 {
+  @apply text-red-500;
+}
+.ps .text-900 {
+  @apply text-red-900;
+}
+.ps .border-100 {
+  @apply border-red-100;
+}
+.ps .border-500 {
+  @apply border-red-500;
+}
+.ps .border-900 {
+  @apply border-red-900;
+}
+
+.polity .bg-100 {
+  @apply bg-red-100;
+}
+.polity .bg-500 {
+  @apply bg-red-500;
+}
+.polity .bg-900 {
+  @apply bg-red-900;
+}
+.polity .text-100 {
+  @apply text-red-100;
+}
+.polity .text-500 {
+  @apply text-red-500;
+}
+.polity .text-900 {
+  @apply text-red-900;
+}
+.polity .border-100 {
+  @apply border-red-100;
+}
+.polity .border-500 {
+  @apply border-red-500;
+}
+.polity .border-900 {
+  @apply border-red-900;
+}
+
+.governance .bg-100 {
+  @apply bg-red-100;
+}
+.governance .bg-500 {
+  @apply bg-red-500;
+}
+.governance .bg-900 {
+  @apply bg-red-900;
+}
+.governance .text-100 {
+  @apply text-red-100;
+}
+.governance .text-500 {
+  @apply text-red-500;
+}
+.governance .text-900 {
+  @apply text-red-900;
+}
+.governance .border-100 {
+  @apply border-red-100;
+}
+.governance .border-500 {
+  @apply border-red-500;
+}
+.governance .border-900 {
+  @apply border-red-900;
+}
+
+.constitution .bg-100 {
+  @apply bg-red-100;
+}
+.constitution .bg-500 {
+  @apply bg-red-500;
+}
+.constitution .bg-900 {
+  @apply bg-red-900;
+}
+.constitution .text-100 {
+  @apply text-red-100;
+}
+.constitution .text-500 {
+  @apply text-red-500;
+}
+.constitution .text-900 {
+  @apply text-red-900;
+}
+.constitution .border-100 {
+  @apply border-red-100;
+}
+.constitution .border-500 {
+  @apply border-red-500;
+}
+.constitution .border-900 {
+  @apply border-red-900;
+}
+
+.ir .bg-100 {
+  @apply bg-red-100;
+}
+.ir .bg-500 {
+  @apply bg-red-500;
+}
+.ir .bg-900 {
+  @apply bg-red-900;
+}
+.ir .text-100 {
+  @apply text-red-100;
+}
+.ir .text-500 {
+  @apply text-red-500;
+}
+.ir .text-900 {
+  @apply text-red-900;
+}
+.ir .border-100 {
+  @apply border-red-100;
+}
+.ir .border-500 {
+  @apply border-red-500;
+}
+.ir .border-900 {
+  @apply border-red-900;
+}
+
+.econ .bg-100 {
+  @apply bg-red-100;
+}
+.econ .bg-500 {
+  @apply bg-red-500;
+}
+.econ .bg-900 {
+  @apply bg-red-900;
+}
+.econ .text-100 {
+  @apply text-red-100;
+}
+.econ .text-500 {
+  @apply text-red-500;
+}
+.econ .text-900 {
+  @apply text-red-900;
+}
+.econ .border-100 {
+  @apply border-red-100;
+}
+.econ .border-500 {
+  @apply border-red-500;
+}
+.econ .border-900 {
+  @apply border-red-900;
+}
+
+.indian-economy .bg-100 {
+  @apply bg-red-100;
+}
+.indian-economy .bg-500 {
+  @apply bg-red-500;
+}
+.indian-economy .bg-900 {
+  @apply bg-red-900;
+}
+.indian-economy .text-100 {
+  @apply text-red-100;
+}
+.indian-economy .text-500 {
+  @apply text-red-500;
+}
+.indian-economy .text-900 {
+  @apply text-red-900;
+}
+.indian-economy .border-100 {
+  @apply border-red-100;
+}
+.indian-economy .border-500 {
+  @apply border-red-500;
+}
+.indian-economy .border-900 {
+  @apply border-red-900;
+}
+
+.world-economy .bg-100 {
+  @apply bg-red-100;
+}
+.world-economy .bg-500 {
+  @apply bg-red-500;
+}
+.world-economy .bg-900 {
+  @apply bg-red-900;
+}
+.world-economy .text-100 {
+  @apply text-red-100;
+}
+.world-economy .text-500 {
+  @apply text-red-500;
+}
+.world-economy .text-900 {
+  @apply text-red-900;
+}
+.world-economy .border-100 {
+  @apply border-red-100;
+}
+.world-economy .border-500 {
+  @apply border-red-500;
+}
+.world-economy .border-900 {
+  @apply border-red-900;
+}
+
+.agriculture .bg-100 {
+  @apply bg-red-100;
+}
+.agriculture .bg-500 {
+  @apply bg-red-500;
+}
+.agriculture .bg-900 {
+  @apply bg-red-900;
+}
+.agriculture .text-100 {
+  @apply text-red-100;
+}
+.agriculture .text-500 {
+  @apply text-red-500;
+}
+.agriculture .text-900 {
+  @apply text-red-900;
+}
+.agriculture .border-100 {
+  @apply border-red-100;
+}
+.agriculture .border-500 {
+  @apply border-red-500;
+}
+.agriculture .border-900 {
+  @apply border-red-900;
+}
+
+.schemes .bg-100 {
+  @apply bg-red-100;
+}
+.schemes .bg-500 {
+  @apply bg-red-500;
+}
+.schemes .bg-900 {
+  @apply bg-red-900;
+}
+.schemes .text-100 {
+  @apply text-red-100;
+}
+.schemes .text-500 {
+  @apply text-red-500;
+}
+.schemes .text-900 {
+  @apply text-red-900;
+}
+.schemes .border-100 {
+  @apply border-red-100;
+}
+.schemes .border-500 {
+  @apply border-red-500;
+}
+.schemes .border-900 {
+  @apply border-red-900;
+}
+
+.scitech .bg-100 {
+  @apply bg-red-100;
+}
+.scitech .bg-500 {
+  @apply bg-red-500;
+}
+.scitech .bg-900 {
+  @apply bg-red-900;
+}
+.scitech .text-100 {
+  @apply text-red-100;
+}
+.scitech .text-500 {
+  @apply text-red-500;
+}
+.scitech .text-900 {
+  @apply text-red-900;
+}
+.scitech .border-100 {
+  @apply border-red-100;
+}
+.scitech .border-500 {
+  @apply border-red-500;
+}
+.scitech .border-900 {
+  @apply border-red-900;
+}
+
+.Biology .bg-100 {
+  @apply bg-red-100;
+}
+.Biology .bg-500 {
+  @apply bg-red-500;
+}
+.Biology .bg-900 {
+  @apply bg-red-900;
+}
+.Biology .text-100 {
+  @apply text-red-100;
+}
+.Biology .text-500 {
+  @apply text-red-500;
+}
+.Biology .text-900 {
+  @apply text-red-900;
+}
+.Biology .border-100 {
+  @apply border-red-100;
+}
+.Biology .border-500 {
+  @apply border-red-500;
+}
+.Biology .border-900 {
+  @apply border-red-900;
+}
+
+.digital .bg-100 {
+  @apply bg-red-100;
+}
+.digital .bg-500 {
+  @apply bg-red-500;
+}
+.digital .bg-900 {
+  @apply bg-red-900;
+}
+.digital .text-100 {
+  @apply text-red-100;
+}
+.digital .text-500 {
+  @apply text-red-500;
+}
+.digital .text-900 {
+  @apply text-red-900;
+}
+.digital .border-100 {
+  @apply border-red-100;
+}
+.digital .border-500 {
+  @apply border-red-500;
+}
+.digital .border-900 {
+  @apply border-red-900;
+}
+
+.science .bg-100 {
+  @apply bg-red-100;
+}
+.science .bg-500 {
+  @apply bg-red-500;
+}
+.science .bg-900 {
+  @apply bg-red-900;
+}
+.science .text-100 {
+  @apply text-red-100;
+}
+.science .text-500 {
+  @apply text-red-500;
+}
+.science .text-900 {
+  @apply text-red-900;
+}
+.science .border-100 {
+  @apply border-red-100;
+}
+.science .border-500 {
+  @apply border-red-500;
+}
+.science .border-900 {
+  @apply border-red-900;
+}
+
+.space .bg-100 {
+  @apply bg-red-100;
+}
+.space .bg-500 {
+  @apply bg-red-500;
+}
+.space .bg-900 {
+  @apply bg-red-900;
+}
+.space .text-100 {
+  @apply text-red-100;
+}
+.space .text-500 {
+  @apply text-red-500;
+}
+.space .text-900 {
+  @apply text-red-900;
+}
+.space .border-100 {
+  @apply border-red-100;
+}
+.space .border-500 {
+  @apply border-red-500;
+}
+.space .border-900 {
+  @apply border-red-900;
+}
+
+.technology .bg-100 {
+  @apply bg-red-100;
+}
+.technology .bg-500 {
+  @apply bg-red-500;
+}
+.technology .bg-900 {
+  @apply bg-red-900;
+}
+.technology .text-100 {
+  @apply text-red-100;
+}
+.technology .text-500 {
+  @apply text-red-500;
+}
+.technology .text-900 {
+  @apply text-red-900;
+}
+.technology .border-100 {
+  @apply border-red-100;
+}
+.technology .border-500 {
+  @apply border-red-500;
+}
+.technology .border-900 {
+  @apply border-red-900;
+}
+
+.misc .bg-100 {
+  @apply bg-red-100;
+}
+.misc .bg-500 {
+  @apply bg-red-500;
+}
+.misc .bg-900 {
+  @apply bg-red-900;
+}
+.misc .text-100 {
+  @apply text-red-100;
+}
+.misc .text-500 {
+  @apply text-red-500;
+}
+.misc .text-900 {
+  @apply text-red-900;
+}
+.misc .border-100 {
+  @apply border-red-100;
+}
+.misc .border-500 {
+  @apply border-red-500;
+}
+.misc .border-900 {
+  @apply border-red-900;
+}
+
+.security .bg-100 {
+  @apply bg-red-100;
+}
+.security .bg-500 {
+  @apply bg-red-500;
+}
+.security .bg-900 {
+  @apply bg-red-900;
+}
+.security .text-100 {
+  @apply text-red-100;
+}
+.security .text-500 {
+  @apply text-red-500;
+}
+.security .text-900 {
+  @apply text-red-900;
+}
+.security .border-100 {
+  @apply border-red-100;
+}
+.security .border-500 {
+  @apply border-red-500;
+}
+.security .border-900 {
+  @apply border-red-900;
+}
+
+.ethics .bg-100 {
+  @apply bg-red-100;
+}
+.ethics .bg-500 {
+  @apply bg-red-500;
+}
+.ethics .bg-900 {
+  @apply bg-red-900;
+}
+.ethics .text-100 {
+  @apply text-red-100;
+}
+.ethics .text-500 {
+  @apply text-red-500;
+}
+.ethics .text-900 {
+  @apply text-red-900;
+}
+.ethics .border-100 {
+  @apply border-red-100;
+}
+.ethics .border-500 {
+  @apply border-red-500;
+}
+.ethics .border-900 {
+  @apply border-red-900;
+}
+
+.uncategorized .bg-100 {
+  @apply bg-red-100;
+}
+.uncategorized .bg-500 {
+  @apply bg-red-500;
+}
+.uncategorized .bg-900 {
+  @apply bg-red-900;
+}
+.uncategorized .text-100 {
+  @apply text-red-100;
+}
+.uncategorized .text-500 {
+  @apply text-red-500;
+}
+.uncategorized .text-900 {
+  @apply text-red-900;
+}
+.uncategorized .border-100 {
+  @apply border-red-100;
+}
+.uncategorized .border-500 {
+  @apply border-red-500;
+}
+.uncategorized .border-900 {
+  @apply border-red-900;
+}
+
+/*# sourceMappingURL=Themes.css.map */
