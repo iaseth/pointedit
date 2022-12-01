@@ -92,7 +92,7 @@ export default function Home ({appdata, updateAppdata, dbFuncs, LOGX}) {
 			}
 			case "ViewNote": {
 				const category = categories.find(cat => cat.id === note.categoryId);
-				return <ViewNote {...{note, category, goTo}} />;
+				return <ViewNote {...{note, category, goTo, dbFuncs}} />;
 			}
 			default:
 				return null;
