@@ -11,7 +11,7 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 	const aspectRef = React.useRef(null);
 	const [init, setInit] = React.useState(false);
 	const [aspect, setAspect] = React.useState(null);
-	const [pointIds, setPointIds] = React.useState([]);
+	const pointIds = aspect ? aspect.pointIds : [];
 
 	React.useEffect(() => {
 		if (!init) {
@@ -19,11 +19,10 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 			request.onsuccess = () => {
 				const res = request.result;
 				setAspect(res);
-				setPointIds([...res.pointIds]);
 				setInit(true);
 			};
 		}
-	}, [aspectId, dbFuncs, init, setInit, setAspect, setPointIds]);
+	}, [aspectId, dbFuncs, init, setInit, setAspect]);
 
 	const updateAspect = (nuAspect) => {
 		if (!_.isEqual(nuAspect, aspect)) {
@@ -34,15 +33,6 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 			LOGX.plain(nuAspect);
 		}
 	};
-
-	React.useEffect(() => {
-		if (init && !_.isEqual(pointIds, aspect.pointIds)) {
-			const nuAspect = {...aspect};
-			nuAspect.pointIds = [...pointIds];
-			nuAspect.pointsCount = pointIds.length;
-			updateAspect(nuAspect);
-		}
-	}, [pointIds, init, aspect, updateAspect]);
 
 	const addNewPoint = (atIndex=false) => {
 		const nuPoint = {
@@ -56,14 +46,14 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 		};
 		dbFuncs.savePointToDB(nuPoint);
 
-		const nuPointIds = [...pointIds];
+		const nuAspect = {...aspect};
 		if (atIndex === false) {
-			nuPointIds.push(nuPoint.id);
+			nuAspect.pointIds.push(nuPoint.id);
 		} else {
-			nuPointIds.splice(atIndex, 0, nuPoint.id);
+			nuAspect.pointIds.splice(atIndex, 0, nuPoint.id);
 		}
 
-		setPointIds([...nuPointIds]);
+		setAspect(nuAspect);
 	};
 
 	if (init && pointIds.length === 0) {
