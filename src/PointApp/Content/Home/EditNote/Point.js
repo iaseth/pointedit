@@ -44,9 +44,9 @@ export default function Point ({k, pointId, addNewPoint, dbFuncs, LOGX}) {
 
 	return (
 		<div className="flex items-center">
-			<h4 className="grow">
+			<p className="grow">
 				<EditableText number={k+1} text={point.text} {...{setText, onEnter}} autoFocus={true} />
-			</h4>
+			</p>
 		</div>
 	);
 }

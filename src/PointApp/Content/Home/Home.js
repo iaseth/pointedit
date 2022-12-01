@@ -99,7 +99,7 @@ export default function Home ({appdata, updateAppdata, dbFuncs, LOGX}) {
 	};
 
 	return (
-		<section className="min-h-screen pb-12">
+		<section className={"min-h-screen pb-12 " + categoryId}>
 			{getCurrentHomeTab()}
 		</section>
 	);

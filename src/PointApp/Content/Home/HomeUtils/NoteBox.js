@@ -35,7 +35,7 @@ export function NoteBox ({note, onClick}) {
 
 			<main className="px-3 py-3 border-t-2 border-green-500 text-center">
 				<h4 className="text-green-800">{note.title || "No title"}</h4>
-				<h6 className="text-slate-500">{note.description || "No description"}</h6>
+				<h6 className="text-slate-500">Note</h6>
 			</main>
 
 		</article>

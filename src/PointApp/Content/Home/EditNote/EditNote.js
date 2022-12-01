@@ -62,9 +62,9 @@ export default function EditNote ({
 						<EditableText text={note.title} setText={v => updateNoteProp('title', v)} placeholder="Title" autoFocus={true} />
 					</h3>
 
-					<h4>
+					<p>
 						<EditableText text={note.description} setText={v => updateNoteProp('description', v)} placeholder="Description" />
-					</h4>
+					</p>
 
 					<ItemsSelector ITEMS={appdata.categories} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
 				</section>

@@ -197,7 +197,7 @@ export default function PointApp () {
 	};
 
 	return (
-		<div className="bg-slate-100">
+		<div className="bg-slate-100 text-slate-800">
 
 			<main className="bg-slate-50">
 				<Header {...{PRODUCTION, TABS, currentTabIndex, setCurrentTabIndex}} />
