@@ -7,7 +7,7 @@ import Aspect from './Aspect';
 
 
 
-const MAX_POINTS = 100;
+const MAX_POINTS = 1000;
 
 export default function EditNote ({
 	appdata, updateAppdata, goTo,
@@ -19,13 +19,14 @@ export default function EditNote ({
 		if (modified) {
 			nuNote.modifiedAt = Date.now();
 		}
-		saveNote({...note}, aspects);
+		saveNote({...nuNote}, aspects);
 		LOGX.updated('note', nuNote.id);
 	};
 
 	const updateNoteProp = (prop, value) => {
-		note[prop] = value;
-		updateNote({...note}, true);
+		const nuNote = {...note};
+		nuNote[prop] = value;
+		updateNote(nuNote, true);
 	};
 
 	const addNewAspect = () => {

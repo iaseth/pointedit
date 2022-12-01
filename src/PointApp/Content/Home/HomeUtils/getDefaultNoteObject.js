@@ -1,7 +1,7 @@
 
 
 
-const MAX_ASPECTS = 100;
+const MAX_ASPECTS = 1000;
 
 export function getDefaultNoteObject (noteId, categoryId) {
 	const note = {
