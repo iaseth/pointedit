@@ -13,17 +13,14 @@
 .history .text-500 {
   @apply text-red-500;
 }
-.history .text-900 {
-  @apply text-red-900;
-}
-.history .border-100 {
-  @apply border-red-100;
+.history .text-800 {
+  @apply text-red-800;
 }
 .history .border-500 {
   @apply border-red-500;
 }
-.history .border-900 {
-  @apply border-red-900;
+.history .border-800 {
+  @apply border-red-800;
 }
 
 .ancient-history .bg-100 {
@@ -41,17 +38,14 @@
 .ancient-history .text-500 {
   @apply text-red-500;
 }
-.ancient-history .text-900 {
-  @apply text-red-900;
-}
-.ancient-history .border-100 {
-  @apply border-red-100;
+.ancient-history .text-800 {
+  @apply text-red-800;
 }
 .ancient-history .border-500 {
   @apply border-red-500;
 }
-.ancient-history .border-900 {
-  @apply border-red-900;
+.ancient-history .border-800 {
+  @apply border-red-800;
 }
 
 .medieval-history .bg-100 {
@@ -69,17 +63,14 @@
 .medieval-history .text-500 {
   @apply text-red-500;
 }
-.medieval-history .text-900 {
-  @apply text-red-900;
-}
-.medieval-history .border-100 {
-  @apply border-red-100;
+.medieval-history .text-800 {
+  @apply text-red-800;
 }
 .medieval-history .border-500 {
   @apply border-red-500;
 }
-.medieval-history .border-900 {
-  @apply border-red-900;
+.medieval-history .border-800 {
+  @apply border-red-800;
 }
 
 .modern-history .bg-100 {
@@ -97,17 +88,14 @@
 .modern-history .text-500 {
   @apply text-red-500;
 }
-.modern-history .text-900 {
-  @apply text-red-900;
-}
-.modern-history .border-100 {
-  @apply border-red-100;
+.modern-history .text-800 {
+  @apply text-red-800;
 }
 .modern-history .border-500 {
   @apply border-red-500;
 }
-.modern-history .border-900 {
-  @apply border-red-900;
+.modern-history .border-800 {
+  @apply border-red-800;
 }
 
 .world-history .bg-100 {
@@ -125,17 +113,14 @@
 .world-history .text-500 {
   @apply text-red-500;
 }
-.world-history .text-900 {
-  @apply text-red-900;
-}
-.world-history .border-100 {
-  @apply border-red-100;
+.world-history .text-800 {
+  @apply text-red-800;
 }
 .world-history .border-500 {
   @apply border-red-500;
 }
-.world-history .border-900 {
-  @apply border-red-900;
+.world-history .border-800 {
+  @apply border-red-800;
 }
 
 .geography .bg-100 {
@@ -153,17 +138,14 @@
 .geography .text-500 {
   @apply text-red-500;
 }
-.geography .text-900 {
-  @apply text-red-900;
-}
-.geography .border-100 {
-  @apply border-red-100;
+.geography .text-800 {
+  @apply text-red-800;
 }
 .geography .border-500 {
   @apply border-red-500;
 }
-.geography .border-900 {
-  @apply border-red-900;
+.geography .border-800 {
+  @apply border-red-800;
 }
 
 .indian-geography .bg-100 {
@@ -181,17 +163,14 @@
 .indian-geography .text-500 {
   @apply text-red-500;
 }
-.indian-geography .text-900 {
-  @apply text-red-900;
-}
-.indian-geography .border-100 {
-  @apply border-red-100;
+.indian-geography .text-800 {
+  @apply text-red-800;
 }
 .indian-geography .border-500 {
   @apply border-red-500;
 }
-.indian-geography .border-900 {
-  @apply border-red-900;
+.indian-geography .border-800 {
+  @apply border-red-800;
 }
 
 .world-geography .bg-100 {
@@ -209,17 +188,14 @@
 .world-geography .text-500 {
   @apply text-red-500;
 }
-.world-geography .text-900 {
-  @apply text-red-900;
-}
-.world-geography .border-100 {
-  @apply border-red-100;
+.world-geography .text-800 {
+  @apply text-red-800;
 }
 .world-geography .border-500 {
   @apply border-red-500;
 }
-.world-geography .border-900 {
-  @apply border-red-900;
+.world-geography .border-800 {
+  @apply border-red-800;
 }
 
 .disaster-management .bg-100 {
@@ -237,17 +213,14 @@
 .disaster-management .text-500 {
   @apply text-red-500;
 }
-.disaster-management .text-900 {
-  @apply text-red-900;
-}
-.disaster-management .border-100 {
-  @apply border-red-100;
+.disaster-management .text-800 {
+  @apply text-red-800;
 }
 .disaster-management .border-500 {
   @apply border-red-500;
 }
-.disaster-management .border-900 {
-  @apply border-red-900;
+.disaster-management .border-800 {
+  @apply border-red-800;
 }
 
 .ps .bg-100 {
@@ -265,17 +238,14 @@
 .ps .text-500 {
   @apply text-red-500;
 }
-.ps .text-900 {
-  @apply text-red-900;
-}
-.ps .border-100 {
-  @apply border-red-100;
+.ps .text-800 {
+  @apply text-red-800;
 }
 .ps .border-500 {
   @apply border-red-500;
 }
-.ps .border-900 {
-  @apply border-red-900;
+.ps .border-800 {
+  @apply border-red-800;
 }
 
 .polity .bg-100 {
@@ -293,17 +263,14 @@
 .polity .text-500 {
   @apply text-red-500;
 }
-.polity .text-900 {
-  @apply text-red-900;
-}
-.polity .border-100 {
-  @apply border-red-100;
+.polity .text-800 {
+  @apply text-red-800;
 }
 .polity .border-500 {
   @apply border-red-500;
 }
-.polity .border-900 {
-  @apply border-red-900;
+.polity .border-800 {
+  @apply border-red-800;
 }
 
 .governance .bg-100 {
@@ -321,17 +288,14 @@
 .governance .text-500 {
   @apply text-red-500;
 }
-.governance .text-900 {
-  @apply text-red-900;
-}
-.governance .border-100 {
-  @apply border-red-100;
+.governance .text-800 {
+  @apply text-red-800;
 }
 .governance .border-500 {
   @apply border-red-500;
 }
-.governance .border-900 {
-  @apply border-red-900;
+.governance .border-800 {
+  @apply border-red-800;
 }
 
 .constitution .bg-100 {
@@ -349,17 +313,14 @@
 .constitution .text-500 {
   @apply text-red-500;
 }
-.constitution .text-900 {
-  @apply text-red-900;
-}
-.constitution .border-100 {
-  @apply border-red-100;
+.constitution .text-800 {
+  @apply text-red-800;
 }
 .constitution .border-500 {
   @apply border-red-500;
 }
-.constitution .border-900 {
-  @apply border-red-900;
+.constitution .border-800 {
+  @apply border-red-800;
 }
 
 .ir .bg-100 {
@@ -377,17 +338,14 @@
 .ir .text-500 {
   @apply text-red-500;
 }
-.ir .text-900 {
-  @apply text-red-900;
-}
-.ir .border-100 {
-  @apply border-red-100;
+.ir .text-800 {
+  @apply text-red-800;
 }
 .ir .border-500 {
   @apply border-red-500;
 }
-.ir .border-900 {
-  @apply border-red-900;
+.ir .border-800 {
+  @apply border-red-800;
 }
 
 .econ .bg-100 {
@@ -405,17 +363,14 @@
 .econ .text-500 {
   @apply text-red-500;
 }
-.econ .text-900 {
-  @apply text-red-900;
-}
-.econ .border-100 {
-  @apply border-red-100;
+.econ .text-800 {
+  @apply text-red-800;
 }
 .econ .border-500 {
   @apply border-red-500;
 }
-.econ .border-900 {
-  @apply border-red-900;
+.econ .border-800 {
+  @apply border-red-800;
 }
 
 .indian-economy .bg-100 {
@@ -433,17 +388,14 @@
 .indian-economy .text-500 {
   @apply text-red-500;
 }
-.indian-economy .text-900 {
-  @apply text-red-900;
-}
-.indian-economy .border-100 {
-  @apply border-red-100;
+.indian-economy .text-800 {
+  @apply text-red-800;
 }
 .indian-economy .border-500 {
   @apply border-red-500;
 }
-.indian-economy .border-900 {
-  @apply border-red-900;
+.indian-economy .border-800 {
+  @apply border-red-800;
 }
 
 .world-economy .bg-100 {
@@ -461,17 +413,14 @@
 .world-economy .text-500 {
   @apply text-red-500;
 }
-.world-economy .text-900 {
-  @apply text-red-900;
-}
-.world-economy .border-100 {
-  @apply border-red-100;
+.world-economy .text-800 {
+  @apply text-red-800;
 }
 .world-economy .border-500 {
   @apply border-red-500;
 }
-.world-economy .border-900 {
-  @apply border-red-900;
+.world-economy .border-800 {
+  @apply border-red-800;
 }
 
 .agriculture .bg-100 {
@@ -489,17 +438,14 @@
 .agriculture .text-500 {
   @apply text-red-500;
 }
-.agriculture .text-900 {
-  @apply text-red-900;
-}
-.agriculture .border-100 {
-  @apply border-red-100;
+.agriculture .text-800 {
+  @apply text-red-800;
 }
 .agriculture .border-500 {
   @apply border-red-500;
 }
-.agriculture .border-900 {
-  @apply border-red-900;
+.agriculture .border-800 {
+  @apply border-red-800;
 }
 
 .schemes .bg-100 {
@@ -517,17 +463,14 @@
 .schemes .text-500 {
   @apply text-red-500;
 }
-.schemes .text-900 {
-  @apply text-red-900;
-}
-.schemes .border-100 {
-  @apply border-red-100;
+.schemes .text-800 {
+  @apply text-red-800;
 }
 .schemes .border-500 {
   @apply border-red-500;
 }
-.schemes .border-900 {
-  @apply border-red-900;
+.schemes .border-800 {
+  @apply border-red-800;
 }
 
 .scitech .bg-100 {
@@ -545,17 +488,14 @@
 .scitech .text-500 {
   @apply text-red-500;
 }
-.scitech .text-900 {
-  @apply text-red-900;
-}
-.scitech .border-100 {
-  @apply border-red-100;
+.scitech .text-800 {
+  @apply text-red-800;
 }
 .scitech .border-500 {
   @apply border-red-500;
 }
-.scitech .border-900 {
-  @apply border-red-900;
+.scitech .border-800 {
+  @apply border-red-800;
 }
 
 .Biology .bg-100 {
@@ -573,17 +513,14 @@
 .Biology .text-500 {
   @apply text-red-500;
 }
-.Biology .text-900 {
-  @apply text-red-900;
-}
-.Biology .border-100 {
-  @apply border-red-100;
+.Biology .text-800 {
+  @apply text-red-800;
 }
 .Biology .border-500 {
   @apply border-red-500;
 }
-.Biology .border-900 {
-  @apply border-red-900;
+.Biology .border-800 {
+  @apply border-red-800;
 }
 
 .digital .bg-100 {
@@ -601,17 +538,14 @@
 .digital .text-500 {
   @apply text-red-500;
 }
-.digital .text-900 {
-  @apply text-red-900;
-}
-.digital .border-100 {
-  @apply border-red-100;
+.digital .text-800 {
+  @apply text-red-800;
 }
 .digital .border-500 {
   @apply border-red-500;
 }
-.digital .border-900 {
-  @apply border-red-900;
+.digital .border-800 {
+  @apply border-red-800;
 }
 
 .science .bg-100 {
@@ -629,17 +563,14 @@
 .science .text-500 {
   @apply text-red-500;
 }
-.science .text-900 {
-  @apply text-red-900;
-}
-.science .border-100 {
-  @apply border-red-100;
+.science .text-800 {
+  @apply text-red-800;
 }
 .science .border-500 {
   @apply border-red-500;
 }
-.science .border-900 {
-  @apply border-red-900;
+.science .border-800 {
+  @apply border-red-800;
 }
 
 .space .bg-100 {
@@ -657,17 +588,14 @@
 .space .text-500 {
   @apply text-red-500;
 }
-.space .text-900 {
-  @apply text-red-900;
-}
-.space .border-100 {
-  @apply border-red-100;
+.space .text-800 {
+  @apply text-red-800;
 }
 .space .border-500 {
   @apply border-red-500;
 }
-.space .border-900 {
-  @apply border-red-900;
+.space .border-800 {
+  @apply border-red-800;
 }
 
 .technology .bg-100 {
@@ -685,17 +613,14 @@
 .technology .text-500 {
   @apply text-red-500;
 }
-.technology .text-900 {
-  @apply text-red-900;
-}
-.technology .border-100 {
-  @apply border-red-100;
+.technology .text-800 {
+  @apply text-red-800;
 }
 .technology .border-500 {
   @apply border-red-500;
 }
-.technology .border-900 {
-  @apply border-red-900;
+.technology .border-800 {
+  @apply border-red-800;
 }
 
 .misc .bg-100 {
@@ -713,17 +638,14 @@
 .misc .text-500 {
   @apply text-red-500;
 }
-.misc .text-900 {
-  @apply text-red-900;
-}
-.misc .border-100 {
-  @apply border-red-100;
+.misc .text-800 {
+  @apply text-red-800;
 }
 .misc .border-500 {
   @apply border-red-500;
 }
-.misc .border-900 {
-  @apply border-red-900;
+.misc .border-800 {
+  @apply border-red-800;
 }
 
 .security .bg-100 {
@@ -741,17 +663,14 @@
 .security .text-500 {
   @apply text-red-500;
 }
-.security .text-900 {
-  @apply text-red-900;
-}
-.security .border-100 {
-  @apply border-red-100;
+.security .text-800 {
+  @apply text-red-800;
 }
 .security .border-500 {
   @apply border-red-500;
 }
-.security .border-900 {
-  @apply border-red-900;
+.security .border-800 {
+  @apply border-red-800;
 }
 
 .ethics .bg-100 {
@@ -769,17 +688,14 @@
 .ethics .text-500 {
   @apply text-red-500;
 }
-.ethics .text-900 {
-  @apply text-red-900;
-}
-.ethics .border-100 {
-  @apply border-red-100;
+.ethics .text-800 {
+  @apply text-red-800;
 }
 .ethics .border-500 {
   @apply border-red-500;
 }
-.ethics .border-900 {
-  @apply border-red-900;
+.ethics .border-800 {
+  @apply border-red-800;
 }
 
 .uncategorized .bg-100 {
@@ -797,17 +713,14 @@
 .uncategorized .text-500 {
   @apply text-red-500;
 }
-.uncategorized .text-900 {
-  @apply text-red-900;
-}
-.uncategorized .border-100 {
-  @apply border-red-100;
+.uncategorized .text-800 {
+  @apply text-red-800;
 }
 .uncategorized .border-500 {
   @apply border-red-500;
 }
-.uncategorized .border-900 {
-  @apply border-red-900;
+.uncategorized .border-800 {
+  @apply border-red-800;
 }
 
 /*# sourceMappingURL=Themes.css.map */

@@ -19,7 +19,7 @@ export default function AspectView ({aspectId, dbFuncs}) {
 	}
 
 	return (
-		<section className="bg-white shadow px-4 border-l-4 border-green-500 rounded-r">
+		<section className="bg-white shadow px-4 border-l-4 border-500 rounded-r">
 			<header className="py-2">
 				<h3 className="py-2">{aspect.title || <span className="faded">No title</span>}</h3>
 				<p>{aspect.description || <span className="faded">No description</span>}</p>
