@@ -78,10 +78,12 @@ const DATABASE_NAME = APPNAME;
 const DATABASE_TABLES = [
 	// {name: "notes", "fields": ['title', 'description'], keyPath: 'id'},
 	{name: "aspects", "fields": [
-		'createdAt', 'modifiedAt',
-		'points', 'pointId'
+		'noteId',
+		'createdAt', 'modifiedAt', 'hidden',
+		'points', 'highestPointId'
 	], keyPath: 'id'},
 	{name: "points", "fields": [
+		'noteId', 'aspectId',
 		'createdAt', 'modifiedAt', 'hidden'
 	], keyPath: 'id'}
 ];

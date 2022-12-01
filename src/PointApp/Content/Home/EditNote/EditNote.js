@@ -29,9 +29,10 @@ export default function EditNote ({
 	};
 
 	const addNewAspect = () => {
-		const aspectId = note.aspectId++;
-		const aspect = {
-			id: aspectId,
+		const nuAspectId = note.highestAspectId++;
+		const nuAspect = {
+			id: nuAspectId,
+			noteId: note.id,
 			createdAt: Date.now(),
 			modifiedAt: Date.now(),
 
@@ -41,11 +42,11 @@ export default function EditNote ({
 
 			pointIds: [],
 			pointsCount: [],
-			pointId: aspectId * MAX_POINTS,
+			highestPointId: nuAspectId * MAX_POINTS,
 			hidden: false
 		};
-		dbFuncs.saveAspectToDB(aspect);
-		aspects.push(aspect);
+		dbFuncs.saveAspectToDB(nuAspect);
+		aspects.push(nuAspect);
 		setAspects([...aspects]);
 		saveNote({...note}, aspects);
 	};

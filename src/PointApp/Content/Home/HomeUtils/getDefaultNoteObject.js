@@ -30,7 +30,7 @@ export function getDefaultNoteObject (noteId, categoryId) {
 		categoryId: categoryId,
 
 		aspectIds: [],
-		aspectId: MAX_ASPECTS * noteId
+		highestAspectId: MAX_ASPECTS * noteId
 	};
 	return note;
 }

@@ -23,7 +23,9 @@ export default function Aspect ({k, aspect, updateAspect}) {
 
 	const addNewPoint = (atIndex=false) => {
 		const point = {
-			id: aspect.pointId++,
+			id: aspect.highestPointId++,
+			aspectId: aspect.id,
+			noteId: aspect.noteId,
 			createdAt: Date.now(),
 			modifiedAt: Date.now(),
 			text: "",
