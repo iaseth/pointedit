@@ -12,6 +12,8 @@ h6 { @apply text-xs; }
 
 p { @apply leading-7; }
 
+.faded { @apply opacity-20; }
+
 table {
 	@apply font-bold text-sm text-slate-800 border-2 border-green-500;
 

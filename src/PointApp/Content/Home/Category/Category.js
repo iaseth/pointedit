@@ -6,7 +6,12 @@ import {Button} from '../../../Utils';
 export default function Category ({appdata, category, goTo}) {
 	const goToViewer = goTo.Viewer;
 
-	const nestedCats = appdata.categories.filter(cat => cat.parent === category.id);
+	const parentId = category.parent || null;
+	const parent = parentId ? appdata.categories.find(cat => cat.id === parentId) : null;
+	const siblings = parentId ? appdata.categories.filter(cat => cat.parent === parentId && cat.id !== category.id) : [];
+
+	const children = appdata.categories.filter(cat => cat.parent === category.id);
+
 	const notes = appdata.notes.filter(n => n.categoryId === category.id);
 
 	const pinnedNotes = notes.filter(n => n.pinned);
@@ -17,6 +22,7 @@ export default function Category ({appdata, category, goTo}) {
 		<div className="">
 			<header className="px-4 py-4">
 				<section className="max-w-5xl mx-auto">
+					{parent && <h4 className="text-green-800 cursor-pointer" onClick={() => goTo.Category(parent.id)}>{parent.title}</h4>}
 					<h2 className="py-2">{category.title}</h2>
 					<p></p>
 				</section>
@@ -35,14 +41,18 @@ export default function Category ({appdata, category, goTo}) {
 					<NoteGrid {...{notes, goToViewer}} title="All" />
 				</div>
 
-				{nestedCats.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid {...{appdata}} categories={nestedCats} goToCategory={goTo.Category} />
+				{children.length !== 0 && <div className="bg-slate-100">
+					<CategoryGrid {...{appdata}} categories={children} goToCategory={goTo.Category} title="Sub Topics" />
+				</div>}
+
+				{siblings.length !== 0 && <div className="bg-slate-100">
+					<CategoryGrid {...{appdata}} categories={siblings} goToCategory={goTo.Category} title="Similar Topics" />
 				</div>}
 			</main>
 
 			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
 				<div>
-					<Button onClick={goTo.Dashboard}>Back</Button>
+					<Button onClick={goTo.Dashboard}>Home</Button>
 					<Button onClick={() => goTo.Editor(-1)}>Add note</Button>
 				</div>
 			</footer>

@@ -3,12 +3,20 @@ import {CategoryBox} from './CategoryBox';
 
 
 
-export function CategoryGrid ({appdata, categories, goToCategory}) {
+export function CategoryGrid ({appdata, categories, goToCategory, title}) {
 	const catItems = categories.map((category, k) => <CategoryBox key={k} {...{appdata, category, goToCategory}} />);
 
 	return (
-		<Grid>
-			{catItems}
-		</Grid>
+		<div>
+			<header>
+				{title && <h3>{title}</h3>}
+			</header>
+
+			<main className="py-3">
+				<Grid>
+					{catItems}
+				</Grid>
+			</main>
+		</div>
 	);
 }

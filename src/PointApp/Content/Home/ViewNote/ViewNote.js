@@ -10,8 +10,8 @@ export default function ViewNote ({note, category, goTo, dbFuncs}) {
 			<header className="max-w-3xl mx-auto px-4 py-5">
 				<section className="max-w-xl">
 					<h4 className="text-green-800 cursor-pointer" onClick={() => goTo.Category(category.id)}>{category.title}</h4>
-					<h1 className="py-3">{note.title}</h1>
-					<p>{note.description}</p>
+					<h1 className="py-3">{note.title || <span className="faded">No title</span>}</h1>
+					<p>{note.description || <span className="faded">No description</span>}</p>
 				</section>
 			</header>
 

@@ -19,20 +19,20 @@ export default function AspectView ({aspectId, dbFuncs}) {
 	}
 
 	return (
-		<section className="bg-white shadow px-4 py-3 border-l-4 border-green-500 ch:py-2">
+		<section className="bg-white shadow px-4 py-2 border-l-4 border-green-500 ch:py-2">
 			<header>
-				<h3>{aspect.title}</h3>
-				<h4>{aspect.description}</h4>
+				<h3 className="py-2">{aspect.title || <span className="faded">No title</span>}</h3>
+				<h4>{aspect.description || <span className="faded">No description</span>}</h4>
 			</header>
 
 			<main>
 				<section className="px-4">
-					{aspect.pointIds.map(pointId => <PointView key={pointId} {...{pointId, dbFuncs}} />)}
+					{aspect.pointIds.map((pointId, k) => <PointView key={pointId} {...{k, pointId, dbFuncs}} />)}
 				</section>
 			</main>
 
 			<footer>
-				<h4>{aspect.conclusion}</h4>
+				<h4>{aspect.conclusion || <span className="faded">No conclusion</span>}</h4>
 			</footer>
 		</section>
 	);

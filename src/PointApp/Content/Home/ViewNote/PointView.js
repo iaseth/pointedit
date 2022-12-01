@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-export default function PointView ({pointId, dbFuncs}) {
+export default function PointView ({k, pointId, dbFuncs}) {
 	const [point, setPoint] = React.useState(null);
 
 	React.useEffect(() => {
@@ -17,8 +17,8 @@ export default function PointView ({pointId, dbFuncs}) {
 	}
 
 	return (
-		<div>
-			<p>{point.text}</p>
+		<div className="py-1">
+			<p>{point.text || <span className="faded">Empty</span>}</p>
 		</div>
 	);
 }
