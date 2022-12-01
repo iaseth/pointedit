@@ -1,6 +1,10 @@
 
-$bgShades: [100, 200, 500, 700, 900];
+$bgShades: [100, 200, 400, 500, 700, 900];
+$bgFocusShades: [500];
+
 $txShades: [500, 800];
+$textFocusShades: [500];
+
 $bdShades: [500, 800];
 
 $themes: (
@@ -48,9 +52,21 @@ $themes: (
 			}
 		}
 
+		@each $bgFocusShade in $bgFocusShades {
+			.focus\:bg-#{$bgFocusShade} {
+				@apply focus:bg-#{$color}-#{$bgFocusShade};
+			}
+		}
+
 		@each $txShade in $txShades {
 			.text-#{$txShade} {
 				@apply text-#{$color}-#{$txShade};
+			}
+		}
+
+		@each $textFocusShade in $textFocusShades {
+			.focus\:text-#{$textFocusShade} {
+				@apply focus:text-#{$color}-#{$textFocusShade};
 			}
 		}
 
