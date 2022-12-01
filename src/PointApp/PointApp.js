@@ -3,6 +3,7 @@ import React from 'react';
 import LOGX from './LOGX';
 import {getStore, getStoreW} from './dbutils';
 
+import './Themes.css';
 import './PointApp.scss';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';

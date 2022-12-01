@@ -82,9 +82,9 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 
 	return (
 		<section className="py-4" ref={aspectRef}>
-			<article className="border-l-4 border-green-500 shadow">
+			<article className="border-l-4 border-500 shadow">
 				<header>
-					<h5 className="px-2 py-1 text-green-500">Aspect # {k+1}</h5>
+					<h5 className="px-2 py-1 text-500">Aspect # {k+1}</h5>
 					<h3>
 						<EditableText text={aspect.title} setText={(v) => updateAspectProp('title', v)} placeholder="Title" autoFocus={true} />
 					</h3>

@@ -46,10 +46,10 @@ export function ItemsSelector ({ITEMS, itemId, setItemId}) {
 	};
 
 	return (
-		<div className="focusable cursor-pointer select-none outline-0 focus:bg-green-500 focus:text-white" tabIndex="0" onKeyDown={handleKeyDown}>
-			<div onClick={() => setExpanded(!expanded)} className="flex border-y-2 border-green-500">
+		<div className="focusable cursor-pointer select-none outline-0 focus:bg-500 focus:text-white" tabIndex="0" onKeyDown={handleKeyDown}>
+			<div onClick={() => setExpanded(!expanded)} className="flex border-y-2 border-500">
 				<div className="flex p-2">
-					<h4 className="m-auto bg-green-700 text-white px-2 py-1 rounded">{itemIndex+1}</h4>
+					<h4 className="m-auto bg-700 text-white px-2 py-1 rounded">{itemIndex+1}</h4>
 				</div>
 
 				<div className="px-4 py-4 grow">
@@ -57,12 +57,12 @@ export function ItemsSelector ({ITEMS, itemId, setItemId}) {
 				</div>
 
 				<div className="flex p-2">
-					<h4 className="m-auto bg-green-700 text-white px-2 py-1 rounded">{ITEMS.length}</h4>
+					<h4 className="m-auto bg-700 text-white px-2 py-1 rounded">{ITEMS.length}</h4>
 				</div>
 			</div>
 			<div className="relative">
-				{expanded && <ul className="absolute z-50 w-full bg-white text-green-800 border-2 border-t-0 border-green-500">
-					{ITEMS.map((item, k) => <li key={k} onClick={() => selectItem(item.id)} className="px-4 py-3 hover:bg-green-500 hover:text-white">
+				{expanded && <ul className="absolute z-50 w-full bg-white text-800 border-2 border-t-0 border-500">
+					{ITEMS.map((item, k) => <li key={k} onClick={() => selectItem(item.id)} className="px-4 py-3 hover:bg-500 hover:text-white">
 						<h5>{item.title}</h5>
 					</li>)}
 				</ul>}

@@ -54,7 +54,7 @@ export function EditableText ({
 	return (
 		<div className="relative">
 			{number && <div className="absolute px-3 py-4 text-right" style={divStyle}>
-				<span className="px-2 py-1 bg-green-500 text-sm text-white font-bold rounded">{number}</span>
+				<span className="px-2 py-1 bg-500 text-sm text-white font-bold rounded">{number}</span>
 			</div>}
 			<textarea autoFocus={autoFocus} rows="1" defaultValue={text} onChange={handleChange} onKeyDown={handleKeyDown} className="focusable block w-full px-3 py-4 resize-none overflow-hidden outline-0 hover:bg-slate-100 focus:bg-slate-200" placeholder={placeholder} style={inputStyle}></textarea>
 		</div>
