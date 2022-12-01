@@ -3,7 +3,8 @@
 
 const MAX_ASPECTS = 1000;
 
-export function getDefaultNoteObject (noteId, categoryId) {
+export function getDefaultNoteObject (highestNoteId, categoryId) {
+	const noteId = highestNoteId + 1;
 	const note = {
 		id: noteId,
 		createdAt: Date.now(),

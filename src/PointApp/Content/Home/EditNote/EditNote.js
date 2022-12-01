@@ -47,9 +47,11 @@ export default function EditNote ({
 			hidden: false
 		};
 		dbFuncs.saveAspectToDB(nuAspect);
-		aspects.push(nuAspect);
-		setAspects([...aspects]);
-		saveNote({...note}, aspects);
+
+		const nuAspects = [...aspects];
+		nuAspects.push(nuAspect);
+		setAspects(nuAspects);
+		saveNote({...note}, nuAspects);
 	};
 
 	const updateAspect = (nuAspect) => {
@@ -58,8 +60,10 @@ export default function EditNote ({
 		if (!_.isEqual(nuAspect, currentAspect)) {
 			nuAspect.modifiedAt = Date.now();
 			dbFuncs.saveAspectToDB(nuAspect);
-			aspects[aspectIndex] = nuAspect;
-			setAspects([...aspects]);
+
+			const nuAspects = [...aspects];
+			nuAspects[aspectIndex] = nuAspect;
+			setAspects(nuAspects);
 			LOGX.updatedAt('aspect', nuAspect.id);
 		}
 	};
@@ -80,7 +84,7 @@ export default function EditNote ({
 			</header>
 
 			<main className="">
-				{aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect}} />)}
+				{aspects.map((aspect, k) => <Aspect key={aspect.id} {...{k, aspect, updateAspect, dbFuncs}} />)}
 			</main>
 
 			<footer className="py-6">

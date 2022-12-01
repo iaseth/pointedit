@@ -7,7 +7,7 @@ import Point from './Point';
 
 
 
-export default function Aspect ({k, aspect, updateAspect}) {
+export default function Aspect ({k, aspect, updateAspect, dbFuncs}) {
 	const aspectRef = React.useRef(null);
 	const [points, setPoints] = React.useState([]);
 
@@ -17,7 +17,7 @@ export default function Aspect ({k, aspect, updateAspect}) {
 			const nuAspect = {...aspect};
 			nuAspect.pointIds = pointIds;
 			nuAspect.pointsCount = pointIds.length;
-			updateAspect({...nuAspect});
+			updateAspect(nuAspect);
 		}
 	}, [points]);
 
@@ -60,8 +60,11 @@ export default function Aspect ({k, aspect, updateAspect}) {
 		const point = points[pointIndex];
 		if (!_.isEqual(nuPoint, point)) {
 			nuPoint.modifiedAt = Date.now();
-			points[pointIndex] = nuPoint;
-			setPoints([...points]);
+			dbFuncs.savePointToDB(nuPoint);
+
+			const nuPoints = [...points];
+			nuPoints[pointIndex] = nuPoint;
+			setPoints(nuPoints);
 		}
 	};
 

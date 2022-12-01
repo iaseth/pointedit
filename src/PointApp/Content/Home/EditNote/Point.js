@@ -6,8 +6,9 @@ import {EditableText} from './Utils';
 
 export default function Point ({k, point, updatePoint, addNewPoint}) {
 	const setText = (text) => {
-		point.text = text;
-		updatePoint(point);
+		const nuPoint = {...point};
+		nuPoint.text = text;
+		updatePoint(nuPoint);
 	};
 
 	const onEnter = () => {
