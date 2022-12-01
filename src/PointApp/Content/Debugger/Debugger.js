@@ -5,7 +5,7 @@ import NotesList from './NotesList';
 
 
 
-export default function Debugger ({appdata, LOGX}) {
+export default function Debugger ({categories, notes, LOGX}) {
 	return (
 		<div className="max-w-3xl mx-auto min-h-screen px-4">
 			<header className="py-2"></header>
@@ -14,8 +14,8 @@ export default function Debugger ({appdata, LOGX}) {
 				<div className="space-y-10">
 					<LocalStorage {...{LOGX}} />
 					<IndexedDB />
-					<CategoryTable {...{appdata}} />
-					<NotesList notes={appdata.notes} />
+					<CategoryTable {...{categories, notes}} />
+					<NotesList {...{notes}} />
 				</div>
 			</main>
 

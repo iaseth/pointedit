@@ -6,11 +6,11 @@ import {
 
 
 
-export default function CategoryTable ({appdata}) {
+export default function CategoryTable ({categories, notes}) {
 	const CategoryRow = ({k, row}) => {
 		const category = row;
-		const cats = appdata.categories.filter(cat => cat.parent === category.id).length;
-		const notesCount = appdata.notes.filter(n => n.categoryId === category.id).length;
+		const cats = categories.filter(cat => cat.parent === category.id).length;
+		const notesCount = notes.filter(n => n.categoryId === category.id).length;
 
 		return (
 			<tr>
@@ -30,10 +30,10 @@ export default function CategoryTable ({appdata}) {
 			<DebugHeader text="List of categories" />
 
 			<main>
-				<DebugTable headings={["", "Category", "ID", "Cats", "Notes"]} rows={appdata.categories} RowComponent={CategoryRow} />
+				<DebugTable headings={["", "Category", "ID", "Cats", "Notes"]} rows={categories} RowComponent={CategoryRow} />
 			</main>
 
-			<DebugFooter count={appdata.categories.length} what="categories" />
+			<DebugFooter count={categories.length} what="categories" />
 		</div>
 	);
 }

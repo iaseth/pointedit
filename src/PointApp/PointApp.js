@@ -66,7 +66,6 @@ const CATEGORIES = [
 ];
 
 const APPDATA = {
-	categories: CATEGORIES,
 	defaultCategory: CATEGORIES.at(-1).id,
 	notes: [],
 	highestNoteId: 0
@@ -103,6 +102,9 @@ export default function PointApp () {
 		LS.setItem('appdata', JSON.stringify(newAppdata));
 		LOGX.savedAt('appdata');
 	};
+
+	const categories = CATEGORIES;
+	const {notes} = appdata;
 
 	const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 	const currentTabTitle = TABS[currentTabIndex].title;
@@ -185,13 +187,13 @@ export default function PointApp () {
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
 			case "Home":
-				return <Home {...{appdata, updateAppdata, dbFuncs}} LOGX={LOGX.getChild('Home')} />;
+				return <Home {...{appdata, categories, notes, updateAppdata, dbFuncs}} LOGX={LOGX.getChild('Home')} />;
 			case "Market":
 				return <Market />;
 			case "Settings":
 				return <Settings />;
 			case "Debug":
-				return <Debugger {...{appdata}} LOGX={LOGX.getChild('Debugger')} />;
+				return <Debugger {...{categories, notes}} LOGX={LOGX.getChild('Debugger')} />;
 			default:
 				return null;
 		}

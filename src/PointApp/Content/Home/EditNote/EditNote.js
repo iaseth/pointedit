@@ -10,7 +10,7 @@ import Aspect from './Aspect';
 const MAX_POINTS = 1000;
 
 export default function EditNote ({
-	appdata, updateAppdata, goTo,
+	categories, updateAppdata, goTo,
 	note, saveNote, dbFuncs, LOGX
 }) {
 	const aspectIds = note.aspectIds;
@@ -66,7 +66,7 @@ export default function EditNote ({
 						<EditableText text={note.description} setText={v => updateNoteProp('description', v)} placeholder="Description" />
 					</div>
 
-					<ItemsSelector ITEMS={appdata.categories} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
+					<ItemsSelector ITEMS={categories} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
 				</section>
 			</header>
 

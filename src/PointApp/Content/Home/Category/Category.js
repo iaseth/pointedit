@@ -3,19 +3,19 @@ import {Button} from '../../../Utils';
 
 
 
-export default function Category ({appdata, category, goTo}) {
+export default function Category ({notes, categories, category, goTo}) {
 	const goToViewer = goTo.Viewer;
 
 	const parentId = category.parent || null;
-	const parent = parentId ? appdata.categories.find(cat => cat.id === parentId) : null;
-	const siblings = parentId ? appdata.categories.filter(cat => cat.parent === parentId && cat.id !== category.id) : [];
+	const parent = parentId ? categories.find(cat => cat.id === parentId) : null;
+	const siblings = parentId ? categories.filter(cat => cat.parent === parentId && cat.id !== category.id) : [];
 
-	const children = appdata.categories.filter(cat => cat.parent === category.id);
+	const children = categories.filter(cat => cat.parent === category.id);
 
-	const notes = appdata.notes.filter(n => n.categoryId === category.id);
+	const catNotes = notes.filter(n => n.categoryId === category.id);
 
-	const pinnedNotes = notes.filter(n => n.pinned);
-	const sortedNotes = [...notes].sort((a, b) => (a.modifiedAt - b.modifiedAt));
+	const pinnedNotes = catNotes.filter(n => n.pinned);
+	const sortedNotes = [...catNotes].sort((a, b) => (a.modifiedAt - b.modifiedAt));
 	const recentNotes = sortedNotes.slice(0, 3);
 
 	return (
@@ -38,15 +38,15 @@ export default function Category ({appdata, category, goTo}) {
 				</div>}
 
 				<div>
-					<NoteGrid {...{notes, goToViewer}} title="All" />
+					<NoteGrid notes={catNotes} {...{goToViewer}} title="All" />
 				</div>
 
 				{children.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid notes={appdata.notes} categories={children} goToCategory={goTo.Category} title="Sub Topics" />
+					<CategoryGrid {...{notes}} categories={children} goToCategory={goTo.Category} title="Sub Topics" />
 				</div>}
 
 				{siblings.length !== 0 && <div className="bg-slate-100">
-					<CategoryGrid notes={appdata.notes} categories={siblings} goToCategory={goTo.Category} title="Similar Topics" />
+					<CategoryGrid {...{notes}} categories={siblings} goToCategory={goTo.Category} title="Similar Topics" />
 				</div>}
 			</main>
 

@@ -17,11 +17,12 @@ const HOME_TAB_NAMES = [
 	"ViewNote",
 ];
 
-export default function Home ({appdata, updateAppdata, dbFuncs, LOGX}) {
+export default function Home ({
+	appdata, categories, notes,
+	updateAppdata, dbFuncs, LOGX
+}) {
 	const [homeTabIndex, setHomeTabIndex] = React.useState(0);
 	const homeTabName = HOME_TAB_NAMES[homeTabIndex];
-
-	const {categories, notes} = appdata;
 
 	const [noteId, setNoteId] = React.useState(-1);
 	const note = notes.find(n => n.id === noteId) || null;
@@ -82,12 +83,12 @@ export default function Home ({appdata, updateAppdata, dbFuncs, LOGX}) {
 	const getCurrentHomeTab = () => {
 		switch (homeTabName) {
 			case "Dashboard":
-				return <Dashboard {...{appdata, goTo}} />;
+				return <Dashboard {...{notes, categories, goTo}} />;
 			case "Category":
-				return <Category {...{appdata, category, goTo}} />;
+				return <Category {...{notes, categories, category, goTo}} />;
 			case "EditNote": {
 				const noteObject = note || getDefaultNoteObject(appdata.highestNoteId, categoryId);
-				return <EditNote {...{appdata, updateAppdata, goTo, saveNote, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
+				return <EditNote {...{categories, updateAppdata, goTo, saveNote, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
 			}
 			case "ViewNote": {
 				const category = categories.find(cat => cat.id === note.categoryId);

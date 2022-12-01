@@ -5,11 +5,10 @@ import {NoteGrid} from '../HomeUtils';
 // function RecentItems () {}
 // function PinnedItems () {}
 
-export default function Dashboard ({appdata, goTo}) {
+export default function Dashboard ({notes, categories, goTo}) {
 	const goToViewer = goTo.Viewer;
 
-	const topLevelCats = appdata.categories.filter(cat => !cat.parent);
-	const notes = appdata.notes;
+	const topLevelCats = categories.filter(cat => !cat.parent);
 
 	const pinnedNotes = notes.filter(n => n.pinned).slice(0, 3);
 	const sortedNotes = [...notes].sort((a, b) => (a.modifiedAt - b.modifiedAt));
