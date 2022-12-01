@@ -18,30 +18,30 @@ export function ItemsSelector ({ITEMS, itemId, setItemId}) {
 		const index = inputElements.findIndex(x => x === e.target);
 
 		switch (e.code) {
-		case "Enter":
-			e.preventDefault(); toggleExpanded();
-			break;
-		case "ArrowLeft":
-			e.preventDefault();
-			if (itemIndex > 0) {
-				setItemId(ITEMS[itemIndex-1].id);
-			}
-			break;
-		case "ArrowUp":
-			e.preventDefault();
-			inputElements[index-1]?.focus();
-			break;
-		case "ArrowRight":
-			e.preventDefault();
-			if (itemIndex+1 < ITEMS.length) {
-				setItemId(ITEMS[itemIndex+1].id);
-			}
-			break;
-		case "ArrowDown":
-			e.preventDefault();
-			inputElements[index+1]?.focus();
-			break;
-		default:
+			case "Enter":
+				e.preventDefault(); toggleExpanded();
+				break;
+			case "ArrowLeft":
+				e.preventDefault();
+				if (itemIndex > 0) {
+					setItemId(ITEMS[itemIndex-1].id);
+				}
+				break;
+			case "ArrowUp":
+				e.preventDefault();
+				inputElements[index-1]?.focus();
+				break;
+			case "ArrowRight":
+				e.preventDefault();
+				if (itemIndex+1 < ITEMS.length) {
+					setItemId(ITEMS[itemIndex+1].id);
+				}
+				break;
+			case "ArrowDown":
+				e.preventDefault();
+				inputElements[index+1]?.focus();
+				break;
+			default:
 		}
 	};
 

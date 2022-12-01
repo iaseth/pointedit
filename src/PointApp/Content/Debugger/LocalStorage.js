@@ -10,7 +10,7 @@ import {
 
 const LS = window.localStorage;
 
-const getRowsFromLS = (LOGX) => {
+const getRowsFromLS = () => {
 	const rows = [...Object.keys(LS)].map(key => ({
 		key: key,
 		length: LS.getItem(key).length
@@ -19,7 +19,7 @@ const getRowsFromLS = (LOGX) => {
 };
 
 export default function LocalStorage ({LOGX}) {
-	const [rows, setRows] = React.useState(getRowsFromLS(LOGX));
+	const [rows, setRows] = React.useState(getRowsFromLS());
 
 	const deleteItem = (key) => {
 		LS.removeItem(key);

@@ -20,20 +20,20 @@ export function EditableText ({
 		const index = inputElements.findIndex(x => x === e.target);
 
 		switch (e.code) {
-		case "Enter":
-			if (onEnter) {
-				e.preventDefault(); onEnter();
-			}
-			break;
-		case "ArrowUp":
-			e.preventDefault();
-			inputElements[index-1]?.focus();
-			break;
-		case "ArrowDown":
-			e.preventDefault();
-			inputElements[index+1]?.focus();
-			break;
-		default:
+			case "Enter":
+				if (onEnter) {
+					e.preventDefault(); onEnter();
+				}
+				break;
+			case "ArrowUp":
+				e.preventDefault();
+				inputElements[index-1]?.focus();
+				break;
+			case "ArrowDown":
+				e.preventDefault();
+				inputElements[index+1]?.focus();
+				break;
+			default:
 		}
 	};
 
