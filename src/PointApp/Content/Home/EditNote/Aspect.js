@@ -19,7 +19,7 @@ export default function Aspect ({k, aspect, updateAspect, dbFuncs}) {
 			nuAspect.pointsCount = pointIds.length;
 			updateAspect(nuAspect);
 		}
-	}, [points]);
+	}, [points, aspect, updateAspect]);
 
 	const addNewPoint = (atIndex=false) => {
 		const point = {
