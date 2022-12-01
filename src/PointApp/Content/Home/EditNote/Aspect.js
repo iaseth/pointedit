@@ -11,38 +11,41 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 	const aspectRef = React.useRef(null);
 	const [init, setInit] = React.useState(false);
 	const [aspect, setAspect] = React.useState(null);
-	const [points, setPoints] = React.useState([]);
+	const [pointIds, setPointIds] = React.useState([]);
 
 	React.useEffect(() => {
 		if (!init) {
 			const request = dbFuncs.getAspectFromDB(aspectId);
 			request.onsuccess = () => {
-				setAspect(request.result);
+				const res = request.result;
+				setAspect(res);
+				setPointIds([...res.pointIds]);
 				setInit(true);
 			};
 		}
-	}, [aspectId, dbFuncs, init, setInit, setAspect]);
+	}, [aspectId, dbFuncs, init, setInit, setAspect, setPointIds]);
 
 	const updateAspect = (nuAspect) => {
 		if (!_.isEqual(nuAspect, aspect)) {
 			nuAspect.modifiedAt = Date.now();
 			dbFuncs.saveAspectToDB(nuAspect);
+			setAspect(nuAspect);
 			LOGX.updatedAt('aspect', nuAspect.id);
+			LOGX.plain(nuAspect);
 		}
 	};
 
 	React.useEffect(() => {
-		const pointIds = points.map(a => a.id);
 		if (init && !_.isEqual(pointIds, aspect.pointIds)) {
 			const nuAspect = {...aspect};
-			nuAspect.pointIds = pointIds;
+			nuAspect.pointIds = [...pointIds];
 			nuAspect.pointsCount = pointIds.length;
 			updateAspect(nuAspect);
 		}
-	}, [points, init, aspect, updateAspect]);
+	}, [pointIds, init, aspect, updateAspect]);
 
 	const addNewPoint = (atIndex=false) => {
-		const point = {
+		const nuPoint = {
 			id: aspect.highestPointId++,
 			aspectId: aspect.id,
 			noteId: aspect.noteId,
@@ -51,17 +54,19 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 			text: "",
 			hidden: false
 		};
+		dbFuncs.savePointToDB(nuPoint);
 
+		const nuPointIds = [...pointIds];
 		if (atIndex === false) {
-			points.push(point);
+			nuPointIds.push(nuPoint.id);
 		} else {
-			points.splice(atIndex, 0, point);
+			nuPointIds.splice(atIndex, 0, nuPoint.id);
 		}
 
-		setPoints([...points]);
+		setPointIds([...nuPointIds]);
 	};
 
-	if (init && points.length === 0) {
+	if (init && pointIds.length === 0) {
 		addNewPoint();
 	}
 
@@ -75,19 +80,6 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 		const nuAspect = {...aspect};
 		nuAspect[prop] = value;
 		updateAspect(nuAspect);
-	};
-
-	const updatePoint = (nuPoint) => {
-		const pointIndex = points.findIndex(p => p.id === nuPoint.id);
-		const point = points[pointIndex];
-		if (!_.isEqual(nuPoint, point)) {
-			nuPoint.modifiedAt = Date.now();
-			dbFuncs.savePointToDB(nuPoint);
-
-			const nuPoints = [...points];
-			nuPoints[pointIndex] = nuPoint;
-			setPoints(nuPoints);
-		}
 	};
 
 	if (!init) {
@@ -114,10 +106,10 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 
 				<main className="">
 					<div className="">
-						{points.map((point, k) => <Point key={point.id} {...{k, point, updatePoint, addNewPoint}} />)}
+						{pointIds.map((pointId, k) => <Point key={pointId} {...{k, pointId, addNewPoint, dbFuncs, LOGX}} />)}
 					</div>
 
-					{points.length === 0 && <div className="">
+					{pointIds.length === 0 && <div className="">
 						<h4 className="text-slate-500 px-3 py-6">No points added.</h4>
 					</div>}
 				</main>
