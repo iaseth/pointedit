@@ -15,7 +15,7 @@ export default function CategoryTable ({appdata}) {
 		return (
 			<tr>
 				<td>{k+1}</td>
-				<td className="text-green-800">{category.title}</td>
+				<td className="text-blue-700">{category.title}</td>
 				<td>
 					<h5 className="text-slate-500">{category.id}</h5>
 				</td>

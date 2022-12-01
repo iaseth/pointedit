@@ -47,7 +47,7 @@ export default function NotesList ({notes}) {
 							<td>{k+1}</td>
 							<td>{n.id}</td>
 							<td>
-								<h4 className="text-green-600">{n.title}</h4>
+								<h4 className="text-blue-600">{n.title}</h4>
 								<h5>{n.categoryId}</h5>
 							</td>
 							<td>

@@ -89,9 +89,9 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 						<EditableText text={aspect.title} setText={(v) => updateAspectProp('title', v)} placeholder="Title" autoFocus={true} />
 					</h3>
 
-					<p>
+					<div>
 						<EditableText text={aspect.introduction} setText={(v) => updateAspectProp('introduction', v)} placeholder="Introduction" />
-					</p>
+					</div>
 				</header>
 
 				<main className="">
@@ -105,9 +105,9 @@ export default function Aspect ({k, aspectId, dbFuncs, LOGX}) {
 				</main>
 
 				<footer className="">
-					<p>
+					<div>
 						<EditableText text={aspect.conclusion} setText={(v) => updateAspectProp('conclusion', v)} placeholder="Conclusion" />
-					</p>
+					</div>
 				</footer>
 			</article>
 		</section>

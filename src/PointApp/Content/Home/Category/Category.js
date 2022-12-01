@@ -20,10 +20,10 @@ export default function Category ({appdata, category, goTo}) {
 
 	return (
 		<div className="">
-			<header className="px-4 py-4">
+			<header className={"px-4 py-4 " + category.id}>
 				<section className="max-w-5xl mx-auto">
-					{parent && <h4 className="text-green-800 cursor-pointer" onClick={() => goTo.Category(parent.id)}>{parent.title}</h4>}
-					<h2 className="py-2">{category.title}</h2>
+					{parent && <h4 className="text-blue-800 cursor-pointer" onClick={() => goTo.Category(parent.id)}>{parent.title}</h4>}
+					<h2 className="text-800 py-2">{category.title}</h2>
 					<p></p>
 				</section>
 			</header>
@@ -50,8 +50,8 @@ export default function Category ({appdata, category, goTo}) {
 				</div>}
 			</main>
 
-			<footer className="max-w-5xl mx-auto px-4 py-4 space-x-4">
-				<div className={category.id}>
+			<footer className={"px-4 py-4 space-x-4 " + category.id}>
+				<div className="max-w-5xl mx-auto">
 					<Button onClick={goTo.Dashboard}>Home</Button>
 					<Button onClick={() => goTo.Editor(-1)}>Add note</Button>
 				</div>

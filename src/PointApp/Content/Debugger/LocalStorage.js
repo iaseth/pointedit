@@ -31,7 +31,7 @@ export default function LocalStorage ({LOGX}) {
 		return (
 			<tr>
 				<td>{k+1}</td>
-				<td className="text-green-600">{row.key}</td>
+				<td className="text-blue-600">{row.key}</td>
 				<td>{row.length}</td>
 				<td>
 					<DebugButton onClick={() => deleteItem(row.key)}>Delete</DebugButton>
