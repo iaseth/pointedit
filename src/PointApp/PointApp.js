@@ -185,16 +185,16 @@ export default function PointApp () {
 
 	const getCurrentAppTab = () => {
 		switch (currentTabTitle) {
-			case "Home":
-				return <Home {...{appdata, categories, notes, updateAppdata, dbFuncs}} LOGX={LOGX.getChild('Home')} />;
-			case "Market":
-				return <Market />;
-			case "Settings":
-				return <Settings />;
-			case "Debug":
-				return <Debugger {...{categories, notes}} LOGX={LOGX.getChild('Debugger')} />;
-			default:
-				return null;
+		case "Home":
+			return <Home {...{appdata, categories, notes, updateAppdata, dbFuncs}} LOGX={LOGX.getChild('Home')} />;
+		case "Market":
+			return <Market />;
+		case "Settings":
+			return <Settings />;
+		case "Debug":
+			return <Debugger {...{categories, notes}} LOGX={LOGX.getChild('Debugger')} />;
+		default:
+			return null;
 		}
 	};
 

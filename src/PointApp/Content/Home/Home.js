@@ -42,7 +42,7 @@ export default function Home ({
 	};
 	const goToViewer = (id) => {
 		setNoteId(id);
-		setHomeTabIndex(3)
+		setHomeTabIndex(3);
 	};
 
 	const goTo = {
@@ -83,20 +83,20 @@ export default function Home ({
 
 	const getCurrentHomeTab = () => {
 		switch (homeTabName) {
-			case "Dashboard":
-				return <Dashboard {...{notes, categories, goTo}} />;
-			case "Category":
-				return <Category {...{notes, categories, category, goTo}} />;
-			case "EditNote": {
-				const noteObject = note || getDefaultNoteObject(appdata.highestNoteId, categoryId);
-				return <EditNote {...{categories, saveNote, goTo, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
-			}
-			case "ViewNote": {
-				const category = categories.find(cat => cat.id === note.categoryId);
-				return <ViewNote {...{note, category, goTo, dbFuncs}} />;
-			}
-			default:
-				return null;
+		case "Dashboard":
+			return <Dashboard {...{notes, categories, goTo}} />;
+		case "Category":
+			return <Category {...{notes, categories, category, goTo}} />;
+		case "EditNote": {
+			const noteObject = note || getDefaultNoteObject(appdata.highestNoteId, categoryId);
+			return <EditNote {...{categories, saveNote, goTo, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
+		}
+		case "ViewNote": {
+			const category = categories.find(cat => cat.id === note.categoryId);
+			return <ViewNote {...{note, category, goTo, dbFuncs}} />;
+		}
+		default:
+			return null;
 		}
 	};
 

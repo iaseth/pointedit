@@ -16,7 +16,7 @@ const getDatabasesAndObjectStores = () => {
 			name: db.name,
 			version: db.version,
 			objectStores: []
-		}
+		};
 	}));
 };
 
@@ -28,7 +28,7 @@ function IndexedDBRowComponent ({k, row}) {
 			<td>{database.name}</td>
 			<td>{database.version}</td>
 			<td>
-				{database.objectStores.map((objectStore, k) => <h5>{objectStore.name}</h5>)}
+				{database.objectStores.map((objectStore, k) => <h5 key={k}>{objectStore.name}</h5>)}
 			</td>
 		</tr>
 	);

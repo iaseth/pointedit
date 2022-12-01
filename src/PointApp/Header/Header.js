@@ -6,19 +6,19 @@ export default function Header ({
 	currentTabIndex, setCurrentTabIndex
 }) {
 	const tabItems = TABS.map((t, k) => {
-			if (PRODUCTION && t.debug) {
-				return true;
-			}
+		if (PRODUCTION && t.debug) {
+			return true;
+		}
 
-		   const current = k === currentTabIndex;
-		   let className = "pt-1";
-		   className += current ? " bg-slate-50" : " hover:bg-slate-300 cursor-pointer";
+		const current = k === currentTabIndex;
+		let className = "pt-1";
+		className += current ? " bg-slate-50" : " hover:bg-slate-300 cursor-pointer";
 
-		   return (
-				   <div key={k} className={className} onClick={() => current ? null : setCurrentTabIndex(k)}>
-						   <h4 className="px-2 py-4">{t.title}</h4>
-				   </div>
-		   );
+		return (
+			<div key={k} className={className} onClick={() => current ? null : setCurrentTabIndex(k)}>
+				<h4 className="px-2 py-4">{t.title}</h4>
+			</div>
+		);
 	});
 
 	return (
