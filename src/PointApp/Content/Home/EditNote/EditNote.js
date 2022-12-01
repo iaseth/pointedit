@@ -10,8 +10,8 @@ import Aspect from './Aspect';
 const MAX_POINTS = 1000;
 
 export default function EditNote ({
-	categories, updateAppdata, goTo,
-	note, saveNote, dbFuncs, LOGX
+	categories, note, saveNote,
+	goTo, dbFuncs, LOGX
 }) {
 	const aspectIds = note.aspectIds;
 

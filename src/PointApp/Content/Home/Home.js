@@ -27,7 +27,8 @@ export default function Home ({
 	const [noteId, setNoteId] = React.useState(-1);
 	const note = notes.find(n => n.id === noteId) || null;
 
-	const [categoryId, setCategoryId] = React.useState(appdata.defaultCategory);
+	const defaultCategory = categories.length - 1;
+	const [categoryId, setCategoryId] = React.useState(defaultCategory);
 	const category = categories.find(c => c.id === categoryId) || null;
 
 	const goToDashboard = () => setHomeTabIndex(0);
@@ -88,7 +89,7 @@ export default function Home ({
 				return <Category {...{notes, categories, category, goTo}} />;
 			case "EditNote": {
 				const noteObject = note || getDefaultNoteObject(appdata.highestNoteId, categoryId);
-				return <EditNote {...{categories, updateAppdata, goTo, saveNote, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
+				return <EditNote {...{categories, saveNote, goTo, dbFuncs}} note={noteObject} LOGX={LOGX.getChild('EditNote')} />;
 			}
 			case "ViewNote": {
 				const category = categories.find(cat => cat.id === note.categoryId);

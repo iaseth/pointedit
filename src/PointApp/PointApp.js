@@ -66,14 +66,13 @@ const CATEGORIES = [
 ];
 
 const APPDATA = {
-	defaultCategory: CATEGORIES.at(-1).id,
 	notes: [],
 	highestNoteId: 0
 };
 
 const LS = window.localStorage;
 const IDB = window.indexedDB;
-
+ 
 const DATABASE_NAME = APPNAME;
 const DATABASE_TABLES = [
 	// {name: "notes", "fields": ['title', 'description'], keyPath: 'id'},
