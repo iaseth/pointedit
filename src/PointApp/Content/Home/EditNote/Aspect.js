@@ -48,8 +48,9 @@ export default function Aspect ({k, aspect, updateAspect}) {
 	}, []);
 
 	const updateAspectProp = (prop, value) => {
-		aspect[prop] = value;
-		updateAspect(aspect);
+		const nuAspect = {...aspect};
+		nuAspect[prop] = value;
+		updateAspect(nuAspect);
 	};
 
 	const updatePoint = (nuPoint) => {

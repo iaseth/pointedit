@@ -51,6 +51,11 @@ class LOGXClass {
 		this.put(`updated ${what}: '${id}'`);
 	}
 
+	updatedAt (what, id) {
+		const ts = new Date().toLocaleTimeString();
+		this.put(`updated ${what}: '${id}' at ${ts}`);
+	}
+
 	deletedFrom (from, what) {
 		this.put(`deleted from ${from}: '${what}'`);
 	}

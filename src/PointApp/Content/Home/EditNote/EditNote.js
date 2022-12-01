@@ -11,7 +11,7 @@ const MAX_POINTS = 100;
 
 export default function EditNote ({
 	appdata, updateAppdata, goTo,
-	note, saveNote, LOGX
+	note, saveNote, dbFuncs, LOGX
 }) {
 	const [aspects, setAspects] = React.useState([]);
 
@@ -44,6 +44,7 @@ export default function EditNote ({
 			pointId: aspectId * MAX_POINTS,
 			hidden: false
 		};
+		dbFuncs.saveAspectToDB(aspect);
 		aspects.push(aspect);
 		setAspects([...aspects]);
 		saveNote({...note}, aspects);
@@ -51,12 +52,13 @@ export default function EditNote ({
 
 	const updateAspect = (nuAspect) => {
 		const aspectIndex = aspects.findIndex(a => a.id === nuAspect.id);
-		const aspect = aspects[aspectIndex];
-		if (!_.isEqual(nuAspect, aspect)) {
+		const currentAspect = aspects[aspectIndex];
+		if (!_.isEqual(nuAspect, currentAspect)) {
 			nuAspect.modifiedAt = Date.now();
+			dbFuncs.saveAspectToDB(nuAspect);
 			aspects[aspectIndex] = nuAspect;
 			setAspects([...aspects]);
-			LOGX.updated('aspect', nuAspect.id);
+			LOGX.updatedAt('aspect', nuAspect.id);
 		}
 	};
 

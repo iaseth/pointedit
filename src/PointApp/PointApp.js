@@ -138,6 +138,7 @@ export default function PointApp () {
 		const aspectsStore = getStoreW(appDB, 'aspects');
 		if (aspectsStore) {
 			aspectsStore.put(aspectObject);
+			// LOGX.savedAt('aspect');
 		}
 	};
 
