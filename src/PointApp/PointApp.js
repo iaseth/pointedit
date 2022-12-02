@@ -131,6 +131,13 @@ export default function PointApp () {
 				});
 			});
 		};
+
+		return () => {
+			if (appDB) {
+				LOGX.put(`closed database: '${APPNAME}'`);
+				appDB.close();
+			}
+		};
 	}, []);
 
 
