@@ -117,7 +117,7 @@ export default function PointApp () {
 		request.onsuccess = (event) => {
 			const db = event.target.result;
 			setAppDB(db);
-			LOGX.setState('appDB');
+			LOGX.setStateAt('appDB');
 		};
 
 		request.onupgradeneeded = (event) => {

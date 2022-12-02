@@ -8,11 +8,12 @@ class LOGXClass {
 		this.tabs = parent ? (parent.tabs + "\t") : "";
 		this.setPrefix();
 
+		this.count = 0;
 		this.children = [];
 	}
 
 	setPrefix () {
-		this.prefix = `${this.tabs}[${this.name}]`;
+		this.prefix = `${this.tabs}(${this.name})`;
 	}
 
 	getChild (name) {
@@ -26,35 +27,34 @@ class LOGXClass {
 		}
 	}
 
-	plain (message) {
-		console.log(message);
-	}
+	plain = (message) => console.log(message);
 
 	put (message) {
-		console.log(`${this.prefix} ${message}`);
+		this.plain(`[${++this.count}] ${this.prefix} ${message}`);
 	}
 
-	setState (name) {
-		this.put(`setState: '${name}'`);
-	}
-
-	savedAt (name) {
+	putAt (message) {
 		const ts = new Date().toLocaleTimeString();
-		this.put(`saved: ${name} at ${ts}`);
+		this.put(`${message} at ${ts}`);
 	}
 
-	created (what, id) {
-		this.put(`created ${what}: '${id}'`);
-	}
+	actionLog = (action, what, id) => this.put(`${action} ${what}: '${id || '#'}'`);
+	actionLogAt = (action, what, id) => this.putAt(`${action} ${what}: '${id || '#'}'`);
 
-	updated (what, id) {
-		this.put(`updated ${what}: '${id}'`);
-	}
+	setState = (what) => this.actionLog('setState', what);
+	setStateAt = (what) => this.actionLogAt('setState', what);
 
-	updatedAt (what, id) {
-		const ts = new Date().toLocaleTimeString();
-		this.put(`updated ${what}: '${id}' at ${ts}`);
-	}
+	created = (what, id) => this.actionLog('created', what, id);
+	createdAt = (what, id) => this.actionLogAt('created', what, id);
+
+	saved = (what, id) => this.actionLog('saved', what, id);
+	savedAt = (what, id) => this.actionLogAt('saved', what, id);
+
+	updated = (what, id) => this.actionLog('updated', what, id);
+	updatedAt = (what, id) => this.actionLogAt('updated', what, id);
+
+	deleted = (what, id) => this.actionLog('deleted', what, id);
+	deletedAt = (what, id) => this.actionLogAt('deleted', what, id);
 
 	deletedFrom (from, what) {
 		this.put(`deleted from ${from}: '${what}'`);
