@@ -4,6 +4,7 @@ import React from 'react';
 import {Button} from '../../../Utils';
 import {EditableText, ItemsSelector} from './Utils';
 import Aspect from './Aspect';
+import LastSaved from './LastSaved';
 
 
 
@@ -56,7 +57,7 @@ export default function EditNote ({
 	return (
 		<div className={note.categoryId} id="EditNote">
 			<header className="max-w-xl mx-auto px-4 py-8">
-				<section className="border-x-2 border-500 shadow">
+				<section className="border-x-2 border-b-2 border-500 shadow">
 					<h5 className="px-2 py-1 bg-500 text-white">Note</h5>
 					<h3>
 						<EditableText text={note.title} setText={v => updateNoteProp('title', v)} placeholder="Title" autoFocus={true} />
@@ -67,6 +68,10 @@ export default function EditNote ({
 					</div>
 
 					<ItemsSelector ITEMS={categories} itemId={note.categoryId} setItemId={v => updateNoteProp('categoryId', v)} />
+
+					<div>
+						<LastSaved time={note.modifiedAt} />
+					</div>
 				</section>
 			</header>
 
